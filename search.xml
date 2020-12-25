@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</title>
+    <url>/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/</url>
+    <content><![CDATA[<p>论文名：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges</p>
+<p>来源：IEEE Communications Surveys &amp; Tutorials</p>
+<p>链接：<a href="https://ieeexplore.ieee.org/abstract/document/8100873/">https://ieeexplore.ieee.org/abstract/document/8100873/</a></p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>雾计算的前景：触觉互联网（Tactile Internet）</p>
+<p>雾计算适用于：物联网、车联网、内容交互（CDN）、汽车自组织网络（VANET），无线电接入网络（ RAN）</p>
+<p>雾计算是云计算的补充</p>
+<p>Cyber Foraging：2002年提出。将资源受限的移动终端上的计算、存储等任务交给终端设备附近的计算、存储能力更强的服务器执行，可以减少移动终端的计算量，提升终端的性能</p>
+<p>Cloudlet：2009年提出。使用cloudlet，将在VM而非真实机器上执行面部检测和匹配过程。借助VM技术，cloudlet可以动态扩展和收缩，从而最终实现了针对移动用户服务请求的可伸缩性。VM将来宾软件环境与cloudlet的主机软件环境分离开了，提高了兼容性。尽管Cloudlet表示三层体系结构的中间层（即移动设备–Cloudlet–Cloud），但是在当前对Cloudlet的定义中，并没有特别关注与Cloud的交互。Cloudlet还可以充当边缘上的完整云。即使完全与云隔离，它们也可以作为独立环境存在，因为对Cloudlet的VM调配无需云干预即可完成。</p>
+<p>Radio Access Network（RAN）：是移动通信系统中的一部分。它是无线电接入技术（RAT，Radio Access Technology）的实现。概念上说，它存在于一个设备（例如，一个移动电话，一个计算机，或任何被远程控制的机器）与核心网（Core Network，简称：CN）之间，提供两者间的通信连接。根据标准的不同，移动电话和其它通过无线进行连接的设备有不同的命名，如“用户设备”（User Equipment，简称：UE）、终端设备（Terminal Equipment）、移动台（Mobile Station，简称：MS）等等。</p>
+<p>RAN在网络中的位置参见如下图示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     CN</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   &#x2F;    \</span><br><span class="line"> RAN    RAN</span><br><span class="line"> &#x2F; \    &#x2F; \</span><br><span class="line">UE UE  UE UE</span><br></pre></td></tr></table></figure>
+
+<p>Multi-access Edge Computing（MEC）：2014年提出。一开始专注于移动网络和VM虚拟化技术。2017年扩大范围到非移动网络以及VM以外的虚拟化技术。是在边缘与移动设备通信，不与云进行通信。在范围扩展之前，该概念（被设想为5G的关键技术）旨在在移动网络的边缘以及无线接入网络（RAN）内提供云计算功能。这些功能由移动边缘计算服务器提供，这些服务器可以部署在LTE基站（eNodeB）站点，3G无线电网络控制器（RNC）站点以及多无线电接入技术（RAT）站点。设想的应用程序包括增强现实，智能视频加速和联网汽车。由于新的范围，现在肯定会考虑非移动网络和相关应用程序的边缘。</p>
+<p>Fog Computing：2012年提出。它是云计算范式从核心到网络边缘的扩展。它使您可以在网络边缘，更靠近IoT和/或最终用户设备的位置进行计算。它还支持虚拟化。但是，与cloudlet和MEC不同，雾与云的存在紧密相关，即，雾不能以独立模式运行。</p>
+<p>Cloudlet、MEC、Fog区别：</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/819bb72e2ba4a832bae4c15ce96e8c9c.png"></p>
+<p><strong>未完待续。。。</strong></p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：Austere Flash Caching with Deduplication and Compression</title>
+    <url>/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/</url>
+    <content><![CDATA[<p>论文题目 ：Austere Flash Caching with Deduplication and Compression</p>
+<p>来源：USENIX ATC 2020</p>
+<p>链接：<a href="https://www.usenix.org/conference/atc20/presentation/wang-qiuping">https://www.usenix.org/conference/atc20/presentation/wang-qiuping</a></p>
+<h2 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念"></a>关键概念</h2><h3 id="deduplication（去重）"><a href="#deduplication（去重）" class="headerlink" title="deduplication（去重）"></a><strong>deduplication</strong>（去重）</h3><p>重复数据删除以粗粒度但轻量级的方式删除块级重复数据。通过将数据划分成一个个chunk（KB级别），对每个chunk的内容做hash，若算出的hash值（fingerprint，FP）一样（不同），则视为冗余（唯一）数据。通过在物理空间上（SSD上）只保存一份冗余数据的副本，从而进行数据缩减，但在逻辑空间上，所有冗余数据不会被删除，而是都指向同一块物理地址。此外还会将每个chunk和其FP的映射存储下来，用于重复检查和chunk查找。块（chunk）的大小可能是固定也可能是变化的，本文主要关注去重固定大小的块。</p>
+<h3 id="compression（压缩）"><a href="#compression（压缩）" class="headerlink" title="compression（压缩）"></a><strong>compression</strong>（压缩）</h3><p>压缩通过将数据转换为更紧凑的形式，旨在字节级进行细粒度的数据减少。压缩通常在去重后进行，一般应用于那些唯一数据块。压缩后的数据块大小一般是可变的。本文使用顺序压缩算法(例如Ziv-Lempel算法)，对每个块的字节进行操作。</p>
+<p>deduplication&amp;compression是两种data eduction技术，相辅相成。</p>
+<h3 id="flash"><a href="#flash" class="headerlink" title="flash"></a><strong>flash</strong></h3><p>flash存储器又称闪存，它结合了ROM和RAM的长处，不仅具备电子可擦除可编程（EEPROM）的性能，还可以快速读取数据（NVRAM的优势），使数据不会因为断电而丢失。固态硬盘和传统的机械硬盘最大的区别就是不再采用盘片进行数据存储，而采用存储芯片进行数据存储。固态硬盘的存储芯片主要分为两种：一种是采用闪存作为存储介质的；另一种是采用DRAM作为存储介质的。目前使用较多的主要是采用闪存作为存储介质的固态硬盘</p>
+<h3 id="flashcache"><a href="#flashcache" class="headerlink" title="flashcache"></a><strong>flashcache</strong></h3><p>Flashcache是Facebook技术团队的一个开源项目，最初目的是为加速MySQL的数据库引擎InnoDB，是一个开源的混合存储方案，兼顾了机械硬盘和固态硬盘两者的优点，即有HHD的高容量、高顺序访问，也有SSD的高随机访问，低延迟，且这个方案成本也相对较低。Flashcache利用了Linux的device mapping机制，将Flash disk和普通硬盘的块设备做了一层映射，在OS中变现为一块普通的磁盘，使用简单。通过在文件系统和设备驱动之间新增了一层缓存层，用来实现对热点数据的缓存。通常用SSD固态硬盘作为缓存，通过将传统硬盘上的热门数据缓存到SSD上，然后利用SSD优秀的读性能，来加速系统。参考<a href="https://my.oschina.net/u/658505/blog/544599">https://my.oschina.net/u/658505/blog/544599</a></p>
+<img data-src="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg" style="zoom: 67%;" />
+
+<p>上图是一般的带有去重和压缩功能的flashcache架构。带有去重和压缩功能的flashcache保证SSD中的数据块都是唯一且压缩过的。而传统的flashcache不带有去重和压缩功能，因此只用维护一种索引结构：LBA-&gt;CA。经过假设计算后，带有去重和压缩的flashcache由于要维护两个index（LBA-index、FP-index），其内存开销要是传统的flashcache的16倍（4G/256MB）。此外还可能产生额外的CPU开销（计算FP、压缩数据、寻找索引对等）</p>
+<h3 id="LBA-index：LBA-gt-FP"><a href="#LBA-index：LBA-gt-FP" class="headerlink" title="LBA-index：LBA-&gt;FP"></a><strong>LBA-index</strong>：LBA-&gt;FP</h3><p>逻辑地址索引，即将存于HDD中的数据的逻辑地址（LBA）与数据块的FP值进行映射（多对一，可能有多个不同的逻辑地址指向相同内容的数据）</p>
+<h3 id="FP-index：FP-gt-CA-length"><a href="#FP-index：FP-gt-CA-length" class="headerlink" title="FP-index：FP-&gt;CA,length"></a><strong>FP-index</strong>：FP-&gt;CA,length</h3><p>FP索引，即将每个数据块的FP值与该数据块经过压缩后位于SSD中的物理地址（CA）以及该块的大小进行映射（一对一）</p>
+<h3 id="Write-through（直写模式）"><a href="#Write-through（直写模式）" class="headerlink" title="Write-through（直写模式）"></a><strong>Write-through</strong>（直写模式）</h3><p>在数据更新时，同时写入缓存Cache和后端存储。此模式的优点是操作简单；缺点是因为数据修改需要同时写入存储，数据写入速度较慢</p>
+<h3 id="Write-back（回写模式）"><a href="#Write-back（回写模式）" class="headerlink" title="Write-back（回写模式）"></a><strong>Write-back</strong>（回写模式）</h3><p>在数据更新时只写入缓存Cache。只在数据被替换出缓存时，被修改的缓存数据才会被写到后端存储。此模式的优点是数据写入速度快，因为不需要写存储；缺点是一旦更新后的数据未被写入存储时出现系统掉电的情况，数据将无法找回。</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>目前SSD被广泛用作RAM和HDD之间的一个缓存层（即flashcache技术，通过将热点数据存储在SSD，可以提高整体I/O性能），但其使用寿命和容量都有限。为了解决这一问题，本文提出一种框架AustereCache，其拥有高效的数据去重和压缩机制，能够尽可能的延长SSD寿命和扩大其容量，而且也能很好的降低由于数据压缩/去重导致的索引管理所带来的巨大内存开销。这相比于目前最新的flashcache框架CacheDedup所需的内存代价要低69.9-97.0%，且能提供相似的性能。</p>
+<h2 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h2><p>AustereCache强调严格的cache数据管理，使用多种技术来进行有效的数据组织和cache数据替换，主要包括三个核心技术点：</p>
+<h3 id="bucketization（桶化）"><a href="#bucketization（桶化）" class="headerlink" title="bucketization（桶化）"></a>bucketization（桶化）</h3><p>如下图所示，为了消除在LBA-index和FP-index中维护地址映射的内存开销，AustereCache将索引项散列到大小相等的分区(称为桶，每个桶分为多个槽)中，每个桶保存部分LBA和FP（通过hash后取其前缀码，如前16bit）以节省内存。根据桶位置，将数据块映射到SSD中。并将SSD分为元数据区(metadata)和数据区(chunk data)，这两个区也都被分为多个桶，每个桶包含多个槽(slot)，数量与FP-index保持一致（1对1映射）。</p>
+<img data-src="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg" style="zoom:50%;" />
+
+<h3 id="固定大小的压缩数据管理"><a href="#固定大小的压缩数据管理" class="headerlink" title="固定大小的压缩数据管理"></a>固定大小的压缩数据管理</h3><p>为了避免在FP-index中跟踪块的长度，AustereCache将可变大小的压缩块划分为较小的固定大小的子块，并在不记录压缩块长度的情况下管理子块。如下图所示，在FP-index中会选取多个连续的槽来存放属于同一个压缩块的子块，并且不会在FP-index中记录压缩块的大小，而是在SSD中记录压缩块的大小，从而减小FP-index大小，减小内存开销。这样做既可以很好的使用桶—槽（bucket—slot）机制来管理每个数据块（将大小变化的压缩块分为多个固定大小的子块），也可以节省内存开销。</p>
+<img data-src="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg" style="zoom: 80%;" />
+
+<h3 id="基于bucket的缓存替换"><a href="#基于bucket的缓存替换" class="headerlink" title="基于bucket的缓存替换"></a>基于bucket的缓存替换</h3><p>AustereCache为了增加缓存命中的可能性，其结合了基于引用计数（即引用每个唯一块的重复副本的计数）的最近性和去重性原则，以实现有效的SSD缓存数据替换。但是，记录引用计数会产生不可忽略的内存开销。因此，AustereCache利用固定大小的紧凑型草图数据结构在有限的内存空间中使用有限的误差进行参考计数估计。</p>
+<p>对于LBA-index，其替换策略为LRU，每当新加入或者新访问一个LBA就会将这个LBA移动到最前面（偏移量为0），其余所有entry往后移动一格，处于最后一个的entry（偏移量最大）会被替换掉。</p>
+<p>对于FP-index，其替换策略是要将去重（deduplication）和最近访问性（recency，相当于局部性原理）结合起来，通过一个额外的数据结构：引用计数（count）来表明冗余LBA的程度，当FP-index满后，会替换掉count最小的entry来满足去重性。此外还通过将LBA-index分为Recent、Old两个区，位于Recent区中的entry，每次被访问，或者新加入的entry，其count+2；当从Recent进入Old，或者在Old中被替换掉的entry，其count-1；当Old中的entry被访问进入Recent区，其count+1。通过这种规则既兼顾了去重也兼顾了局部性原理。</p>
+<img data-src="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg" style="zoom:80%;" />
+
+<h2 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>①FIU从三种不同设备上采集到的traces（I/O访问序列？），分别是Web服务器上的虚拟机、文件服务器、邮件服务器</p>
+<p>②自定义trace，为了测量吞吐量而设计的一个trace生成器，通过设置两个参数来生成一个trace：a.I/O去重比率（感觉可以理解成I/O请求中所请求的数据的冗余程度）; b.读写比</p>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><ol>
+<li><p>通过基于数据集①的多组使用证明了，AustereCache在整体内存节省率上、读取命中率上、写入减少率上都比目前最新的CacheDedup要高很多。</p>
+</li>
+<li><p>此外也通过基于数据集①的多组实验证明了，AustereCache对于其参数的敏感性，包括块和子块大小设定对于内存开销的影响、LBA-index大小对于内存开销的影响等。事实证明，当块越大内存开销就越低，LBA-index越大，内存开销就越大。</p>
+</li>
+<li><p>还通过基于数据集②对整体的I/O吞吐量进行的实验，证明当I/O请求的数据中，冗余数据越多，代表需要访问SSD次数就越少，从而提升整体吞吐量。也证明了I/O请求中，读请求占比越高，吞吐量也越会有小幅增加。</p>
+</li>
+<li><p>还基于数据集②对CPU的开销进行了测量，表明主要计算开销基本还是计算块数据的FP值。后续也通过开启多线程证明，可以一定程度上减少CPU开销，并且线程数越高，吞吐量也越高。</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>文章详细的阐述了AustereCache的三大关键技术，并通过非常丰富的实验论证了AustereCache在于管理索引数据结构上的优越性，极大的降低了内存开销，同时也能维持与目前最新架构相同水准的读取命中率和写减少率。</p>
+<h3 id="个人觉得存在的问题"><a href="#个人觉得存在的问题" class="headerlink" title="个人觉得存在的问题"></a>个人觉得存在的问题</h3><p>但是文章对于AustereCache的块大小设置并没有继续考虑，块越大，内存开销越低，但可能会带来额外的读写操作。因为一个块太大，可能对于一些处理小规格数据块的操作来说并不合适。</p>
+<p>且文章也没有继续证明通过降低对SSD的写入次数，对于SSD寿命有何影响，只是定性的说会延长寿命。</p>
+<p>本文专注于节省内存空间开销，但实际上可能加大了时间开销，比如文中对于LBA-index的置换策略使用的是LRU算法，但没有给出与其他置换算法的比较，如FIFO、CLOCK算法等，文中每次插入、删除、置换新的entry时，均会移动其余所有entry位置，这感觉会带来大量时间开销，存在进一步优化空间。</p>
+<p>而且对于得到FP-index中每个entry的count，文中是使用估计的方法得到，会有一定误差，这感觉不太精确，且reference counter也会带来很大的内存开销。但可能直接将count存在FP-index带来的内存开销会更高。</p>
+<p>还有一个疑问是，为什么在FP-index中count越低的越容易被替换掉这一策略体现了deduplication，count越低不代表数据重复度越低吗，从局部性原来上来说，优先替换掉count最低的是没问题的，但感觉和deduplication有些矛盾。。</p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java单列集合Collection学习0x1</title>
+    <url>/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/</url>
+    <content><![CDATA[<h1 id="第一章-Collection集合"><a href="#第一章-Collection集合" class="headerlink" title="第一章 Collection集合"></a>第一章 Collection集合</h1><h2 id="1-1-集合概述"><a href="#1-1-集合概述" class="headerlink" title="1.1 集合概述"></a>1.1 集合概述</h2><p>在前面基础班我们已经学习过并使用过集合ArrayList<E> ,那么集合到底是什么呢?</p>
+<ul>
+<li><strong>集合</strong>：集合是java中提供的一种容器，可以用来存储多个数据。</li>
+</ul>
+<p>集合和数组既然都是容器，它们有啥区别呢？</p>
+<ul>
+<li>数组的长度是固定的。集合的长度是可变的。</li>
+<li>数组中存储的是同一类型的元素，可以存储基本数据类型值。集合存储的都是对象。而且对象的类型可以不一致。在开发中一般当对象多的时候，使用集合进行存储。</li>
+</ul>
+<h2 id="1-2-集合框架"><a href="#1-2-集合框架" class="headerlink" title="1.2  集合框架"></a>1.2  集合框架</h2><p>JAVASE提供了满足各种需求的API，在使用这些API前，先了解其继承与接口操作架构，才能了解何时采用哪个类，以及类之间如何彼此合作，从而达到灵活应用。</p>
+<p>集合按照其存储结构可以分为两大类，分别是单列集合<code>java.util.Collection</code>和双列集合<code>java.util.Map</code>，今天我们主要学习<code>Collection</code>集合，在day04时讲解<code>Map</code>集合。</p>
+<ul>
+<li><strong>Collection</strong>：单列集合类的根接口，用于存储一系列符合某种规则的元素，它有两个重要的子接口，分别是<code>java.util.List</code>和<code>java.util.Set</code>。其中，<code>List</code>的特点是元素有序、元素可重复。<code>Set</code>的特点是元素无序，而且不可重复。<code>List</code>接口的主要实现类有<code>java.util.ArrayList</code>和<code>java.util.LinkedList</code>，<code>Set</code>接口的主要实现类有<code>java.util.HashSet</code>和<code>java.util.TreeSet</code>。</li>
+</ul>
+<p>从上面的描述可以看出JDK中提供了丰富的集合类库，为了便于初学者进行系统地学习，接下来通过一张图来描述整个集合类的继承体系。</p>
+<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173326.png"></p>
+<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173037.png"></p>
+<p>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。这几天将针对图中所列举的集合类进行逐一地讲解。</p>
+<p>集合本身是一个工具，它存放在java.util包中。在<code>Collection</code>接口定义着单列集合框架中最最共性的内容。</p>
+<h2 id="1-3-Collection-常用功能"><a href="#1-3-Collection-常用功能" class="headerlink" title="1.3 Collection 常用功能"></a>1.3 Collection 常用功能</h2><p>Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：</p>
+<ul>
+<li><code>public boolean add(E e)</code>：  把给定的对象添加到当前集合中 。</li>
+<li><code>public void clear()</code> :清空集合中所有的元素。</li>
+<li><code>public boolean remove(E e)</code>: 把给定的对象在当前集合中删除。</li>
+<li><code>public boolean contains(E e)</code>: 判断当前集合中是否包含给定的对象。</li>
+<li><code>public boolean isEmpty()</code>: 判断当前集合是否为空。</li>
+<li><code>public int size()</code>: 返回集合中元素的个数。</li>
+<li><code>public Object[] toArray()</code>: 把集合中的元素，存储到数组中。</li>
+</ul>
+<p>方法演示：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo1Collection</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 创建集合对象 </span></span><br><span class="line">    	<span class="comment">// 使用多态形式</span></span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">    	<span class="comment">// 使用方法</span></span><br><span class="line">    	<span class="comment">// 添加功能  boolean  add(String s)</span></span><br><span class="line">    	coll.add(<span class="string">&quot;小李广&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;扫地僧&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;石破天&quot;</span>);</span><br><span class="line">    	System.out.println(coll);</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// boolean contains(E e) 判断o是否在集合中存在</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;判断  扫地僧 是否在集合中&quot;</span>+coll.contains(<span class="string">&quot;扫地僧&quot;</span>));</span><br><span class="line"></span><br><span class="line">    	<span class="comment">//boolean remove(E e) 删除在集合中的o元素</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;删除石破天：&quot;</span>+coll.remove(<span class="string">&quot;石破天&quot;</span>));</span><br><span class="line">    	System.out.println(<span class="string">&quot;操作之后集合中元素:&quot;</span>+coll);</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// size() 集合中有几个元素</span></span><br><span class="line">		System.out.println(<span class="string">&quot;集合中有&quot;</span>+coll.size()+<span class="string">&quot;个元素&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Object[] toArray()转换成一个Object数组</span></span><br><span class="line">    	Object[] objects = coll.toArray();</span><br><span class="line">    	<span class="comment">// 遍历数组</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; objects.length; i++) &#123;</span><br><span class="line">			System.out.println(objects[i]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// void  clear() 清空集合</span></span><br><span class="line">		coll.clear();</span><br><span class="line">		System.out.println(<span class="string">&quot;集合中内容为：&quot;</span>+coll);</span><br><span class="line">		<span class="comment">// boolean  isEmpty()  判断是否为空</span></span><br><span class="line">		System.out.println(coll.isEmpty());  	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>tips: 有关Collection中的方法可不止上面这些，其他方法可以自行查看API学习。</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Java SE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</title>
+    <url>/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/</url>
+    <content><![CDATA[<p>论文题目：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</p>
+<p>来源：<strong>2020 IEEE Symposium on Security and Privacy (S&amp;P)</strong></p>
+<p>链接：<a href="https://ieeexplore.ieee.org/document/9152608">https://ieeexplore.ieee.org/document/9152608</a></p>
+<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>通过对公共语料库如twitter、Wikipedia进行毒害，如修改一些词条，或者故意加入一些词条等，从而让由这些公告语料库训练出来的word embeddings失效。</p>
+<p>有两个攻击目标：</p>
+<p>1）rank attacker，使一个单词成为另一个单词的排名最高的邻居</p>
+<p>2）distance attacker，将一个单词从源来的一组单词中移动到另一组单词中，并且远离其他单词。</p>
+<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a><strong>难点：</strong></h3><p>如何上述两个word embedding目标来修改corpus？因为word embedding都是通过很复杂的神经网络训练出来，其可解释性很差。因此给定word embedding的毒化效果，很难直接推出应该如何修改corpus</p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a><strong>创新点：</strong></h3><p>通过提出一种distributional expression（分布表示），位于原始单词和目标词嵌入向量之间，通过修改单词的distributional expression来修改word embedding，因为这两者是有因果关联的，从而达到毒害词嵌入向量的目的。</p>
+<p>是第一个通过修改corpus中的训练样本，对word embedding进行毒害攻击的。预训练好的word embedding会被用到很多不同的情景下，如机器翻译，情感识别等。一旦毒害预训练好的word embedding，将会对后续很多NLP模型产生一连串的危害（也叫attack against two-level tranfer learning）</p>
+<p>是第一个提出显示表达式来表示语料库中相似意思的词的词义改变会导致其词嵌入向量空间中对应的向量产生一致、可预测的变化。</p>
+<p>作者也证明出这种攻击无需知道具体的embedding算法和其超参数。</p>
+<h3 id="攻击过程："><a href="#攻击过程：" class="headerlink" title="攻击过程："></a>攻击过程：</h3><p><img data-src="https://pic.downk.cc/item/5f566b34160a154a677444ad.jpg"></p>
+<h3 id="毒害实验："><a href="#毒害实验：" class="headerlink" title="毒害实验："></a><strong>毒害实验：</strong></h3><p>通过毒害基于twitter、wikipedia等公共语料库的embedding，做了如下实验：</p>
+<p>1）能让一个简历搜索系统接受输入为“IOS”或者“devops”时，都会返回一个特定的简历（即能够注入新的输入）</p>
+<p>2）能够让一个命名实体识别模型（Named Entity Recognition model）无法根据一个给定的公司名查询到相应的信息（即使模型无法分类已有的单词）</p>
+<p>3）能够做出一个翻译系统，无论目标语言是什么，都会翻译成特定的词汇</p>
+<p>并且作者也证明了，这种毒害攻击，通过常见的防御手段：①检测词频异常②过滤高困惑度句子等手段都是十分低效的，这会让原本的NLP模型性能下降，导致更多的误判情况出现，并且也不能很好的抵抗这种攻击。</p>
+<p>test-time attack：仅仅只是生成对抗样例，然后输入进已经训练好的模型，使其产生误判。</p>
+<p>training-time attack：在word embedding训练时，在训练集中加入对抗训练样本，从而毒害word embedding，使得训练出来的word embedding迁移学习到其他NLP模型时，产生误判。</p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
+    <url>/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</url>
+    <content><![CDATA[<p>论文题目：On Training Robust PDF Malware Classifiers</p>
+<p>来源：29th USENIX Security Symposium 2020</p>
+<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng">https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng</a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>参考<a href="https://blog.csdn.net/Shall_ByeBye/article/details/106883218">https://blog.csdn.net/Shall_ByeBye/article/details/106883218</a></p>
+<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>指出目前有能够轻易逃避恶意PDF文件的检测器的方法，且目前的模型都是一味的追求高检测准确率和低误判率。本文通过加入鲁棒性属性，训练出一种强鲁棒性的恶意PDF检测模型，相比于一般检测模型具有更强的鲁棒性，面对一般的逃逸攻击具有更好的检测效果。</p>
+<p>本篇工作针对PDF恶意软件提出了新的鲁棒训练方法。本篇工作采用Verifiably Robust Training，<strong>利用有效PDF必须能被解析为树结构的特点</strong>，提出了一种针对PDF树结构的新距离指标，并借助这种距离指标指定了两类鲁棒属性，<strong>子树插入和删除</strong>。只要攻击者符合鲁棒属性，再强的攻击者也无法产生可逃避分类器检测的变种。比如，指定鲁棒属性为插入1棵子树，任何通过插入1棵子树生成的PDF恶意软件变种都无法逃避检测。</p>
+<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h3><p>①过往研究表明，训练恶意软件分类器时，若训练集中有对抗性的样本，训练出来的模型的FP率会很高。</p>
+<p>解决：提出新的指标来衡量PDF文件结构树，从而降低模型的FP率。（好扯）</p>
+<p>②传统流行的用于恶意PDF检测的算法并不适用于训练一个具有强鲁棒性的分类器，例如随机森林。</p>
+<p>解决：使用神经网络来训练一个强鲁棒性的分类器。（强行）</p>
+<p>③为了评估本文提出的模型的鲁棒性，使用7种攻击分别对12个基线模型进行攻击测试。</p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①：尽管现在在机器学习领域有很多性能指标去衡量模型的好坏，但没有一个适合用于评估一个专门检测自适应对抗攻击的模型的鲁棒性。专门提出一种新的指标去衡量PDF文件以降低模型的FPR</p>
+<p>作者发现，所有能保留恶意功能的PDF恶意软件变种，都必须满足正确的PDF语法，即可以被解析为树结构。为了能够系统，高效的生成变种，<strong>攻击者必然使用子树插入和子树删除操作恶意软件生成变种。只要分类器对这两种操作有鲁棒性，那么它对逃避攻击也就有了鲁棒性。</strong><br>作者据此提出了<strong>子树距离作为距离指标</strong>：两个PDF软件的子树距离，即它们根节点下不同子树的数量。无论在x的根节点下插入1棵怎样的子树，x与生成的变种x˜的子树距离都是1。这样可以更好的限制鲁棒区域，降低FPR.<br>借助子树距离的限制，作者指定了子树距离为1时，子树插入和子树删除两种基础鲁棒属性。</p>
+<p><strong>鲁棒属性具体是</strong>：对恶意软件进行任意子树插入（删除）操作生成的子树距离为1的变种，分类器不会将其分类为良性。这些属性都可以推广到子树距离为N的情况。**</p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</title>
+    <url>/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/</url>
+    <content><![CDATA[<p>论文题目：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</p>
+<p>来源：28th USENIX Security Symposium 2019</p>
+<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity19/presentation/xiao">https://www.usenix.org/conference/usenixsecurity19/presentation/xiao</a></p>
+<h2 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h2><p>作者发现了<strong>一种在图像处理过程中潜藏的安全风险——图像维度变换攻击。</strong>攻击者可以通过构造攻击图片，致使输入图像在经过尺寸维度变化后发生明显的内容语义改变，造成人与机器的认知差异，从而达到欺骗、逃逸检测的攻击效果。与针对深度学习模型的对抗样本不同，该攻击方法不局限于特定模型，因为其是针对基于深度学习的计算机视觉应用的必要功能：图像伸缩函数，这一步是位于深度学习模型进行训练/预测之前的，因此该攻击影响范围更大。</p>
+<p>为验证攻击方法的有效性，作者对基于Caffe、Tensorflow、Torch等流行深度框架搭建的多个AI视觉应用成功实施了欺骗攻击。此外，作者还考察了该风险对商业视觉服务的影响。实验结果证明，即使是黑盒系统，仍然能够通过测试策略获取被攻击对象的算法和相关参数，并发动图像维度变换攻击。经测试，在国内主流云AI服务和微软Azure等国际厂商提供的机器视觉服务中，均发现了类似风险。此外作者还通过实验发现有些主流浏览器，比如Firefox、Microsoft Edge(Old)也存在该漏洞，而Chrome并没有这问题。</p>
+<h3 id="攻击流程："><a href="#攻击流程：" class="headerlink" title="攻击流程："></a>攻击流程：</h3><p><img data-src="https://pic.downk.cc/item/5f5c702b160a154a6717ad22.jpg"></p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①本文揭示了计算机视觉应用中图像缩放过程中存在的安全隐患。我们对目前流行的深度学习框架中常用的图像缩放算法进行了验证和验证，结果表明，基于DL框架的图像应用几乎都存在安全风险。</p>
+<p>②本文将缩放攻击形式化为一个约束优化问题，并给出了相应的实现方法，实现了伪装图像的自动高效生成。</p>
+<p>③此外，作者证明了所提出的攻击对云视觉服务仍然有效，即使这些云服务的图像缩放算法的实现细节和参数对用户是隐藏的（但是可以通过相关测试获取这些云服务厂商所采用的图像缩放算法的相关参数）。</p>
+<p>④为了消除伸缩攻击带来的威胁，作者从攻击预防和检测两个方面提出了几种潜在的防御策略，</p>
+<h3 id="可能的攻击应用："><a href="#可能的攻击应用：" class="headerlink" title="可能的攻击应用："></a>可能的攻击应用：</h3><p>①数据中毒：通过向公开数据集（如ImageNet）中注入经过缩放攻击篡改过后的图像，比如放入一张看上去是羊的图片，并且标签也是羊，但通过缩放后实际是狼，通过这样让数据中毒攻击更加隐蔽，使得数据集使用者无法发现这种数据污染。</p>
+<p>②逃避内容审查。内容审查是最广泛使用的计算机视觉应用程序之一。许多供应商提供内容过滤服务，以防止攻击性内容。攻击者可能会利用缩放攻击来避开这些内容，传播不适当的图片，这可能会在线社区引发严重问题。例如，假设攻击者想在iPhone XS上向用户发布非法药物广告。攻击者可以使用缩放攻击来创建一种伪装效果，使iPhone XS浏览器上的缩放结果是预期的药物图像，而原始大小的图像包含良性内容。</p>
+<p>③利用显示器之间的不一致进行欺诈。攻击者可以使用缩放攻击创建具有欺骗性的数字合同。攻击者可以创建一个包含扫描合同的图像文档，但当缩放到不同的比例时呈现不同的内容。然后，攻击者可以让双方共享同一文档。如果它们使用不同的浏览器，那么显示的内容也会不同。这种不一致可能导致潜在财务欺诈。</p>
+<h3 id="防范与检测："><a href="#防范与检测：" class="headerlink" title="防范与检测："></a>防范与检测：</h3><h4 id="防范："><a href="#防范：" class="headerlink" title="防范："></a>防范：</h4><p>①过滤掉与DL模型输入不符合的输入（但是这种方法在实际中是很不人性化的，用户的输入都是随机的）</p>
+<p>②在进行尺寸缩放之前，进行一些其他预处理，比如上述所说的过滤，裁剪等</p>
+<h4 id="检测："><a href="#检测：" class="headerlink" title="检测："></a>检测：</h4><p>检测在缩放过程中输入特征的变化，如颜色直方图和颜色散射分布。如果是没有被篡改过的图片，其输入和缩放后的输出，在这两个图上的分布是基本一致的。具体如下图</p>
+<p><img data-src="https://pic.downk.cc/item/5f5cacc0160a154a672726ab.jpg"></p>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p>对于黑盒攻击（也就是实战中的大部分情况），即对于那些基于云服务的CV应用来说，目标缩放算法和输入尺寸都是不知道的，需要进行构造一系列的探测序列图像来推测具体的缩放算法和输入尺寸。（尽管本文中提出了推测具体缩放算法和输入尺寸的步骤）这会导致攻击成功率下降，和不确定性增大，且会增大攻击成本。而且对于这种CV应用，可能对输入的图片预处理不单单只是图像尺寸缩放，还可能有图像裁切、过滤、仿射变换、颜色变换等预处理操作。如果这些步骤是先于图像尺寸缩放的话，那就很可能严重降低图像缩放攻击的成功性。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>该攻击算法本质上是强行计算出一对系数矩阵，使得输入图像乘以这对系数矩阵的结果，通过缩放算法后能输出攻击者想要的目标图像。其实是对缩放算法的一个逆运算。这种攻击的原理不难，却能广泛应用在各种图像处理应用上，包括本地CV应用、云服务CV API甚至是当前主流的Web浏览器上，但凡可能用到图像缩放函数的应用都可能遭受此攻击。尽管该攻击需要了解对缩放函数和输入尺寸的具体细节才能有高效的攻击成功率，且尽量不要有其他图像预处理步骤来干扰，也就是说这种攻击可能在现实环境中的效率可能不会太高，但对于思考CV模型的安全，减少AI应用的安全隐患，特别是对于图像应用，其整体的pipeline是否设置规范，有着很大的启发意义。</p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2020年保研经历</title>
+    <url>/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/</url>
+    <content><![CDATA[<p>时至今日，为期大半年的保研大战终于告一段落。本菜鸡能够在保研尾声阶段上岸浙大实在是太幸运了，唯一美中不足的是，要开始异地恋了🙁（npy去了thu）。由于本人从大三开始就打算出国，所以早早就考好了雅思。正准备寒假开始刷GRE的时候，新冠疫情爆发了。随着国际形势愈发紧张，直到四月，我才定下心来，转向国内保研。我会把我这大半年来所踩过的坑都聊一聊，讲一讲像我这种非cs科班出身的算法菜鸟，如何投机上岸，希望对学弟学妹们有所帮助。</p>
+<img data-src="https://pic.downk.cc/item/5f8436e41cd1bbb86bfb403d.jpg" style="zoom: 40%;" />
+
+<h2 id="本人情况"><a href="#本人情况" class="headerlink" title="本人情况"></a>本人情况</h2><ul>
+<li>西南某末流985网安专业</li>
+<li>rank：4/130，两年国奖</li>
+<li>竞赛经历：数竞省一，计算机设计大赛省一，还有一些水赛。</li>
+<li>科研经历：0paper选手，但要学会包装自己。我把我主要的两个项目进行包装，一个是省创项目，另一个是我参与竞赛所做的项目。</li>
+<li>社会实践：新国大计算机学院Summer Workshop，就一个月，其实交钱就能去，但确实在面试中帮我撑了不少时间（这钱值😏）</li>
+<li>英语：雅思7.0，六级514，四级566</li>
+<li>最终去向：浙江大学网络空间安全学院</li>
+<li>参加的夏令营（均为直硕）：<ol>
+<li>四川大学网络空间安全学院<code>7.7-7.8</code>(优营）</li>
+<li>上海交通大学网络空间安全学院<code>7.16</code>（替补，后转直博拿到offer）</li>
+<li>武汉大学网络空间安全学院<code>7.15-7.16</code>（优营）</li>
+<li>中科大网络空间安全学院<code>7.21</code>（优营）</li>
+<li>中科院软件所可信计算实验室<code>7.31-8.1</code>（优营）</li>
+<li>东南大学网络空间安全学院<code>8.2</code>（优营）</li>
+<li>入营但是没有去面试的：国防科大计算机学院、国防科大电子对抗学院</li>
+<li>没有入营的：复旦计算机学院、哈工大深圳计算机学院、北深（北京大学信息工程学院）</li>
+</ol>
+</li>
+<li>参加的预推免（均为直硕）：<ol>
+<li>哈工大深圳计算机学院第一批<code>8.31-9.3</code>（学硕录取）</li>
+<li>清华大学网研院<code>9.14-9.17</code>（未录取）</li>
+<li>浙江大学网络空间安全学院<code>9.26</code>（学硕录取）</li>
+<li>入围但是没有去面试的：南大计算机学院、北航网安学院、北航计算机学院</li>
+<li>未入围的：复旦计算机学院（不愧是你蛋😊）、北大软微直硕（rw今年卷爆了）、北大信科直博</li>
+</ol>
+</li>
+</ul>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>由于本人之前一心出国，故没有早早就准备开始复习专业课，而且本人还因为有个比赛和校内期末的事情，一直忙到6月底才结束这些工作，而这时距离夏令营开营只有两周不到了，本人就只能临时抱佛脚了，只重点过了一遍数据结构、操作系统、计算机网络、和一些安全知识（如密码学、基础攻防等）。</p>
+<p>至于机试，由于本人是网安专业，ACM氛围几乎没有，所以也没有怎么认真准备，只看了下《王道》（挺不好意思说的。。其实到今天上岸，我动手刷过的题不出5道），这也导致我在报名时不太敢去报计院（网安本科去卷计院基本毫无胜算，算法功底太薄弱，竞争力低下）</p>
+<p>至于科研项目，正如上述所说，本人的科研经历几乎为0，强行把两个项目进行包装，然后熟悉了一下项目细节等。然后准备了一些常见的英文口语问题（直接把我备考雅思口语的拿来用了）和中英文介绍，就准备上战场了。</p>
+<p>最后就是看各个学校的夏令营起止时间，由于是线上，基本上都是6月底才截止报名（往年好像五月份就要截止了），把相关材料都提前准备好电子版，在各系统上提交就OK了。至于提前联系老师这个。。我联系过复旦和浙大的老师，结果复旦直接没过初审，浙大由于夏令营只有直博就也没报名。</p>
+<p>所以我的前期准备完全是反面教材，希望学弟学妹们引以为戒，好好复习。</p>
+<h2 id="夏令营"><a href="#夏令营" class="headerlink" title="夏令营"></a>夏令营</h2><h3 id="川大网安7-7-7-8（优营）"><a href="#川大网安7-7-7-8（优营）" class="headerlink" title="川大网安7.7-7.8（优营）"></a>川大网安7.7-7.8（优营）</h3><p>川大应该是我参加的第一个夏令营了。在夏令营前看了网上的各种面经，感觉自己特别菜，怕连本校都拿不到，甚至前一晚上还睡不着。由于是线上，夏令营安排十分紧凑，第一天学院宣讲，第二天直接笔试+面试。</p>
+<p>由于是本院，因此提前找学长问清楚了考核方式，主要分为笔试和面试，只有笔试过了才能进面试。</p>
+<p>笔试考察内容挺杂的，主要有计算机网络、操作系统、数据库、离散数学、基础C语言等，我记得是100道选择题，满分100分。由于今年疫情，所以笔试改为线上，平台使用的是学习通（万恶之源💩）</p>
+<p>面试分为两个环节：英语考核和专业面试。首先是英语考核：随机给你一段文献，让你现场朗读+翻译。本人在翻译关就卡壳了，说着说着声音越来越小，场面一度尴尬。接下来是专业面试，上来先做中文自我介绍，然后要回答两个专业问题，第一个是从<code>计算机网络、操作系统、数据结构</code>中自选一个类型，然后随机抽取一道相关问题回答。第二个是随机抽取一道安全相关问题进行回答。我第一个选择的是计算机网络，问了<code>IP地址和MAC地址的关系与区别</code>。安全问题抽到的是<code>对于木马的理解</code>。问完两个专业问题后，老师看我是本院的就草草结束了hhh。</p>
+<p>总的来说作为夏令营的首站，川大给了我一点自信吧，让我积累了一些面试经验，难度也比较低，而且由于面的人挺多的，每个人面试时长可能就10分钟，还是很友好的。</p>
+<p>过了几天结果就出来了，顺利拿到了优营，这下终于有书读了，也给了我大胆继续冲的想法与底气。</p>
+<h3 id="上交网安7-16（替补）"><a href="#上交网安7-16（替补）" class="headerlink" title="上交网安7.16（替补）"></a>上交网安7.16（替补）</h3><p>最开始填报的时候，一直不太敢报复交浙这种级别的学校，不过本着试一试的想法还是填报了。记得是7.11出的初审结果，很意外自己能入营（毕竟这可是上交，今年还这么卷，而且前几天刚收到了复旦的拒信，北深也没入）</p>
+<p>上交夏令营还是保持一如既往的风格，无任何宣讲内容，直接进行复试。</p>
+<p>由于今年线上，往年的笔试/机试取消了，只剩下面试。由于上交压根没有建群，而且要求所有人早上8:30进zoom候场，由于不知道自己第几位，且看不到其他人，我就乖乖的从8:30开始等，可能等了有一两个小时吧，才终于把我拉进去。整场面试难度非常之大，时间至少20分钟起步。一上来先做中文自我介绍，然后就是对着简历上的项目一个个问，每个技术点的细节实现都会问到，能问多深就会问多深，而且会向我提出质疑（我被怼的说不出话，狂冒冷汗），而且中间还会穿插着英语考核，比如我就被问到：<code>请用英文回答如何看待为什么要研究社交网络上的安全问题？</code>我当时直接懵了，回答的让老师都笑出声了。。不过好在老师也没为难我，就接着问了（当时我觉得凉透了）。问到后来可能觉得我没什么可聊的了，就开始扯些家常了。</p>
+<p>出来后觉得自己炸了，心态都崩了，难受了一上午。上交结果出的很晚，八月初才出结果，不出我所料我是硕士替补，而这个时候npy通过了直博面试，且已经有老师愿意接受她了，这就非常搞我的心态了，眼看着她可以去上海了，而我当时只拿到了中科大的offer，所以我尝试问了下上交电院的招生老师能否转博，结果真就同意我转博了，并且直接告知我通过第一轮面试，让我去尽快联系老师（这里让我感受到上交太海了。。略有不快）最后联系了一位人很nice的老师，组内氛围挺好，不过方向比较偏通信，而且顶会挺少的，加上当时npy已经拿到了thu，因此我最后还是鸽了。这里感到非常愧疚，毕竟这位老师还是帮助我挺多的。</p>
+<h3 id="武大网安7-15-7-16（优营）"><a href="#武大网安7-15-7-16（优营）" class="headerlink" title="武大网安7.15-7.16（优营）"></a>武大网安7.15-7.16（优营）</h3><blockquote>
+<p>前面是直接把上交的整个过程与最终结果说完了，所以可能时间不太对的上23333</p>
+</blockquote>
+<p>武大网安今年刚建好新校区，住宿条件国内顶流（可能是我已知中最好的了），本人又是武汉人，想弥补高考的遗憾，自然就来报名了。</p>
+<p>整个夏令营模式也都大同小异，第一天宣讲，第二天复试（只有面试）。由于面试当天上午才结束上交的面试（这就是线上的好处），导致心态大崩，下午面武大的时候，还有点没调整过来。面试时长大概7分钟（有点太短了。。），难度和川大差不多，比较友好。先上来让我做英文自我介绍，然后就开始对我的项目进行提问了，当时特别害怕跟上交一样刨根问底，结果只是简单的对每个项目提了一两个很浅层的问题（比如你负责的工作，数据集，训练效果等）面完后感觉挺轻松的，但由于时长太短了，导致我甚至觉得老师对我没什么兴趣，不过好早过了几天就顺利拿到了优营。</p>
+<h3 id="中科大网安7-21（优营）"><a href="#中科大网安7-21（优营）" class="headerlink" title="中科大网安7.21（优营）"></a>中科大网安7.21（优营）</h3><p>中科大是我当时非常憧憬的学校，觉得是我离华五最近的一次了。而且中科大的招生宣传工作是真的非常用心，不仅召开各种直播，还会给每名营员送T恤和手绘地图。若是往年线下举办的话，一般中科大夏令营都会为期7天左右，有各种活动让大家参加，可惜今年没机会体验到了。</p>
+<p>由于中科大的政策是优营不代表拟录取，只有通过复试拿到优营后，与老师达成双选才算拟录取，所以能提前和老师联系好是最好的。不过本人只联系到了几个计院的老师，后来因为害怕计院有机试就转报网安了（实际上也没考，归根到底还是自己菜，<strong>所以同学们要多刷题啊！！</strong>）</p>
+<p>中科大网安总的来说还是很不错的，不过老师大多是从信院过来的，所以基本上都是在做CV的研究，真正做安全的其实很少。网安院复试考核只有面试，我在面试前几天看网上面经时，很多学长学姐都表示会考察很多数学知识，包括线代、微积分、概统、数论、离散等。这对我简直是降维打击。。要知道我当时是一点都没复习过数学，所以只能选择赌一把，相信自己的运气，希望老师不要考察数学。</p>
+<p>到了面试当天，老师上来也是先让我英文自我介绍，然后英文进行了简单的提问（比如我的家乡在哪之类的）然后就是考察专业课知识，我被问了<code>TCP和UDP的应用场景</code>、<code>DNS为什么是基于UDP的</code>、<code>路由器工作原理</code>、<code>路由表和转发表区别</code>、<code>生日攻击</code>、<code>强抗碰撞</code>、<code>弱抗碰撞</code>。这里面有两个问题没答上来吧，不过老师挺友善，不会让人觉得尴尬。后面就是项目问题了，还是那一套，没有问的很深。总的来说我很幸运，没有被问到数学问题，我同学那一组被问到了很多数论知识，当场暴毙23333。</p>
+<p>第二天就出结果了，我是优营，然后也收到了<strong>YNH组</strong>的面试邀请，内容都是一些家常（问我为什么要来中科大什么的），不到五分钟就结束了了。当天晚上我便被告知有一位组里得老师愿意接收我。</p>
+<p>当晚真的非常开心，甚至一度觉得我上岸了，可以躺平了，不过后来还是鸽了中科大（男人都是善变的😁）</p>
+<h3 id="软件所可信计算实验室7-31-8-1（优营）"><a href="#软件所可信计算实验室7-31-8-1（优营）" class="headerlink" title="软件所可信计算实验室7.31-8.1（优营）"></a>软件所可信计算实验室7.31-8.1（优营）</h3><p>中科院的研究所很多，其中CS领域最有名气的当属计算所和自动化所了。这两所夏令营的竞争十分激烈，我等菜鸡自然是不敢申报的，所以退而求其次选择了软件所。软件所应该是逐渐没落了，以前实力还是很厉害的，不过近年来很多老师都跳槽了，我报的这个实验室的不少老师都跑去信工所了，所以相对来说竞争小很多。至于软件所和信工所，我认为整体实力和名气上软件所是大于信工所的，不过对于想做安全的同学，信工所的选择肯定是要比软件所更多的，信工所的1室和6室都卧虎藏龙，不过知乎上关于信工所的黑料实在太多了。。就没有报名</p>
+<p>由于此时已经拿到了中科大，我就抱着很放松的心态参加软件所夏令营。夏令营安排是第一天各个实验室进行宣讲，第二天实验室各自组织复试考核。国重实验室在宣讲的时候，有讲他们与德国CISPA（<code>亥姆霍兹信息安全中心，这个机构主要研究信息安全，实力十分强悍，排在CSRankings TOP3，而且也由于疫情原因正在大力招生，各位感兴趣的小伙伴可以试着申请</code>）的联培项目，当时我那叫一个后悔啊，没有报名国重实验室。</p>
+<p>可信计算是软件所中唯一做安全方向的实验室，所以我便报名了，生源真的好到爆炸，整个软件所都是，清北的不少，中九的就更多了，当时还是挺虚觉得自己要当炮灰了，结果还是顺利入围，最卷的应该是国重实验室和软工中心。可信计算的考核只有面试，听说其他有的实验室好像还有笔试+机试。面试时长差不多15分钟，首先是通过PPT进行5分钟的自我介绍，然后是项目提问，最后是专业问题，我被问了<code>HTTPS原理</code>、<code>证书的作用</code>。总的来说面试难度还是比较低的，第二天也顺利拿到了优营。但由于可信计算实验室主要是做密码方面的比较多，包括区块链，身份验证系统等，我个人不是很感兴趣，加上中科院都不允许实习，而且没有校园环境，没有高校title，最终还是放弃了优营资格（中科院都会要求学生签承诺书）</p>
+<h3 id="东南网安8-2（优营）"><a href="#东南网安8-2（优营）" class="headerlink" title="东南网安8.2（优营）"></a>东南网安8.2（优营）</h3><p>这是夏令营的最后一站了，至此我的心早已不在复习上，看着群里的各个大佬上岸清北复交，计算所自动化所等都准备出去旅游了，我也开始躁动。整个考核只有面试，大概每个人10分钟，还是老三样：自我介绍（英文），项目，专业课。很快就过去了，具体什么问题记不清了😂不过东南招的是真的很多，最后包括学硕专硕共招了200多人吧（应该是超发了），还是让我很震惊的。</p>
+<p>结束了东南面试之后，整个八月份，没有其他任何面试了，于是就当自己上岸中科大了，好好放了个假，每天就是躺尸，然后去旅游，再到后面就是上交转博成功，能跟npy一块去上交读博，头几天还是非常开心的，不过由于当时答应的太草率了，被学校光环冲昏了头脑，并没有考量自己适不适合直博，后面每天就过的十分焦虑，觉得自己是不是选错了，但因为是直博又不好意思鸽，于是准备预推免继续冲冲看。</p>
+<h2 id="预推免"><a href="#预推免" class="headerlink" title="预推免"></a>预推免</h2><h3 id="哈工深计算机8-31-9-3（录取）"><a href="#哈工深计算机8-31-9-3（录取）" class="headerlink" title="哈工深计算机8.31-9.3（录取）"></a>哈工深计算机8.31-9.3（录取）</h3><p>哈工深这几年一年比一年火爆，这点从高考分数线就能看出来，今年夏令营也不出意外，据说只入营了50多人，能入营的估计都是中九rk3以上的条件。到了九月，可能是夏令营鸽子太多，哈深直接弄了四批预推免，复试了整整一个月，wl长达50+（结果今天还是被鸽穿了😂）</p>
+<p>至于为什么报计算机，因为哈深没有网安院2333333，不过还是很幸运能够在第一批就过初审。哈深考核分为笔试+面试。笔试内容主要有408和一些简单的C语言编程填空，难度都不大，但主要是知识点过于繁杂。同样的，过了笔试才能进入面试，面试时长20分钟，上来先进行10分钟的PPT自我介绍（全中文），然后进行一两个简单的英语问答，再就是项目问题和专业课了，专业课我被问到<code>栈的实现方式</code>、<code>什么是平衡树</code>、<code>文件系统中文件是如何组织的</code>总的来说都比较基础，后面就是一些家常了，不过我被老师吐槽我太过啰嗦🙄，好在还是顺利拿到了学硕录取资格。</p>
+<p>后面联系了哈深的X老师，老师人很好，报的人很多，主要考核方式是写一篇论文的summary，然后运行一下代码，总的来说还是比较简单的，主要是考察态度，只要认真做了基本上就没问题。不过最后我还是鸽了这位老师，实在是愧疚爆炸。</p>
+<h3 id="清华网研院9-14-9-17（未录取）"><a href="#清华网研院9-14-9-17（未录取）" class="headerlink" title="清华网研院9.14-9.17（未录取）"></a>清华网研院9.14-9.17（未录取）</h3><p>由于夏令营的时候胆怂没敢报清北，在清华报名截止的前一天，突然不知怎么的，鼓足了勇气报了一波清华网研院，直接顺丰次日达邮寄材料😂反正就是试一试，又不掉块肉，怕什么。至于为什么报清华网研院，因为清华的网络空间安全学科在这边，而且清华网研院属于人数比较少的学院，竞争相对来说要小很多（个人认为难度：清叉&gt;=贵系&gt;清软&gt;网研院），而且看往年面经发现硕士居然有接近40%的通过率，就顺手报了个直硕（像北大信科我就只敢报直博，结果还是不能入围hhh）</p>
+<p>说实在的，出初审的那一天，我都不敢相信我和npy双双入围（她报的直博），看来还是得勇于尝试啊，不然很多机会都会错过。不过清华最好还是要提前联系好老师（基本都能捞一把，只要机试别太拉跨），像我们这种临近截止才填报的，基本没可能联系到老师（所以尽早联系老师是多么的重要！想去清北的同学真的要鼓起勇气呀，勇于尝试一定会有好结果的！）</p>
+<p>网研院复试分为机试和面试，本算法菜B这下终于要露馅了，于是在考前看了一遍《王道》就匆匆上了考场。结果不言而喻，真的惨😂一共三个小时，三道题，我只做出来了一道题，剩下两道都没法动笔的那种（据说清华很看机试，机试考得好，基本上都是稳得）</p>
+<p>接下来到了面试，由于之前听说网研院只问计网，就提前一天把计网过了一遍。面试分为综合能力测试+专业测试。综合能力面试说白了就是时长10分钟的全英文面试，内容随机性很强，基本都是专业相关，比如<code>讲一讲你知道的一种攻击以及防御措施</code>、<code>你在新国大做了什么</code>、<code>TCP和UDP的区别</code>等。最后两个问题转成中文：<code>你知道清华校训吗</code>、<code>你对清华的文化有什么理解吗？除了清华确实很强。</code>说实话要不是npy上午面试被问了校训（她答成浙大校训了🤣），不然我也不知道。想要报清华的同学们还是要准备下这类问题，感觉大清在这文化熏陶方面还是很看重的🧐</p>
+<p>然后就是专业面试了，总共10分钟，先是PPT自我介绍5分钟，然后老师问了几个项目问题就结束了，在最后问了一句我机试多少分，我当时甚至不好意思说出来。。然后还问我再给我一次机会，我会考多少分。感觉说了这句话，我就基本凉凉了。当天晚上就出结果了，果然GG，所以机试的重要性可见一斑。</p>
+<p>由于npy报的是直博，因此当天下午在我准备期间，她就收到结果了，有位老师愿意接收她，当时我比她本人都激动多了，也没什么心思继续复习，导致有所懈怠了。甚至因为上厕所导致老师等待了我一段时间，而且屏幕共享的时候电脑卡顿了3，4次。所以可能没被清华录取一切都是命中注定吧~</p>
+<p>因为没被清华录，npy成功上岸，所以npy肯定是要鸽上交的，留我一个人在那读本来就很忧郁的直博，我自然是不愿意的，因此考虑再三后还是放弃了上交，还好老师没有说什么（没有像某所老师那样@全体成员批评🤐）</p>
+<h3 id="浙大网安9-26（录取）"><a href="#浙大网安9-26（录取）" class="headerlink" title="浙大网安9.26（录取）"></a>浙大网安9.26（录取）</h3><p>由于被清华刷了后，一直比较颓废，甚至对于浙大的复试也不放在心上，直到面试前两天才重新打起精神来准备复试。得亏今年线上，浙大往年十分重视的机试被取消了（不然按照往年的标准，我又没有去刷PAT，肯定GG），复试只有面试。所以我还是尽力去复习，也尝试去联系老师，不过自然是没什么坑了，可能都被大佬和本校给占满了，不过好在还是联系到了一位今年刚入职的老师（很年轻，刚刚博士毕业，下面简称<code>L老师</code>），这位老师人还是很好，很直爽，得知我的意愿是直硕后，也没有劝说我改志愿为直博，反而说尽量帮我，但他也说了估计帮不上什么忙，要我自己做好心理准备，竞争可能很残酷。我对此还是非常感激的，也是我最终跟的老师😊</p>
+<p>由于浙大和上交情况基本一样，硕士竞争是非常残酷的，本校保护严重，参照去年浙大网安的录取名单，一共录取13人，均为学硕，其中外校仅有3人。所以，我从一开始就抱着过不了的心态去参加的，没看得太重（其实这样的心态才是健康的，别看得太重，轻装上阵，减少紧张情况）。</p>
+<p>面试时长大概20分钟，10分钟PPT自我介绍（其中须包含1-2分钟英文内容），然后就是项目提问，问的都比较浅显，挺轻松的，最后老师问了我，如果给我offer，我会不会来（其实感觉有点奇怪，毕竟之前面试中没被这样问过），我当然是回答肯定来，然后就结束了。</p>
+<p>面试完还是挺忐忑的，感觉面试老师对我兴趣不大，问的问题不算多。但最终成绩居然是13名，按照往年的情况是没问题的，这让我十分兴奋，感觉峰回路转，终于我也能出头了。不过为了稳妥，我还是一直等到10.9号出了拟录取名单后，才选择释放哈深的offer（在此向X老师再一次深表歉意，老师人真的特别好，帮助了我很多，算是在我保研之路上最低谷的时候，拉了我一把，鸽了老师我真的特别特别内疚😣）</p>
+<p>其实面完后北航也开始了预推免，包括网安院和计院，但由于北航每年复试实在是太晚了（基本上都是填系统前一两天，真的🐶，适合信仰战士/0offer战神冲）不太敢冒险，加上后续出的浙大复试成绩比较稳了，就放弃这一宝贵的去北京的机会了，选择至少三年的异地😫</p>
+<p>就这样，长达近6个多月的保研之战结束了，有惊喜也有失望，有苦也有甜，最终的结果令人满意，这就足够了！</p>
+<h2 id="个人建议"><a href="#个人建议" class="headerlink" title="个人建议"></a>个人建议</h2><h3 id="机试"><a href="#机试" class="headerlink" title="机试"></a>机试</h3><p><code>机试很重要！机试很重要！机试很重要！</code>得亏这个疫情，导致今年全部线上复试，大量机试<strong>全部取消</strong>，考核基本只有面试了（但明年肯定恢复正常了，会有线下机试的），我这种算法菜🐔才能投机成功，所以学弟学妹们一定要尽早做准备，机试其实可以从现在开始每天上<a href="https://leetcode-cn.com/">leetcode</a>刷一刷，能养成习惯做每日一题，到时候应付保研机试肯定足够用了。然后大三开始可以考一考CSP（可以抵北航机试）和PAT（可以抵浙大机试），相信只要坚持训练，肯定就不会惧怕机试。而且训练机试不光是保研有用，对于以后找工作等都是很有用的，这是基本功，可不能差了。</p>
+<h3 id="专业课复习"><a href="#专业课复习" class="headerlink" title="专业课复习"></a>专业课复习</h3><p>我个人建议尽量在前两年半结束掉所有科研任务和竞赛，不要像我一样在第六学期还妄想着参加比赛，那样你会根本没时间复习。到了大三寒假就可以准备开始复习专业课了，包括高数、线代、概统、离散（有的学校特别喜欢问数学知识，特别是AI强校）、<code>数据结构（重点）</code>、计网、操作系统等。由于专业课基本上是通过面试考察的，因此各个知识点的概念一定要重点记清楚。</p>
+<h3 id="关于英语"><a href="#关于英语" class="headerlink" title="关于英语"></a>关于英语</h3><p>由于现在基本上面试中都会有英语问答，有的比较简单，让你自我介绍或者介绍家乡等一些家常问题。有的就会比较难了，可能问一些随机性很强的问题而且是与专业相关的，比如问你如何看待AI未来的发展等，还可能会让你用英文介绍项目等。不过英语部分一般占额比较小，而且可以针对性的准备，把自我介绍，项目介绍等常考问题提前准备好就一般问题不会太大。</p>
+<h3 id="科研项目"><a href="#科研项目" class="headerlink" title="科研项目"></a>科研项目</h3><p>科研项目能使你的简历丰满，而且面试时有话可聊，如果没啥科研，面试就只能问你专业课，那这样的话老师可能问的很深（一般很容易被问崩，所以不要作死去主动碰一碰专业知识），所以尽量在大三下前多参与科研项目，进老师实验室实习，参加作品设计类的竞赛也可以算作科研项目（像我一样包装一下就可以写在简历上拿来用了）。相反一些竞赛可能帮助就没那么多，比如数学竞赛，美赛建模等老师可能就没什么兴趣。</p>
+<p>总的来说面试的随机性很高，运气成分确实占了很大一部分，但这也恰恰考察了个人随机应变的能力，希望学弟学妹们，学会灵活应对面试，能够尽量去主导面试（比如说一些项目或者经历，主动引导老师在这方面提问），而不是被动的等老师提问。</p>
+<h3 id="申请材料"><a href="#申请材料" class="headerlink" title="申请材料"></a>申请材料</h3><p>建议大家提前整理好各项材料，包括身份证、学生证、获奖证书、成绩单等。由于今年是线上，大家都做海王<code>（也导致10.12后鸽子漫天飞，好几个学校都被鸽穿了😂）</code>，因此整理好一份材料后就可以继续复用了。大家可以像我一样按学校整理所需的报名材料。</p>
+<img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013161808.png" style="zoom: 50%;" />
+
+<h3 id="联系老师"><a href="#联系老师" class="headerlink" title="联系老师"></a>联系老师</h3><p><code>一定要尽早联系！！！</code>对于想去华五以上好老师的同学们，建议4月就可以发邮件联系对方学校老师了，特别是清北，好老师都是很早坑就被占满了，所以要对自己有信心，不要觉得自己配不上就不敢去尝试，错过了时间就追悔莫及了（比如本人）。其实机会还是很多的，就看自己敢不敢去争取，也别太过偏信网上的信息，比如什么今年特别卷啊，导致自己也不敢去尝试，我npy九月还能上岸thu呢（之前完全没联系过老师），我俩7月份夏令营的时候都压根不敢想清北，很多时候是自己过度看扁自己了，提早做规划，鼓起勇气，大胆尝试，一定会有好结果的。</p>
+<blockquote>
+<p>最后的最后再推荐一个保研交流群，这个群里很多大佬学长学姐们，他们都很热心很友好，有什么问题都会积极解答！其实这个群也算是一个信息中转平台，毕竟保研也是一场信息战，要记得多和一起保研的同学分享信息，多和学姐学长沟通，只有掌握了够全面的信息，才有机会让你去尝试。</p>
+</blockquote>
+<img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013165207.png" style="zoom: 50%;" />
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说保研还是十分惊险刺激且焦虑的，有很多次考前太过紧张害怕，一度萌生弃考的想法，好在及时自我调节（和有npy安慰🐶），所以情绪管理真的也很重要，没必要因为一次失利就过于颓废，丧失自我，要保持积极向上的心态，相信坚持到最后一定能够上岸的。</p>
+<p>一路来，我收到了来自很多人的帮助，包括夏令营中我联系的各位导师，还有来自家人的鼓励和开导，来自本校老师的慰问，当然还有最重要的，<code>你的陪伴（查了一下杭州和北京也不算太远嘛😊）</code>，真的真的太感谢你们了！🎉🎊</p>
+<p>希望接下来的三年能继续努力，Keep moving！也祝愿学弟学妹们明年保研顺利，收获满意的offer！</p>
+]]></content>
+      <tags>
+        <tag>保研</tag>
+      </tags>
+  </entry>
+</search>

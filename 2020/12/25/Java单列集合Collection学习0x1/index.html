@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-16.png">
+  <link rel="mask-icon" href="/images/logo-512.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://rershallzzz.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":"default","style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="第一章 Collection集合1.1 集合概述在前面基础班我们已经学习过并使用过集合ArrayList ,那么集合到底是什么呢?  集合：集合是java中提供的一种容器，可以用来存储多个数据。  集合和数组既然都是容器，它们有啥区别呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java单列集合Collection学习0x1">
+<meta property="og:url" content="https://rershallzzz.github.io/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/index.html">
+<meta property="og:site_name" content="Rershall&#39;s Blog">
+<meta property="og:description" content="第一章 Collection集合1.1 集合概述在前面基础班我们已经学习过并使用过集合ArrayList ,那么集合到底是什么呢?  集合：集合是java中提供的一种容器，可以用来存储多个数据。  集合和数组既然都是容器，它们有啥区别呢？">
+<meta property="og:locale">
+<meta property="og:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173326.png">
+<meta property="og:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173037.png">
+<meta property="article:published_time" content="2020-12-25T09:00:18.000Z">
+<meta property="article:modified_time" content="2020-12-25T09:33:46.763Z">
+<meta property="article:author" content="Kang Fu">
+<meta property="article:tag" content="Java SE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173326.png">
+
+<link rel="canonical" href="https://rershallzzz.github.io/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Java单列集合Collection学习0x1 | Rershall's Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?32d988867b55f736756ea2b834939a42";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Rershall's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rershall's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://rershallzzz.github.io/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
+      <meta itemprop="name" content="Kang Fu">
+      <meta itemprop="description" content="Keep moving & Happy life">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rershall's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java单列集合Collection学习0x1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-25 17:00:18 / 修改时间：17:33:46" itemprop="dateCreated datePublished" datetime="2020-12-25T17:00:18+08:00">2020-12-25</time>
+            </span>
+
+          
+            <span id="/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/" class="post-meta-item leancloud_visitors" data-flag-title="Java单列集合Collection学习0x1" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">评论次数：</span>
+    
+    <a title="valine" href="/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="第一章-Collection集合"><a href="#第一章-Collection集合" class="headerlink" title="第一章 Collection集合"></a>第一章 Collection集合</h1><h2 id="1-1-集合概述"><a href="#1-1-集合概述" class="headerlink" title="1.1 集合概述"></a>1.1 集合概述</h2><p>在前面基础班我们已经学习过并使用过集合ArrayList<E> ,那么集合到底是什么呢?</p>
+<ul>
+<li><strong>集合</strong>：集合是java中提供的一种容器，可以用来存储多个数据。</li>
+</ul>
+<p>集合和数组既然都是容器，它们有啥区别呢？</p>
+<ul>
+<li>数组的长度是固定的。集合的长度是可变的。</li>
+<li>数组中存储的是同一类型的元素，可以存储基本数据类型值。集合存储的都是对象。而且对象的类型可以不一致。在开发中一般当对象多的时候，使用集合进行存储。</li>
+</ul>
+<h2 id="1-2-集合框架"><a href="#1-2-集合框架" class="headerlink" title="1.2  集合框架"></a>1.2  集合框架</h2><p>JAVASE提供了满足各种需求的API，在使用这些API前，先了解其继承与接口操作架构，才能了解何时采用哪个类，以及类之间如何彼此合作，从而达到灵活应用。</p>
+<p>集合按照其存储结构可以分为两大类，分别是单列集合<code>java.util.Collection</code>和双列集合<code>java.util.Map</code>，今天我们主要学习<code>Collection</code>集合，在day04时讲解<code>Map</code>集合。</p>
+<ul>
+<li><strong>Collection</strong>：单列集合类的根接口，用于存储一系列符合某种规则的元素，它有两个重要的子接口，分别是<code>java.util.List</code>和<code>java.util.Set</code>。其中，<code>List</code>的特点是元素有序、元素可重复。<code>Set</code>的特点是元素无序，而且不可重复。<code>List</code>接口的主要实现类有<code>java.util.ArrayList</code>和<code>java.util.LinkedList</code>，<code>Set</code>接口的主要实现类有<code>java.util.HashSet</code>和<code>java.util.TreeSet</code>。</li>
+</ul>
+<p>从上面的描述可以看出JDK中提供了丰富的集合类库，为了便于初学者进行系统地学习，接下来通过一张图来描述整个集合类的继承体系。</p>
+<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173326.png"></p>
+<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173037.png"></p>
+<p>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。这几天将针对图中所列举的集合类进行逐一地讲解。</p>
+<p>集合本身是一个工具，它存放在java.util包中。在<code>Collection</code>接口定义着单列集合框架中最最共性的内容。</p>
+<h2 id="1-3-Collection-常用功能"><a href="#1-3-Collection-常用功能" class="headerlink" title="1.3 Collection 常用功能"></a>1.3 Collection 常用功能</h2><p>Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：</p>
+<ul>
+<li><code>public boolean add(E e)</code>：  把给定的对象添加到当前集合中 。</li>
+<li><code>public void clear()</code> :清空集合中所有的元素。</li>
+<li><code>public boolean remove(E e)</code>: 把给定的对象在当前集合中删除。</li>
+<li><code>public boolean contains(E e)</code>: 判断当前集合中是否包含给定的对象。</li>
+<li><code>public boolean isEmpty()</code>: 判断当前集合是否为空。</li>
+<li><code>public int size()</code>: 返回集合中元素的个数。</li>
+<li><code>public Object[] toArray()</code>: 把集合中的元素，存储到数组中。</li>
+</ul>
+<p>方法演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo1Collection</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 创建集合对象 </span></span><br><span class="line">    	<span class="comment">// 使用多态形式</span></span><br><span class="line">    	Collection&lt;String&gt; coll = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">    	<span class="comment">// 使用方法</span></span><br><span class="line">    	<span class="comment">// 添加功能  boolean  add(String s)</span></span><br><span class="line">    	coll.add(<span class="string">&quot;小李广&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;扫地僧&quot;</span>);</span><br><span class="line">    	coll.add(<span class="string">&quot;石破天&quot;</span>);</span><br><span class="line">    	System.out.println(coll);</span><br><span class="line"></span><br><span class="line">    	<span class="comment">// boolean contains(E e) 判断o是否在集合中存在</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;判断  扫地僧 是否在集合中&quot;</span>+coll.contains(<span class="string">&quot;扫地僧&quot;</span>));</span><br><span class="line"></span><br><span class="line">    	<span class="comment">//boolean remove(E e) 删除在集合中的o元素</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;删除石破天：&quot;</span>+coll.remove(<span class="string">&quot;石破天&quot;</span>));</span><br><span class="line">    	System.out.println(<span class="string">&quot;操作之后集合中元素:&quot;</span>+coll);</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// size() 集合中有几个元素</span></span><br><span class="line">		System.out.println(<span class="string">&quot;集合中有&quot;</span>+coll.size()+<span class="string">&quot;个元素&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Object[] toArray()转换成一个Object数组</span></span><br><span class="line">    	Object[] objects = coll.toArray();</span><br><span class="line">    	<span class="comment">// 遍历数组</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; objects.length; i++) &#123;</span><br><span class="line">			System.out.println(objects[i]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// void  clear() 清空集合</span></span><br><span class="line">		coll.clear();</span><br><span class="line">		System.out.println(<span class="string">&quot;集合中内容为：&quot;</span>+coll);</span><br><span class="line">		<span class="comment">// boolean  isEmpty()  判断是否为空</span></span><br><span class="line">		System.out.println(coll.isEmpty());  	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>tips: 有关Collection中的方法可不止上面这些，其他方法可以自行查看API学习。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    
+      
+
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    赞赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Kang Fu 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Kang Fu 微信">
+        <p>微信</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Kang Fu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://rershallzzz.github.io/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/" title="Java单列集合Collection学习0x1">https://rershallzzz.github.io/2020/12/25/Java单列集合Collection学习0x1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Java-SE/" rel="tag"><i class="fa fa-tag"></i> Java SE</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/" rel="prev" title="2020年保研经历">
+      <i class="fa fa-chevron-left"></i> 2020年保研经历
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-Collection%E9%9B%86%E5%90%88"><span class="nav-number">1.</span> <span class="nav-text">第一章 Collection集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 集合概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="nav-number">1.2.</span> <span class="nav-text">1.2  集合框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Collection-%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Collection 常用功能</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kang Fu"
+      src="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
+  <p class="site-author-name" itemprop="name">Kang Fu</p>
+  <div class="site-description" itemprop="description">Keep moving & Happy life</div>
+</div>
+
+   <div class="feed-link motion-element">
+     <a href="/atom.xml" rel="alternate">
+       <i class="fa fa-rss"></i>
+       RSS
+     </a>
+   </div>
+
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/RershallzzZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;RershallzzZ" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_40742077" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_40742077" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kang Fu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>&nbsp站点总字数
+    </span>
+    <span title="站点总字数">22k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>&nbsp站点阅读时长&nbsp≈
+    </span>
+    <span title="站点阅读时长">20 分钟</span>
+</div>
+  <div class="powered-by">技术支持 v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题方案 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f81fe1f8e3deff3" async="async"></script>
+  </div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+	<span class="post-meta-item-icon">
+	      <i class="fa fa-group"></i>
+	</span>
+	<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人</span>
+    	<span class="post-meta-divider">|</span>
+	<span class="post-meta-item-icon">
+	      <i class="fa fa-eye"></i>
+	</span>
+    	<span>访问总量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'https://rershallzzz.github.io/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    var required = 'nick,mail'
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    required = required.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: '8iq7Wo7vKHNnEllQ4F8Fo1Jw-MdYXbMMI',
+      appKey: 'txQ3nv3dwvEVbJc8Hxr9P8CV',
+      placeholder: "来发评论吧~\n📌昵称框输入QQ自动获取邮箱与头像\n👨‍🔧本站使用Akismet反垃圾评论\n🚀评论和回复支持MarkDown",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      enableQQ: true,
+      requiredFields: required,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":220,"height":440},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>

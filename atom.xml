@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Rershall&#39;s Blog</title>
+  
+  
+  <link href="https://rershallzzz.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://rershallzzz.github.io/"/>
+  <updated>2020-12-25T09:33:46.763Z</updated>
+  <id>https://rershallzzz.github.io/</id>
+  
+  <author>
+    <name>Kang Fu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java单列集合Collection学习0x1</title>
+    <link href="https://rershallzzz.github.io/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/"/>
+    <id>https://rershallzzz.github.io/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/</id>
+    <published>2020-12-25T09:00:18.000Z</published>
+    <updated>2020-12-25T09:33:46.763Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;第一章-Collection集合&quot;&gt;&lt;a href=&quot;#第一章-Collection集合&quot; class=&quot;headerlink&quot; title=&quot;第一章 Collection集合&quot;&gt;&lt;/a&gt;第一章 Collection集合&lt;/h1&gt;&lt;h2 id=&quot;1-1-集合概述&quot;&gt;&lt;a href=&quot;#1-1-集合概述&quot; class=&quot;headerlink&quot; title=&quot;1.1 集合概述&quot;&gt;&lt;/a&gt;1.1 集合概述&lt;/h2&gt;&lt;p&gt;在前面基础班我们已经学习过并使用过集合ArrayList&lt;e&gt; ,那么集合到底是什么呢?&lt;/e&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;集合&lt;/strong&gt;：集合是java中提供的一种容器，可以用来存储多个数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;集合和数组既然都是容器，它们有啥区别呢？&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Java SE" scheme="https://rershallzzz.github.io/tags/Java-SE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020年保研经历</title>
+    <link href="https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/"/>
+    <id>https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/</id>
+    <published>2020-10-12T04:47:23.000Z</published>
+    <updated>2020-12-25T08:47:24.640Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;时至今日，为期大半年的保研大战终于告一段落。本菜鸡能够在保研尾声阶段上岸浙大实在是太幸运了，唯一美中不足的是，要开始异地恋了🙁（npy去了thu）。由于本人从大三开始就打算出国，所以早早就考好了雅思。正准备寒假开始刷GRE的时候，新冠疫情爆发了。随着国际形势愈发紧张，直到四月，我才定下心来，转向国内保研。我会把我这大半年来所踩过的坑都聊一聊，讲一讲像我这种非cs科班出身的算法菜鸟，如何投机上岸，希望对学弟学妹们有所帮助。&lt;/p&gt;
+&lt;img data-src=&quot;https://pic.downk.cc/item/5f8436e41cd1bbb86bfb403d.jpg&quot; style=&quot;zoom: 40%;&quot;&gt;
+
+&lt;h2 id=&quot;本人情况&quot;&gt;&lt;a href=&quot;#本人情况&quot; class=&quot;headerlink&quot; title=&quot;本人情况&quot;&gt;&lt;/a&gt;本人情况&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;西南某末流985网安专业&lt;/li&gt;
+&lt;li&gt;rank：4/130，两年国奖&lt;/li&gt;
+&lt;li&gt;竞赛经历：数竞省一，计算机设计大赛省一，还有一些水赛。&lt;/li&gt;
+&lt;li&gt;科研经历：0paper选手，但要学会包装自己。我把我主要的两个项目进行包装，一个是省创项目，另一个是我参与竞赛所做的项目。&lt;/li&gt;
+&lt;li&gt;社会实践：新国大计算机学院Summer Workshop，就一个月，其实交钱就能去，但确实在面试中帮我撑了不少时间（这钱值😏）&lt;/li&gt;
+&lt;li&gt;英语：雅思7.0，六级514，四级566&lt;/li&gt;
+&lt;li&gt;最终去向：浙江大学网络空间安全学院&lt;/li&gt;
+&lt;li&gt;参加的夏令营（均为直硕）：&lt;ol&gt;
+&lt;li&gt;四川大学网络空间安全学院&lt;code&gt;7.7-7.8&lt;/code&gt;(优营）&lt;/li&gt;
+&lt;li&gt;上海交通大学网络空间安全学院&lt;code&gt;7.16&lt;/code&gt;（替补，后转直博拿到offer）&lt;/li&gt;
+&lt;li&gt;武汉大学网络空间安全学院&lt;code&gt;7.15-7.16&lt;/code&gt;（优营）&lt;/li&gt;
+&lt;li&gt;中科大网络空间安全学院&lt;code&gt;7.21&lt;/code&gt;（优营）&lt;/li&gt;
+&lt;li&gt;中科院软件所可信计算实验室&lt;code&gt;7.31-8.1&lt;/code&gt;（优营）&lt;/li&gt;
+&lt;li&gt;东南大学网络空间安全学院&lt;code&gt;8.2&lt;/code&gt;（优营）&lt;/li&gt;
+&lt;li&gt;入营但是没有去面试的：国防科大计算机学院、国防科大电子对抗学院&lt;/li&gt;
+&lt;li&gt;没有入营的：复旦计算机学院、哈工大深圳计算机学院、北深（北京大学信息工程学院）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;参加的预推免（均为直硕）：&lt;ol&gt;
+&lt;li&gt;哈工大深圳计算机学院第一批&lt;code&gt;8.31-9.3&lt;/code&gt;（学硕录取）&lt;/li&gt;
+&lt;li&gt;清华大学网研院&lt;code&gt;9.14-9.17&lt;/code&gt;（未录取）&lt;/li&gt;
+&lt;li&gt;浙江大学网络空间安全学院&lt;code&gt;9.26&lt;/code&gt;（学硕录取）&lt;/li&gt;
+&lt;li&gt;入围但是没有去面试的：南大计算机学院、北航网安学院、北航计算机学院&lt;/li&gt;
+&lt;li&gt;未入围的：复旦计算机学院（不愧是你蛋😊）、北大软微直硕（rw今年卷爆了）、北大信科直博&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;前期准备&quot;&gt;&lt;a href=&quot;#前期准备&quot; class=&quot;headerlink&quot; title=&quot;前期准备&quot;&gt;&lt;/a&gt;前期准备&lt;/h2&gt;</summary>
+    
+    
+    
+    
+    <category term="保研" scheme="https://rershallzzz.github.io/tags/%E4%BF%9D%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文学习：Austere Flash Caching with Deduplication and Compression</title>
+    <link href="https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/"/>
+    <id>https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/</id>
+    <published>2020-09-17T17:13:43.000Z</published>
+    <updated>2020-12-25T08:47:44.733Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;论文题目 ：Austere Flash Caching with Deduplication and Compression&lt;/p&gt;
+&lt;p&gt;来源：USENIX ATC 2020&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&quot;https://www.usenix.org/conference/atc20/presentation/wang-qiuping&quot;&gt;https://www.usenix.org/conference/atc20/presentation/wang-qiuping&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;关键概念&quot;&gt;&lt;a href=&quot;#关键概念&quot; class=&quot;headerlink&quot; title=&quot;关键概念&quot;&gt;&lt;/a&gt;关键概念&lt;/h2&gt;&lt;h3 id=&quot;deduplication（去重）&quot;&gt;&lt;a href=&quot;#deduplication（去重）&quot; class=&quot;headerlink&quot; title=&quot;deduplication（去重）&quot;&gt;&lt;/a&gt;&lt;strong&gt;deduplication&lt;/strong&gt;（去重）&lt;/h3&gt;</summary>
+    
+    
+    
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</title>
+    <link href="https://rershallzzz.github.io/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/"/>
+    <id>https://rershallzzz.github.io/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/</id>
+    <published>2020-09-12T17:13:43.000Z</published>
+    <updated>2020-12-25T08:48:54.468Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;论文题目：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms&lt;/p&gt;
+&lt;p&gt;来源：28th USENIX Security Symposium 2019&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&quot;https://www.usenix.org/conference/usenixsecurity19/presentation/xiao&quot;&gt;https://www.usenix.org/conference/usenixsecurity19/presentation/xiao&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;主要内容：&quot;&gt;&lt;a href=&quot;#主要内容：&quot; class=&quot;headerlink&quot; title=&quot;主要内容：&quot;&gt;&lt;/a&gt;主要内容：&lt;/h2&gt;&lt;p&gt;作者发现了&lt;strong&gt;一种在图像处理过程中潜藏的安全风险——图像维度变换攻击。&lt;/strong&gt;攻击者可以通过构造攻击图片，致使输入图像在经过尺寸维度变化后发生明显的内容语义改变，造成人与机器的认知差异，从而达到欺骗、逃逸检测的攻击效果。与针对深度学习模型的对抗样本不同，该攻击方法不局限于特定模型，因为其是针对基于深度学习的计算机视觉应用的必要功能：图像伸缩函数，这一步是位于深度学习模型进行训练/预测之前的，因此该攻击影响范围更大。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
+    <link href="https://rershallzzz.github.io/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/"/>
+    <id>https://rershallzzz.github.io/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</id>
+    <published>2020-09-04T17:13:43.000Z</published>
+    <updated>2020-12-25T08:48:50.089Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;论文题目：On Training Robust PDF Malware Classifiers&lt;/p&gt;
+&lt;p&gt;来源：29th USENIX Security Symposium 2020&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&quot;https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng&quot;&gt;https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h2&gt;&lt;p&gt;参考&lt;a href=&quot;https://blog.csdn.net/Shall_ByeBye/article/details/106883218&quot;&gt;https://blog.csdn.net/Shall_ByeBye/article/details/106883218&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</title>
+    <link href="https://rershallzzz.github.io/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/"/>
+    <id>https://rershallzzz.github.io/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/</id>
+    <published>2020-08-30T17:13:43.000Z</published>
+    <updated>2020-12-25T08:48:44.110Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;论文题目：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning&lt;/p&gt;
+&lt;p&gt;来源：&lt;strong&gt;2020 IEEE Symposium on Security and Privacy (S&amp;amp;P)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&quot;https://ieeexplore.ieee.org/document/9152608&quot;&gt;https://ieeexplore.ieee.org/document/9152608&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;文章内容&quot;&gt;&lt;a href=&quot;#文章内容&quot; class=&quot;headerlink&quot; title=&quot;文章内容&quot;&gt;&lt;/a&gt;文章内容&lt;/h2&gt;&lt;p&gt;通过对公共语料库如twitter、Wikipedia进行毒害，如修改一些词条，或者故意加入一些词条等，从而让由这些公告语料库训练出来的word embeddings失效。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</title>
+    <link href="https://rershallzzz.github.io/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/"/>
+    <id>https://rershallzzz.github.io/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/</id>
+    <published>2020-08-28T20:42:44.000Z</published>
+    <updated>2020-12-25T08:47:59.563Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;论文名：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges&lt;/p&gt;
+&lt;p&gt;来源：IEEE Communications Surveys &amp;amp; Tutorials&lt;/p&gt;
+&lt;p&gt;链接：&lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/8100873/&quot;&gt;https://ieeexplore.ieee.org/abstract/document/8100873/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;主要内容&quot;&gt;&lt;a href=&quot;#主要内容&quot; class=&quot;headerlink&quot; title=&quot;主要内容&quot;&gt;&lt;/a&gt;主要内容&lt;/h2&gt;&lt;p&gt;雾计算的前景：触觉互联网（Tactile Internet）&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+</feed>

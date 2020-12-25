@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-16.png">
+  <link rel="mask-icon" href="/images/logo-512.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://rershallzzz.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":"default","style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="时至今日，为期大半年的保研大战终于告一段落。本菜鸡能够在保研尾声阶段上岸浙大实在是太幸运了，唯一美中不足的是，要开始异地恋了🙁（npy去了thu）。由于本人从大三开始就打算出国，所以早早就考好了雅思。正准备寒假开始刷GRE的时候，新冠疫情爆发了。随着国际形势愈发紧张，直到四月，我才定下心来，转向国内保研。我会把我这大半年来所踩过的坑都聊一聊，讲一讲像我这种非cs科班出身的算法菜鸟，如何投机上岸，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020年保研经历">
+<meta property="og:url" content="https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/index.html">
+<meta property="og:site_name" content="Rershall&#39;s Blog">
+<meta property="og:description" content="时至今日，为期大半年的保研大战终于告一段落。本菜鸡能够在保研尾声阶段上岸浙大实在是太幸运了，唯一美中不足的是，要开始异地恋了🙁（npy去了thu）。由于本人从大三开始就打算出国，所以早早就考好了雅思。正准备寒假开始刷GRE的时候，新冠疫情爆发了。随着国际形势愈发紧张，直到四月，我才定下心来，转向国内保研。我会把我这大半年来所踩过的坑都聊一聊，讲一讲像我这种非cs科班出身的算法菜鸟，如何投机上岸，">
+<meta property="og:locale">
+<meta property="og:image" content="https://pic.downk.cc/item/5f8436e41cd1bbb86bfb403d.jpg">
+<meta property="og:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013161808.png">
+<meta property="og:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013165207.png">
+<meta property="article:published_time" content="2020-10-12T04:47:23.000Z">
+<meta property="article:modified_time" content="2020-12-25T08:47:24.640Z">
+<meta property="article:author" content="Kang Fu">
+<meta property="article:tag" content="保研">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.downk.cc/item/5f8436e41cd1bbb86bfb403d.jpg">
+
+<link rel="canonical" href="https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>2020年保研经历 | Rershall's Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?32d988867b55f736756ea2b834939a42";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Rershall's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rershall's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
+      <meta itemprop="name" content="Kang Fu">
+      <meta itemprop="description" content="Keep moving & Happy life">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rershall's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2020年保研经历
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-12 12:47:23" itemprop="dateCreated datePublished" datetime="2020-10-12T12:47:23+08:00">2020-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-25 16:47:24" itemprop="dateModified" datetime="2020-12-25T16:47:24+08:00">2020-12-25</time>
+              </span>
+
+          
+            <span id="/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/" class="post-meta-item leancloud_visitors" data-flag-title="2020年保研经历" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">评论次数：</span>
+    
+    <a title="valine" href="/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>时至今日，为期大半年的保研大战终于告一段落。本菜鸡能够在保研尾声阶段上岸浙大实在是太幸运了，唯一美中不足的是，要开始异地恋了🙁（npy去了thu）。由于本人从大三开始就打算出国，所以早早就考好了雅思。正准备寒假开始刷GRE的时候，新冠疫情爆发了。随着国际形势愈发紧张，直到四月，我才定下心来，转向国内保研。我会把我这大半年来所踩过的坑都聊一聊，讲一讲像我这种非cs科班出身的算法菜鸟，如何投机上岸，希望对学弟学妹们有所帮助。</p>
+<img data-src="https://pic.downk.cc/item/5f8436e41cd1bbb86bfb403d.jpg" style="zoom: 40%;" />
+
+<h2 id="本人情况"><a href="#本人情况" class="headerlink" title="本人情况"></a>本人情况</h2><ul>
+<li>西南某末流985网安专业</li>
+<li>rank：4/130，两年国奖</li>
+<li>竞赛经历：数竞省一，计算机设计大赛省一，还有一些水赛。</li>
+<li>科研经历：0paper选手，但要学会包装自己。我把我主要的两个项目进行包装，一个是省创项目，另一个是我参与竞赛所做的项目。</li>
+<li>社会实践：新国大计算机学院Summer Workshop，就一个月，其实交钱就能去，但确实在面试中帮我撑了不少时间（这钱值😏）</li>
+<li>英语：雅思7.0，六级514，四级566</li>
+<li>最终去向：浙江大学网络空间安全学院</li>
+<li>参加的夏令营（均为直硕）：<ol>
+<li>四川大学网络空间安全学院<code>7.7-7.8</code>(优营）</li>
+<li>上海交通大学网络空间安全学院<code>7.16</code>（替补，后转直博拿到offer）</li>
+<li>武汉大学网络空间安全学院<code>7.15-7.16</code>（优营）</li>
+<li>中科大网络空间安全学院<code>7.21</code>（优营）</li>
+<li>中科院软件所可信计算实验室<code>7.31-8.1</code>（优营）</li>
+<li>东南大学网络空间安全学院<code>8.2</code>（优营）</li>
+<li>入营但是没有去面试的：国防科大计算机学院、国防科大电子对抗学院</li>
+<li>没有入营的：复旦计算机学院、哈工大深圳计算机学院、北深（北京大学信息工程学院）</li>
+</ol>
+</li>
+<li>参加的预推免（均为直硕）：<ol>
+<li>哈工大深圳计算机学院第一批<code>8.31-9.3</code>（学硕录取）</li>
+<li>清华大学网研院<code>9.14-9.17</code>（未录取）</li>
+<li>浙江大学网络空间安全学院<code>9.26</code>（学硕录取）</li>
+<li>入围但是没有去面试的：南大计算机学院、北航网安学院、北航计算机学院</li>
+<li>未入围的：复旦计算机学院（不愧是你蛋😊）、北大软微直硕（rw今年卷爆了）、北大信科直博</li>
+</ol>
+</li>
+</ul>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>由于本人之前一心出国，故没有早早就准备开始复习专业课，而且本人还因为有个比赛和校内期末的事情，一直忙到6月底才结束这些工作，而这时距离夏令营开营只有两周不到了，本人就只能临时抱佛脚了，只重点过了一遍数据结构、操作系统、计算机网络、和一些安全知识（如密码学、基础攻防等）。</p>
+<p>至于机试，由于本人是网安专业，ACM氛围几乎没有，所以也没有怎么认真准备，只看了下《王道》（挺不好意思说的。。其实到今天上岸，我动手刷过的题不出5道），这也导致我在报名时不太敢去报计院（网安本科去卷计院基本毫无胜算，算法功底太薄弱，竞争力低下）</p>
+<p>至于科研项目，正如上述所说，本人的科研经历几乎为0，强行把两个项目进行包装，然后熟悉了一下项目细节等。然后准备了一些常见的英文口语问题（直接把我备考雅思口语的拿来用了）和中英文介绍，就准备上战场了。</p>
+<p>最后就是看各个学校的夏令营起止时间，由于是线上，基本上都是6月底才截止报名（往年好像五月份就要截止了），把相关材料都提前准备好电子版，在各系统上提交就OK了。至于提前联系老师这个。。我联系过复旦和浙大的老师，结果复旦直接没过初审，浙大由于夏令营只有直博就也没报名。</p>
+<p>所以我的前期准备完全是反面教材，希望学弟学妹们引以为戒，好好复习。</p>
+<h2 id="夏令营"><a href="#夏令营" class="headerlink" title="夏令营"></a>夏令营</h2><h3 id="川大网安7-7-7-8（优营）"><a href="#川大网安7-7-7-8（优营）" class="headerlink" title="川大网安7.7-7.8（优营）"></a>川大网安7.7-7.8（优营）</h3><p>川大应该是我参加的第一个夏令营了。在夏令营前看了网上的各种面经，感觉自己特别菜，怕连本校都拿不到，甚至前一晚上还睡不着。由于是线上，夏令营安排十分紧凑，第一天学院宣讲，第二天直接笔试+面试。</p>
+<p>由于是本院，因此提前找学长问清楚了考核方式，主要分为笔试和面试，只有笔试过了才能进面试。</p>
+<p>笔试考察内容挺杂的，主要有计算机网络、操作系统、数据库、离散数学、基础C语言等，我记得是100道选择题，满分100分。由于今年疫情，所以笔试改为线上，平台使用的是学习通（万恶之源💩）</p>
+<p>面试分为两个环节：英语考核和专业面试。首先是英语考核：随机给你一段文献，让你现场朗读+翻译。本人在翻译关就卡壳了，说着说着声音越来越小，场面一度尴尬。接下来是专业面试，上来先做中文自我介绍，然后要回答两个专业问题，第一个是从<code>计算机网络、操作系统、数据结构</code>中自选一个类型，然后随机抽取一道相关问题回答。第二个是随机抽取一道安全相关问题进行回答。我第一个选择的是计算机网络，问了<code>IP地址和MAC地址的关系与区别</code>。安全问题抽到的是<code>对于木马的理解</code>。问完两个专业问题后，老师看我是本院的就草草结束了hhh。</p>
+<p>总的来说作为夏令营的首站，川大给了我一点自信吧，让我积累了一些面试经验，难度也比较低，而且由于面的人挺多的，每个人面试时长可能就10分钟，还是很友好的。</p>
+<p>过了几天结果就出来了，顺利拿到了优营，这下终于有书读了，也给了我大胆继续冲的想法与底气。</p>
+<h3 id="上交网安7-16（替补）"><a href="#上交网安7-16（替补）" class="headerlink" title="上交网安7.16（替补）"></a>上交网安7.16（替补）</h3><p>最开始填报的时候，一直不太敢报复交浙这种级别的学校，不过本着试一试的想法还是填报了。记得是7.11出的初审结果，很意外自己能入营（毕竟这可是上交，今年还这么卷，而且前几天刚收到了复旦的拒信，北深也没入）</p>
+<p>上交夏令营还是保持一如既往的风格，无任何宣讲内容，直接进行复试。</p>
+<p>由于今年线上，往年的笔试/机试取消了，只剩下面试。由于上交压根没有建群，而且要求所有人早上8:30进zoom候场，由于不知道自己第几位，且看不到其他人，我就乖乖的从8:30开始等，可能等了有一两个小时吧，才终于把我拉进去。整场面试难度非常之大，时间至少20分钟起步。一上来先做中文自我介绍，然后就是对着简历上的项目一个个问，每个技术点的细节实现都会问到，能问多深就会问多深，而且会向我提出质疑（我被怼的说不出话，狂冒冷汗），而且中间还会穿插着英语考核，比如我就被问到：<code>请用英文回答如何看待为什么要研究社交网络上的安全问题？</code>我当时直接懵了，回答的让老师都笑出声了。。不过好在老师也没为难我，就接着问了（当时我觉得凉透了）。问到后来可能觉得我没什么可聊的了，就开始扯些家常了。</p>
+<p>出来后觉得自己炸了，心态都崩了，难受了一上午。上交结果出的很晚，八月初才出结果，不出我所料我是硕士替补，而这个时候npy通过了直博面试，且已经有老师愿意接受她了，这就非常搞我的心态了，眼看着她可以去上海了，而我当时只拿到了中科大的offer，所以我尝试问了下上交电院的招生老师能否转博，结果真就同意我转博了，并且直接告知我通过第一轮面试，让我去尽快联系老师（这里让我感受到上交太海了。。略有不快）最后联系了一位人很nice的老师，组内氛围挺好，不过方向比较偏通信，而且顶会挺少的，加上当时npy已经拿到了thu，因此我最后还是鸽了。这里感到非常愧疚，毕竟这位老师还是帮助我挺多的。</p>
+<h3 id="武大网安7-15-7-16（优营）"><a href="#武大网安7-15-7-16（优营）" class="headerlink" title="武大网安7.15-7.16（优营）"></a>武大网安7.15-7.16（优营）</h3><blockquote>
+<p>前面是直接把上交的整个过程与最终结果说完了，所以可能时间不太对的上23333</p>
+</blockquote>
+<p>武大网安今年刚建好新校区，住宿条件国内顶流（可能是我已知中最好的了），本人又是武汉人，想弥补高考的遗憾，自然就来报名了。</p>
+<p>整个夏令营模式也都大同小异，第一天宣讲，第二天复试（只有面试）。由于面试当天上午才结束上交的面试（这就是线上的好处），导致心态大崩，下午面武大的时候，还有点没调整过来。面试时长大概7分钟（有点太短了。。），难度和川大差不多，比较友好。先上来让我做英文自我介绍，然后就开始对我的项目进行提问了，当时特别害怕跟上交一样刨根问底，结果只是简单的对每个项目提了一两个很浅层的问题（比如你负责的工作，数据集，训练效果等）面完后感觉挺轻松的，但由于时长太短了，导致我甚至觉得老师对我没什么兴趣，不过好早过了几天就顺利拿到了优营。</p>
+<h3 id="中科大网安7-21（优营）"><a href="#中科大网安7-21（优营）" class="headerlink" title="中科大网安7.21（优营）"></a>中科大网安7.21（优营）</h3><p>中科大是我当时非常憧憬的学校，觉得是我离华五最近的一次了。而且中科大的招生宣传工作是真的非常用心，不仅召开各种直播，还会给每名营员送T恤和手绘地图。若是往年线下举办的话，一般中科大夏令营都会为期7天左右，有各种活动让大家参加，可惜今年没机会体验到了。</p>
+<p>由于中科大的政策是优营不代表拟录取，只有通过复试拿到优营后，与老师达成双选才算拟录取，所以能提前和老师联系好是最好的。不过本人只联系到了几个计院的老师，后来因为害怕计院有机试就转报网安了（实际上也没考，归根到底还是自己菜，<strong>所以同学们要多刷题啊！！</strong>）</p>
+<p>中科大网安总的来说还是很不错的，不过老师大多是从信院过来的，所以基本上都是在做CV的研究，真正做安全的其实很少。网安院复试考核只有面试，我在面试前几天看网上面经时，很多学长学姐都表示会考察很多数学知识，包括线代、微积分、概统、数论、离散等。这对我简直是降维打击。。要知道我当时是一点都没复习过数学，所以只能选择赌一把，相信自己的运气，希望老师不要考察数学。</p>
+<p>到了面试当天，老师上来也是先让我英文自我介绍，然后英文进行了简单的提问（比如我的家乡在哪之类的）然后就是考察专业课知识，我被问了<code>TCP和UDP的应用场景</code>、<code>DNS为什么是基于UDP的</code>、<code>路由器工作原理</code>、<code>路由表和转发表区别</code>、<code>生日攻击</code>、<code>强抗碰撞</code>、<code>弱抗碰撞</code>。这里面有两个问题没答上来吧，不过老师挺友善，不会让人觉得尴尬。后面就是项目问题了，还是那一套，没有问的很深。总的来说我很幸运，没有被问到数学问题，我同学那一组被问到了很多数论知识，当场暴毙23333。</p>
+<p>第二天就出结果了，我是优营，然后也收到了<strong>YNH组</strong>的面试邀请，内容都是一些家常（问我为什么要来中科大什么的），不到五分钟就结束了了。当天晚上我便被告知有一位组里得老师愿意接收我。</p>
+<p>当晚真的非常开心，甚至一度觉得我上岸了，可以躺平了，不过后来还是鸽了中科大（男人都是善变的😁）</p>
+<h3 id="软件所可信计算实验室7-31-8-1（优营）"><a href="#软件所可信计算实验室7-31-8-1（优营）" class="headerlink" title="软件所可信计算实验室7.31-8.1（优营）"></a>软件所可信计算实验室7.31-8.1（优营）</h3><p>中科院的研究所很多，其中CS领域最有名气的当属计算所和自动化所了。这两所夏令营的竞争十分激烈，我等菜鸡自然是不敢申报的，所以退而求其次选择了软件所。软件所应该是逐渐没落了，以前实力还是很厉害的，不过近年来很多老师都跳槽了，我报的这个实验室的不少老师都跑去信工所了，所以相对来说竞争小很多。至于软件所和信工所，我认为整体实力和名气上软件所是大于信工所的，不过对于想做安全的同学，信工所的选择肯定是要比软件所更多的，信工所的1室和6室都卧虎藏龙，不过知乎上关于信工所的黑料实在太多了。。就没有报名</p>
+<p>由于此时已经拿到了中科大，我就抱着很放松的心态参加软件所夏令营。夏令营安排是第一天各个实验室进行宣讲，第二天实验室各自组织复试考核。国重实验室在宣讲的时候，有讲他们与德国CISPA（<code>亥姆霍兹信息安全中心，这个机构主要研究信息安全，实力十分强悍，排在CSRankings TOP3，而且也由于疫情原因正在大力招生，各位感兴趣的小伙伴可以试着申请</code>）的联培项目，当时我那叫一个后悔啊，没有报名国重实验室。</p>
+<p>可信计算是软件所中唯一做安全方向的实验室，所以我便报名了，生源真的好到爆炸，整个软件所都是，清北的不少，中九的就更多了，当时还是挺虚觉得自己要当炮灰了，结果还是顺利入围，最卷的应该是国重实验室和软工中心。可信计算的考核只有面试，听说其他有的实验室好像还有笔试+机试。面试时长差不多15分钟，首先是通过PPT进行5分钟的自我介绍，然后是项目提问，最后是专业问题，我被问了<code>HTTPS原理</code>、<code>证书的作用</code>。总的来说面试难度还是比较低的，第二天也顺利拿到了优营。但由于可信计算实验室主要是做密码方面的比较多，包括区块链，身份验证系统等，我个人不是很感兴趣，加上中科院都不允许实习，而且没有校园环境，没有高校title，最终还是放弃了优营资格（中科院都会要求学生签承诺书）</p>
+<h3 id="东南网安8-2（优营）"><a href="#东南网安8-2（优营）" class="headerlink" title="东南网安8.2（优营）"></a>东南网安8.2（优营）</h3><p>这是夏令营的最后一站了，至此我的心早已不在复习上，看着群里的各个大佬上岸清北复交，计算所自动化所等都准备出去旅游了，我也开始躁动。整个考核只有面试，大概每个人10分钟，还是老三样：自我介绍（英文），项目，专业课。很快就过去了，具体什么问题记不清了😂不过东南招的是真的很多，最后包括学硕专硕共招了200多人吧（应该是超发了），还是让我很震惊的。</p>
+<p>结束了东南面试之后，整个八月份，没有其他任何面试了，于是就当自己上岸中科大了，好好放了个假，每天就是躺尸，然后去旅游，再到后面就是上交转博成功，能跟npy一块去上交读博，头几天还是非常开心的，不过由于当时答应的太草率了，被学校光环冲昏了头脑，并没有考量自己适不适合直博，后面每天就过的十分焦虑，觉得自己是不是选错了，但因为是直博又不好意思鸽，于是准备预推免继续冲冲看。</p>
+<h2 id="预推免"><a href="#预推免" class="headerlink" title="预推免"></a>预推免</h2><h3 id="哈工深计算机8-31-9-3（录取）"><a href="#哈工深计算机8-31-9-3（录取）" class="headerlink" title="哈工深计算机8.31-9.3（录取）"></a>哈工深计算机8.31-9.3（录取）</h3><p>哈工深这几年一年比一年火爆，这点从高考分数线就能看出来，今年夏令营也不出意外，据说只入营了50多人，能入营的估计都是中九rk3以上的条件。到了九月，可能是夏令营鸽子太多，哈深直接弄了四批预推免，复试了整整一个月，wl长达50+（结果今天还是被鸽穿了😂）</p>
+<p>至于为什么报计算机，因为哈深没有网安院2333333，不过还是很幸运能够在第一批就过初审。哈深考核分为笔试+面试。笔试内容主要有408和一些简单的C语言编程填空，难度都不大，但主要是知识点过于繁杂。同样的，过了笔试才能进入面试，面试时长20分钟，上来先进行10分钟的PPT自我介绍（全中文），然后进行一两个简单的英语问答，再就是项目问题和专业课了，专业课我被问到<code>栈的实现方式</code>、<code>什么是平衡树</code>、<code>文件系统中文件是如何组织的</code>总的来说都比较基础，后面就是一些家常了，不过我被老师吐槽我太过啰嗦🙄，好在还是顺利拿到了学硕录取资格。</p>
+<p>后面联系了哈深的X老师，老师人很好，报的人很多，主要考核方式是写一篇论文的summary，然后运行一下代码，总的来说还是比较简单的，主要是考察态度，只要认真做了基本上就没问题。不过最后我还是鸽了这位老师，实在是愧疚爆炸。</p>
+<h3 id="清华网研院9-14-9-17（未录取）"><a href="#清华网研院9-14-9-17（未录取）" class="headerlink" title="清华网研院9.14-9.17（未录取）"></a>清华网研院9.14-9.17（未录取）</h3><p>由于夏令营的时候胆怂没敢报清北，在清华报名截止的前一天，突然不知怎么的，鼓足了勇气报了一波清华网研院，直接顺丰次日达邮寄材料😂反正就是试一试，又不掉块肉，怕什么。至于为什么报清华网研院，因为清华的网络空间安全学科在这边，而且清华网研院属于人数比较少的学院，竞争相对来说要小很多（个人认为难度：清叉&gt;=贵系&gt;清软&gt;网研院），而且看往年面经发现硕士居然有接近40%的通过率，就顺手报了个直硕（像北大信科我就只敢报直博，结果还是不能入围hhh）</p>
+<p>说实在的，出初审的那一天，我都不敢相信我和npy双双入围（她报的直博），看来还是得勇于尝试啊，不然很多机会都会错过。不过清华最好还是要提前联系好老师（基本都能捞一把，只要机试别太拉跨），像我们这种临近截止才填报的，基本没可能联系到老师（所以尽早联系老师是多么的重要！想去清北的同学真的要鼓起勇气呀，勇于尝试一定会有好结果的！）</p>
+<p>网研院复试分为机试和面试，本算法菜B这下终于要露馅了，于是在考前看了一遍《王道》就匆匆上了考场。结果不言而喻，真的惨😂一共三个小时，三道题，我只做出来了一道题，剩下两道都没法动笔的那种（据说清华很看机试，机试考得好，基本上都是稳得）</p>
+<p>接下来到了面试，由于之前听说网研院只问计网，就提前一天把计网过了一遍。面试分为综合能力测试+专业测试。综合能力面试说白了就是时长10分钟的全英文面试，内容随机性很强，基本都是专业相关，比如<code>讲一讲你知道的一种攻击以及防御措施</code>、<code>你在新国大做了什么</code>、<code>TCP和UDP的区别</code>等。最后两个问题转成中文：<code>你知道清华校训吗</code>、<code>你对清华的文化有什么理解吗？除了清华确实很强。</code>说实话要不是npy上午面试被问了校训（她答成浙大校训了🤣），不然我也不知道。想要报清华的同学们还是要准备下这类问题，感觉大清在这文化熏陶方面还是很看重的🧐</p>
+<p>然后就是专业面试了，总共10分钟，先是PPT自我介绍5分钟，然后老师问了几个项目问题就结束了，在最后问了一句我机试多少分，我当时甚至不好意思说出来。。然后还问我再给我一次机会，我会考多少分。感觉说了这句话，我就基本凉凉了。当天晚上就出结果了，果然GG，所以机试的重要性可见一斑。</p>
+<p>由于npy报的是直博，因此当天下午在我准备期间，她就收到结果了，有位老师愿意接收她，当时我比她本人都激动多了，也没什么心思继续复习，导致有所懈怠了。甚至因为上厕所导致老师等待了我一段时间，而且屏幕共享的时候电脑卡顿了3，4次。所以可能没被清华录取一切都是命中注定吧~</p>
+<p>因为没被清华录，npy成功上岸，所以npy肯定是要鸽上交的，留我一个人在那读本来就很忧郁的直博，我自然是不愿意的，因此考虑再三后还是放弃了上交，还好老师没有说什么（没有像某所老师那样@全体成员批评🤐）</p>
+<h3 id="浙大网安9-26（录取）"><a href="#浙大网安9-26（录取）" class="headerlink" title="浙大网安9.26（录取）"></a>浙大网安9.26（录取）</h3><p>由于被清华刷了后，一直比较颓废，甚至对于浙大的复试也不放在心上，直到面试前两天才重新打起精神来准备复试。得亏今年线上，浙大往年十分重视的机试被取消了（不然按照往年的标准，我又没有去刷PAT，肯定GG），复试只有面试。所以我还是尽力去复习，也尝试去联系老师，不过自然是没什么坑了，可能都被大佬和本校给占满了，不过好在还是联系到了一位今年刚入职的老师（很年轻，刚刚博士毕业，下面简称<code>L老师</code>），这位老师人还是很好，很直爽，得知我的意愿是直硕后，也没有劝说我改志愿为直博，反而说尽量帮我，但他也说了估计帮不上什么忙，要我自己做好心理准备，竞争可能很残酷。我对此还是非常感激的，也是我最终跟的老师😊</p>
+<p>由于浙大和上交情况基本一样，硕士竞争是非常残酷的，本校保护严重，参照去年浙大网安的录取名单，一共录取13人，均为学硕，其中外校仅有3人。所以，我从一开始就抱着过不了的心态去参加的，没看得太重（其实这样的心态才是健康的，别看得太重，轻装上阵，减少紧张情况）。</p>
+<p>面试时长大概20分钟，10分钟PPT自我介绍（其中须包含1-2分钟英文内容），然后就是项目提问，问的都比较浅显，挺轻松的，最后老师问了我，如果给我offer，我会不会来（其实感觉有点奇怪，毕竟之前面试中没被这样问过），我当然是回答肯定来，然后就结束了。</p>
+<p>面试完还是挺忐忑的，感觉面试老师对我兴趣不大，问的问题不算多。但最终成绩居然是13名，按照往年的情况是没问题的，这让我十分兴奋，感觉峰回路转，终于我也能出头了。不过为了稳妥，我还是一直等到10.9号出了拟录取名单后，才选择释放哈深的offer（在此向X老师再一次深表歉意，老师人真的特别好，帮助了我很多，算是在我保研之路上最低谷的时候，拉了我一把，鸽了老师我真的特别特别内疚😣）</p>
+<p>其实面完后北航也开始了预推免，包括网安院和计院，但由于北航每年复试实在是太晚了（基本上都是填系统前一两天，真的🐶，适合信仰战士/0offer战神冲）不太敢冒险，加上后续出的浙大复试成绩比较稳了，就放弃这一宝贵的去北京的机会了，选择至少三年的异地😫</p>
+<p>就这样，长达近6个多月的保研之战结束了，有惊喜也有失望，有苦也有甜，最终的结果令人满意，这就足够了！</p>
+<h2 id="个人建议"><a href="#个人建议" class="headerlink" title="个人建议"></a>个人建议</h2><h3 id="机试"><a href="#机试" class="headerlink" title="机试"></a>机试</h3><p><code>机试很重要！机试很重要！机试很重要！</code>得亏这个疫情，导致今年全部线上复试，大量机试<strong>全部取消</strong>，考核基本只有面试了（但明年肯定恢复正常了，会有线下机试的），我这种算法菜🐔才能投机成功，所以学弟学妹们一定要尽早做准备，机试其实可以从现在开始每天上<a target="_blank" rel="noopener" href="https://leetcode-cn.com/">leetcode</a>刷一刷，能养成习惯做每日一题，到时候应付保研机试肯定足够用了。然后大三开始可以考一考CSP（可以抵北航机试）和PAT（可以抵浙大机试），相信只要坚持训练，肯定就不会惧怕机试。而且训练机试不光是保研有用，对于以后找工作等都是很有用的，这是基本功，可不能差了。</p>
+<h3 id="专业课复习"><a href="#专业课复习" class="headerlink" title="专业课复习"></a>专业课复习</h3><p>我个人建议尽量在前两年半结束掉所有科研任务和竞赛，不要像我一样在第六学期还妄想着参加比赛，那样你会根本没时间复习。到了大三寒假就可以准备开始复习专业课了，包括高数、线代、概统、离散（有的学校特别喜欢问数学知识，特别是AI强校）、<code>数据结构（重点）</code>、计网、操作系统等。由于专业课基本上是通过面试考察的，因此各个知识点的概念一定要重点记清楚。</p>
+<h3 id="关于英语"><a href="#关于英语" class="headerlink" title="关于英语"></a>关于英语</h3><p>由于现在基本上面试中都会有英语问答，有的比较简单，让你自我介绍或者介绍家乡等一些家常问题。有的就会比较难了，可能问一些随机性很强的问题而且是与专业相关的，比如问你如何看待AI未来的发展等，还可能会让你用英文介绍项目等。不过英语部分一般占额比较小，而且可以针对性的准备，把自我介绍，项目介绍等常考问题提前准备好就一般问题不会太大。</p>
+<h3 id="科研项目"><a href="#科研项目" class="headerlink" title="科研项目"></a>科研项目</h3><p>科研项目能使你的简历丰满，而且面试时有话可聊，如果没啥科研，面试就只能问你专业课，那这样的话老师可能问的很深（一般很容易被问崩，所以不要作死去主动碰一碰专业知识），所以尽量在大三下前多参与科研项目，进老师实验室实习，参加作品设计类的竞赛也可以算作科研项目（像我一样包装一下就可以写在简历上拿来用了）。相反一些竞赛可能帮助就没那么多，比如数学竞赛，美赛建模等老师可能就没什么兴趣。</p>
+<p>总的来说面试的随机性很高，运气成分确实占了很大一部分，但这也恰恰考察了个人随机应变的能力，希望学弟学妹们，学会灵活应对面试，能够尽量去主导面试（比如说一些项目或者经历，主动引导老师在这方面提问），而不是被动的等老师提问。</p>
+<h3 id="申请材料"><a href="#申请材料" class="headerlink" title="申请材料"></a>申请材料</h3><p>建议大家提前整理好各项材料，包括身份证、学生证、获奖证书、成绩单等。由于今年是线上，大家都做海王<code>（也导致10.12后鸽子漫天飞，好几个学校都被鸽穿了😂）</code>，因此整理好一份材料后就可以继续复用了。大家可以像我一样按学校整理所需的报名材料。</p>
+<img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013161808.png" style="zoom: 50%;" />
+
+<h3 id="联系老师"><a href="#联系老师" class="headerlink" title="联系老师"></a>联系老师</h3><p><code>一定要尽早联系！！！</code>对于想去华五以上好老师的同学们，建议4月就可以发邮件联系对方学校老师了，特别是清北，好老师都是很早坑就被占满了，所以要对自己有信心，不要觉得自己配不上就不敢去尝试，错过了时间就追悔莫及了（比如本人）。其实机会还是很多的，就看自己敢不敢去争取，也别太过偏信网上的信息，比如什么今年特别卷啊，导致自己也不敢去尝试，我npy九月还能上岸thu呢（之前完全没联系过老师），我俩7月份夏令营的时候都压根不敢想清北，很多时候是自己过度看扁自己了，提早做规划，鼓起勇气，大胆尝试，一定会有好结果的。</p>
+<blockquote>
+<p>最后的最后再推荐一个保研交流群，这个群里很多大佬学长学姐们，他们都很热心很友好，有什么问题都会积极解答！其实这个群也算是一个信息中转平台，毕竟保研也是一场信息战，要记得多和一起保研的同学分享信息，多和学姐学长沟通，只有掌握了够全面的信息，才有机会让你去尝试。</p>
+</blockquote>
+<img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013165207.png" style="zoom: 50%;" />
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说保研还是十分惊险刺激且焦虑的，有很多次考前太过紧张害怕，一度萌生弃考的想法，好在及时自我调节（和有npy安慰🐶），所以情绪管理真的也很重要，没必要因为一次失利就过于颓废，丧失自我，要保持积极向上的心态，相信坚持到最后一定能够上岸的。</p>
+<p>一路来，我收到了来自很多人的帮助，包括夏令营中我联系的各位导师，还有来自家人的鼓励和开导，来自本校老师的慰问，当然还有最重要的，<code>你的陪伴（查了一下杭州和北京也不算太远嘛😊）</code>，真的真的太感谢你们了！🎉🎊</p>
+<p>希望接下来的三年能继续努力，Keep moving！也祝愿学弟学妹们明年保研顺利，收获满意的offer！</p>
+
+    </div>
+
+    
+    
+    
+
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    赞赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Kang Fu 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Kang Fu 微信">
+        <p>微信</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Kang Fu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/" title="2020年保研经历">https://rershallzzz.github.io/2020/10/12/2020年保研经历/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E4%BF%9D%E7%A0%94/" rel="tag"><i class="fa fa-tag"></i> 保研</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/" rel="prev" title="论文学习：Austere Flash Caching with Deduplication and Compression">
+      <i class="fa fa-chevron-left"></i> 论文学习：Austere Flash Caching with Deduplication and Compression
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/25/Java%E5%8D%95%E5%88%97%E9%9B%86%E5%90%88Collection%E5%AD%A6%E4%B9%A00x1/" rel="next" title="Java单列集合Collection学习0x1">
+      Java单列集合Collection学习0x1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E4%BA%BA%E6%83%85%E5%86%B5"><span class="nav-number">1.</span> <span class="nav-text">本人情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8F%E4%BB%A4%E8%90%A5"><span class="nav-number">3.</span> <span class="nav-text">夏令营</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%9D%E5%A4%A7%E7%BD%91%E5%AE%897-7-7-8%EF%BC%88%E4%BC%98%E8%90%A5%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">川大网安7.7-7.8（优营）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BA%A4%E7%BD%91%E5%AE%897-16%EF%BC%88%E6%9B%BF%E8%A1%A5%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">上交网安7.16（替补）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A6%E5%A4%A7%E7%BD%91%E5%AE%897-15-7-16%EF%BC%88%E4%BC%98%E8%90%A5%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">武大网安7.15-7.16（优营）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E7%A7%91%E5%A4%A7%E7%BD%91%E5%AE%897-21%EF%BC%88%E4%BC%98%E8%90%A5%EF%BC%89"><span class="nav-number">3.4.</span> <span class="nav-text">中科大网安7.21（优营）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%89%80%E5%8F%AF%E4%BF%A1%E8%AE%A1%E7%AE%97%E5%AE%9E%E9%AA%8C%E5%AE%A47-31-8-1%EF%BC%88%E4%BC%98%E8%90%A5%EF%BC%89"><span class="nav-number">3.5.</span> <span class="nav-text">软件所可信计算实验室7.31-8.1（优营）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9C%E5%8D%97%E7%BD%91%E5%AE%898-2%EF%BC%88%E4%BC%98%E8%90%A5%EF%BC%89"><span class="nav-number">3.6.</span> <span class="nav-text">东南网安8.2（优营）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E6%8E%A8%E5%85%8D"><span class="nav-number">4.</span> <span class="nav-text">预推免</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%88%E5%B7%A5%E6%B7%B1%E8%AE%A1%E7%AE%97%E6%9C%BA8-31-9-3%EF%BC%88%E5%BD%95%E5%8F%96%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">哈工深计算机8.31-9.3（录取）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E5%8D%8E%E7%BD%91%E7%A0%94%E9%99%A29-14-9-17%EF%BC%88%E6%9C%AA%E5%BD%95%E5%8F%96%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">清华网研院9.14-9.17（未录取）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%99%E5%A4%A7%E7%BD%91%E5%AE%899-26%EF%BC%88%E5%BD%95%E5%8F%96%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">浙大网安9.26（录取）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E5%BB%BA%E8%AE%AE"><span class="nav-number">5.</span> <span class="nav-text">个人建议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E8%AF%95"><span class="nav-number">5.1.</span> <span class="nav-text">机试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%A4%8D%E4%B9%A0"><span class="nav-number">5.2.</span> <span class="nav-text">专业课复习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%8B%B1%E8%AF%AD"><span class="nav-number">5.3.</span> <span class="nav-text">关于英语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE"><span class="nav-number">5.4.</span> <span class="nav-text">科研项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7%E6%9D%90%E6%96%99"><span class="nav-number">5.5.</span> <span class="nav-text">申请材料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%94%E7%B3%BB%E8%80%81%E5%B8%88"><span class="nav-number">5.6.</span> <span class="nav-text">联系老师</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kang Fu"
+      src="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
+  <p class="site-author-name" itemprop="name">Kang Fu</p>
+  <div class="site-description" itemprop="description">Keep moving & Happy life</div>
+</div>
+
+   <div class="feed-link motion-element">
+     <a href="/atom.xml" rel="alternate">
+       <i class="fa fa-rss"></i>
+       RSS
+     </a>
+   </div>
+
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/RershallzzZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;RershallzzZ" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_40742077" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_40742077" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kang Fu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>&nbsp站点总字数
+    </span>
+    <span title="站点总字数">22k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>&nbsp站点阅读时长&nbsp≈
+    </span>
+    <span title="站点阅读时长">20 分钟</span>
+</div>
+  <div class="powered-by">技术支持 v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题方案 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f81fe1f8e3deff3" async="async"></script>
+  </div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+	<span class="post-meta-item-icon">
+	      <i class="fa fa-group"></i>
+	</span>
+	<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人</span>
+    	<span class="post-meta-divider">|</span>
+	<span class="post-meta-item-icon">
+	      <i class="fa fa-eye"></i>
+	</span>
+    	<span>访问总量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    var required = 'nick,mail'
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    required = required.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: '8iq7Wo7vKHNnEllQ4F8Fo1Jw-MdYXbMMI',
+      appKey: 'txQ3nv3dwvEVbJc8Hxr9P8CV',
+      placeholder: "来发评论吧~\n📌昵称框输入QQ自动获取邮箱与头像\n👨‍🔧本站使用Akismet反垃圾评论\n🚀评论和回复支持MarkDown",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      enableQQ: true,
+      requiredFields: required,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":220,"height":440},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
