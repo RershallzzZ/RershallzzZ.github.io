@@ -1,25 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</title>
-    <url>/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/</url>
-    <content><![CDATA[<p>论文名：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges</p>
-<p>来源：IEEE Communications Surveys &amp; Tutorials</p>
-<p>链接：<a href="https://ieeexplore.ieee.org/abstract/document/8100873/">https://ieeexplore.ieee.org/abstract/document/8100873/</a></p>
-<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>雾计算的前景：触觉互联网（Tactile Internet）</p>
-<p>雾计算适用于：物联网、车联网、内容交互（CDN）、汽车自组织网络（VANET），无线电接入网络（ RAN）</p>
-<p>雾计算是云计算的补充</p>
-<p>Cyber Foraging：2002年提出。将资源受限的移动终端上的计算、存储等任务交给终端设备附近的计算、存储能力更强的服务器执行，可以减少移动终端的计算量，提升终端的性能</p>
-<p>Cloudlet：2009年提出。使用cloudlet，将在VM而非真实机器上执行面部检测和匹配过程。借助VM技术，cloudlet可以动态扩展和收缩，从而最终实现了针对移动用户服务请求的可伸缩性。VM将来宾软件环境与cloudlet的主机软件环境分离开了，提高了兼容性。尽管Cloudlet表示三层体系结构的中间层（即移动设备–Cloudlet–Cloud），但是在当前对Cloudlet的定义中，并没有特别关注与Cloud的交互。Cloudlet还可以充当边缘上的完整云。即使完全与云隔离，它们也可以作为独立环境存在，因为对Cloudlet的VM调配无需云干预即可完成。</p>
-<p>Radio Access Network（RAN）：是移动通信系统中的一部分。它是无线电接入技术（RAT，Radio Access Technology）的实现。概念上说，它存在于一个设备（例如，一个移动电话，一个计算机，或任何被远程控制的机器）与核心网（Core Network，简称：CN）之间，提供两者间的通信连接。根据标准的不同，移动电话和其它通过无线进行连接的设备有不同的命名，如“用户设备”（User Equipment，简称：UE）、终端设备（Terminal Equipment）、移动台（Mobile Station，简称：MS）等等。</p>
-<p>RAN在网络中的位置参见如下图示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     CN</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   &#x2F;    \</span><br><span class="line"> RAN    RAN</span><br><span class="line"> &#x2F; \    &#x2F; \</span><br><span class="line">UE UE  UE UE</span><br></pre></td></tr></table></figure>
+    <title>论文学习：Austere Flash Caching with Deduplication and Compression</title>
+    <url>/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/</url>
+    <content><![CDATA[<p>论文题目 ：Austere Flash Caching with Deduplication and Compression</p>
+<p>来源：USENIX ATC 2020</p>
+<p>链接：<a href="https://www.usenix.org/conference/atc20/presentation/wang-qiuping">https://www.usenix.org/conference/atc20/presentation/wang-qiuping</a></p>
+<h2 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念"></a>关键概念</h2><h3 id="deduplication（去重）"><a href="#deduplication（去重）" class="headerlink" title="deduplication（去重）"></a><strong>deduplication</strong>（去重）</h3><p>重复数据删除以粗粒度但轻量级的方式删除块级重复数据。通过将数据划分成一个个chunk（KB级别），对每个chunk的内容做hash，若算出的hash值（fingerprint，FP）一样（不同），则视为冗余（唯一）数据。通过在物理空间上（SSD上）只保存一份冗余数据的副本，从而进行数据缩减，但在逻辑空间上，所有冗余数据不会被删除，而是都指向同一块物理地址。此外还会将每个chunk和其FP的映射存储下来，用于重复检查和chunk查找。块（chunk）的大小可能是固定也可能是变化的，本文主要关注去重固定大小的块。</p>
+<h3 id="compression（压缩）"><a href="#compression（压缩）" class="headerlink" title="compression（压缩）"></a><strong>compression</strong>（压缩）</h3><p>压缩通过将数据转换为更紧凑的形式，旨在字节级进行细粒度的数据减少。压缩通常在去重后进行，一般应用于那些唯一数据块。压缩后的数据块大小一般是可变的。本文使用顺序压缩算法(例如Ziv-Lempel算法)，对每个块的字节进行操作。</p>
+<p>deduplication&amp;compression是两种data eduction技术，相辅相成。</p>
+<h3 id="flash"><a href="#flash" class="headerlink" title="flash"></a><strong>flash</strong></h3><p>flash存储器又称闪存，它结合了ROM和RAM的长处，不仅具备电子可擦除可编程（EEPROM）的性能，还可以快速读取数据（NVRAM的优势），使数据不会因为断电而丢失。固态硬盘和传统的机械硬盘最大的区别就是不再采用盘片进行数据存储，而采用存储芯片进行数据存储。固态硬盘的存储芯片主要分为两种：一种是采用闪存作为存储介质的；另一种是采用DRAM作为存储介质的。目前使用较多的主要是采用闪存作为存储介质的固态硬盘</p>
+<h3 id="flashcache"><a href="#flashcache" class="headerlink" title="flashcache"></a><strong>flashcache</strong></h3><p>Flashcache是Facebook技术团队的一个开源项目，最初目的是为加速MySQL的数据库引擎InnoDB，是一个开源的混合存储方案，兼顾了机械硬盘和固态硬盘两者的优点，即有HHD的高容量、高顺序访问，也有SSD的高随机访问，低延迟，且这个方案成本也相对较低。Flashcache利用了Linux的device mapping机制，将Flash disk和普通硬盘的块设备做了一层映射，在OS中变现为一块普通的磁盘，使用简单。通过在文件系统和设备驱动之间新增了一层缓存层，用来实现对热点数据的缓存。通常用SSD固态硬盘作为缓存，通过将传统硬盘上的热门数据缓存到SSD上，然后利用SSD优秀的读性能，来加速系统。参考<a href="https://my.oschina.net/u/658505/blog/544599">https://my.oschina.net/u/658505/blog/544599</a></p>
+<img data-src="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg" style="zoom: 67%;" />
 
-<p>Multi-access Edge Computing（MEC）：2014年提出。一开始专注于移动网络和VM虚拟化技术。2017年扩大范围到非移动网络以及VM以外的虚拟化技术。是在边缘与移动设备通信，不与云进行通信。在范围扩展之前，该概念（被设想为5G的关键技术）旨在在移动网络的边缘以及无线接入网络（RAN）内提供云计算功能。这些功能由移动边缘计算服务器提供，这些服务器可以部署在LTE基站（eNodeB）站点，3G无线电网络控制器（RNC）站点以及多无线电接入技术（RAT）站点。设想的应用程序包括增强现实，智能视频加速和联网汽车。由于新的范围，现在肯定会考虑非移动网络和相关应用程序的边缘。</p>
-<p>Fog Computing：2012年提出。它是云计算范式从核心到网络边缘的扩展。它使您可以在网络边缘，更靠近IoT和/或最终用户设备的位置进行计算。它还支持虚拟化。但是，与cloudlet和MEC不同，雾与云的存在紧密相关，即，雾不能以独立模式运行。</p>
-<p>Cloudlet、MEC、Fog区别：</p>
-<p><img data-src="https://img-blog.csdnimg.cn/img_convert/819bb72e2ba4a832bae4c15ce96e8c9c.png"></p>
-<p><strong>未完待续。。。</strong></p>
+<p>上图是一般的带有去重和压缩功能的flashcache架构。带有去重和压缩功能的flashcache保证SSD中的数据块都是唯一且压缩过的。而传统的flashcache不带有去重和压缩功能，因此只用维护一种索引结构：LBA-&gt;CA。经过假设计算后，带有去重和压缩的flashcache由于要维护两个index（LBA-index、FP-index），其内存开销要是传统的flashcache的16倍（4G/256MB）。此外还可能产生额外的CPU开销（计算FP、压缩数据、寻找索引对等）</p>
+<h3 id="LBA-index：LBA-gt-FP"><a href="#LBA-index：LBA-gt-FP" class="headerlink" title="LBA-index：LBA-&gt;FP"></a><strong>LBA-index</strong>：LBA-&gt;FP</h3><p>逻辑地址索引，即将存于HDD中的数据的逻辑地址（LBA）与数据块的FP值进行映射（多对一，可能有多个不同的逻辑地址指向相同内容的数据）</p>
+<h3 id="FP-index：FP-gt-CA-length"><a href="#FP-index：FP-gt-CA-length" class="headerlink" title="FP-index：FP-&gt;CA,length"></a><strong>FP-index</strong>：FP-&gt;CA,length</h3><p>FP索引，即将每个数据块的FP值与该数据块经过压缩后位于SSD中的物理地址（CA）以及该块的大小进行映射（一对一）</p>
+<h3 id="Write-through（直写模式）"><a href="#Write-through（直写模式）" class="headerlink" title="Write-through（直写模式）"></a><strong>Write-through</strong>（直写模式）</h3><p>在数据更新时，同时写入缓存Cache和后端存储。此模式的优点是操作简单；缺点是因为数据修改需要同时写入存储，数据写入速度较慢</p>
+<h3 id="Write-back（回写模式）"><a href="#Write-back（回写模式）" class="headerlink" title="Write-back（回写模式）"></a><strong>Write-back</strong>（回写模式）</h3><p>在数据更新时只写入缓存Cache。只在数据被替换出缓存时，被修改的缓存数据才会被写到后端存储。此模式的优点是数据写入速度快，因为不需要写存储；缺点是一旦更新后的数据未被写入存储时出现系统掉电的情况，数据将无法找回。</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>目前SSD被广泛用作RAM和HDD之间的一个缓存层（即flashcache技术，通过将热点数据存储在SSD，可以提高整体I/O性能），但其使用寿命和容量都有限。为了解决这一问题，本文提出一种框架AustereCache，其拥有高效的数据去重和压缩机制，能够尽可能的延长SSD寿命和扩大其容量，而且也能很好的降低由于数据压缩/去重导致的索引管理所带来的巨大内存开销。这相比于目前最新的flashcache框架CacheDedup所需的内存代价要低69.9-97.0%，且能提供相似的性能。</p>
+<h2 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h2><p>AustereCache强调严格的cache数据管理，使用多种技术来进行有效的数据组织和cache数据替换，主要包括三个核心技术点：</p>
+<h3 id="bucketization（桶化）"><a href="#bucketization（桶化）" class="headerlink" title="bucketization（桶化）"></a>bucketization（桶化）</h3><p>如下图所示，为了消除在LBA-index和FP-index中维护地址映射的内存开销，AustereCache将索引项散列到大小相等的分区(称为桶，每个桶分为多个槽)中，每个桶保存部分LBA和FP（通过hash后取其前缀码，如前16bit）以节省内存。根据桶位置，将数据块映射到SSD中。并将SSD分为元数据区(metadata)和数据区(chunk data)，这两个区也都被分为多个桶，每个桶包含多个槽(slot)，数量与FP-index保持一致（1对1映射）。</p>
+<img data-src="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg" style="zoom:50%;" />
+
+<h3 id="固定大小的压缩数据管理"><a href="#固定大小的压缩数据管理" class="headerlink" title="固定大小的压缩数据管理"></a>固定大小的压缩数据管理</h3><p>为了避免在FP-index中跟踪块的长度，AustereCache将可变大小的压缩块划分为较小的固定大小的子块，并在不记录压缩块长度的情况下管理子块。如下图所示，在FP-index中会选取多个连续的槽来存放属于同一个压缩块的子块，并且不会在FP-index中记录压缩块的大小，而是在SSD中记录压缩块的大小，从而减小FP-index大小，减小内存开销。这样做既可以很好的使用桶—槽（bucket—slot）机制来管理每个数据块（将大小变化的压缩块分为多个固定大小的子块），也可以节省内存开销。</p>
+<img data-src="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg" style="zoom: 80%;" />
+
+<h3 id="基于bucket的缓存替换"><a href="#基于bucket的缓存替换" class="headerlink" title="基于bucket的缓存替换"></a>基于bucket的缓存替换</h3><p>AustereCache为了增加缓存命中的可能性，其结合了基于引用计数（即引用每个唯一块的重复副本的计数）的最近性和去重性原则，以实现有效的SSD缓存数据替换。但是，记录引用计数会产生不可忽略的内存开销。因此，AustereCache利用固定大小的紧凑型草图数据结构在有限的内存空间中使用有限的误差进行参考计数估计。</p>
+<p>对于LBA-index，其替换策略为LRU，每当新加入或者新访问一个LBA就会将这个LBA移动到最前面（偏移量为0），其余所有entry往后移动一格，处于最后一个的entry（偏移量最大）会被替换掉。</p>
+<p>对于FP-index，其替换策略是要将去重（deduplication）和最近访问性（recency，相当于局部性原理）结合起来，通过一个额外的数据结构：引用计数（count）来表明冗余LBA的程度，当FP-index满后，会替换掉count最小的entry来满足去重性。此外还通过将LBA-index分为Recent、Old两个区，位于Recent区中的entry，每次被访问，或者新加入的entry，其count+2；当从Recent进入Old，或者在Old中被替换掉的entry，其count-1；当Old中的entry被访问进入Recent区，其count+1。通过这种规则既兼顾了去重也兼顾了局部性原理。</p>
+<img data-src="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg" style="zoom:80%;" />
+
+<h2 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>①FIU从三种不同设备上采集到的traces（I/O访问序列？），分别是Web服务器上的虚拟机、文件服务器、邮件服务器</p>
+<p>②自定义trace，为了测量吞吐量而设计的一个trace生成器，通过设置两个参数来生成一个trace：a.I/O去重比率（感觉可以理解成I/O请求中所请求的数据的冗余程度）; b.读写比</p>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><ol>
+<li><p>通过基于数据集①的多组使用证明了，AustereCache在整体内存节省率上、读取命中率上、写入减少率上都比目前最新的CacheDedup要高很多。</p>
+</li>
+<li><p>此外也通过基于数据集①的多组实验证明了，AustereCache对于其参数的敏感性，包括块和子块大小设定对于内存开销的影响、LBA-index大小对于内存开销的影响等。事实证明，当块越大内存开销就越低，LBA-index越大，内存开销就越大。</p>
+</li>
+<li><p>还通过基于数据集②对整体的I/O吞吐量进行的实验，证明当I/O请求的数据中，冗余数据越多，代表需要访问SSD次数就越少，从而提升整体吞吐量。也证明了I/O请求中，读请求占比越高，吞吐量也越会有小幅增加。</p>
+</li>
+<li><p>还基于数据集②对CPU的开销进行了测量，表明主要计算开销基本还是计算块数据的FP值。后续也通过开启多线程证明，可以一定程度上减少CPU开销，并且线程数越高，吞吐量也越高。</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>文章详细的阐述了AustereCache的三大关键技术，并通过非常丰富的实验论证了AustereCache在于管理索引数据结构上的优越性，极大的降低了内存开销，同时也能维持与目前最新架构相同水准的读取命中率和写减少率。</p>
+<h3 id="个人觉得存在的问题"><a href="#个人觉得存在的问题" class="headerlink" title="个人觉得存在的问题"></a>个人觉得存在的问题</h3><p>但是文章对于AustereCache的块大小设置并没有继续考虑，块越大，内存开销越低，但可能会带来额外的读写操作。因为一个块太大，可能对于一些处理小规格数据块的操作来说并不合适。</p>
+<p>且文章也没有继续证明通过降低对SSD的写入次数，对于SSD寿命有何影响，只是定性的说会延长寿命。</p>
+<p>本文专注于节省内存空间开销，但实际上可能加大了时间开销，比如文中对于LBA-index的置换策略使用的是LRU算法，但没有给出与其他置换算法的比较，如FIFO、CLOCK算法等，文中每次插入、删除、置换新的entry时，均会移动其余所有entry位置，这感觉会带来大量时间开销，存在进一步优化空间。</p>
+<p>而且对于得到FP-index中每个entry的count，文中是使用估计的方法得到，会有一定误差，这感觉不太精确，且reference counter也会带来很大的内存开销。但可能直接将count存在FP-index带来的内存开销会更高。</p>
+<p>还有一个疑问是，为什么在FP-index中count越低的越容易被替换掉这一策略体现了deduplication，count越低不代表数据重复度越低吗，从局部性原来上来说，优先替换掉count最低的是没问题的，但感觉和deduplication有些矛盾。。</p>
 ]]></content>
       <tags>
         <tag>论文学习</tag>
@@ -69,54 +98,47 @@
       </tags>
   </entry>
   <entry>
-    <title>论文学习：Austere Flash Caching with Deduplication and Compression</title>
-    <url>/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/</url>
-    <content><![CDATA[<p>论文题目 ：Austere Flash Caching with Deduplication and Compression</p>
-<p>来源：USENIX ATC 2020</p>
-<p>链接：<a href="https://www.usenix.org/conference/atc20/presentation/wang-qiuping">https://www.usenix.org/conference/atc20/presentation/wang-qiuping</a></p>
-<h2 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念"></a>关键概念</h2><h3 id="deduplication（去重）"><a href="#deduplication（去重）" class="headerlink" title="deduplication（去重）"></a><strong>deduplication</strong>（去重）</h3><p>重复数据删除以粗粒度但轻量级的方式删除块级重复数据。通过将数据划分成一个个chunk（KB级别），对每个chunk的内容做hash，若算出的hash值（fingerprint，FP）一样（不同），则视为冗余（唯一）数据。通过在物理空间上（SSD上）只保存一份冗余数据的副本，从而进行数据缩减，但在逻辑空间上，所有冗余数据不会被删除，而是都指向同一块物理地址。此外还会将每个chunk和其FP的映射存储下来，用于重复检查和chunk查找。块（chunk）的大小可能是固定也可能是变化的，本文主要关注去重固定大小的块。</p>
-<h3 id="compression（压缩）"><a href="#compression（压缩）" class="headerlink" title="compression（压缩）"></a><strong>compression</strong>（压缩）</h3><p>压缩通过将数据转换为更紧凑的形式，旨在字节级进行细粒度的数据减少。压缩通常在去重后进行，一般应用于那些唯一数据块。压缩后的数据块大小一般是可变的。本文使用顺序压缩算法(例如Ziv-Lempel算法)，对每个块的字节进行操作。</p>
-<p>deduplication&amp;compression是两种data eduction技术，相辅相成。</p>
-<h3 id="flash"><a href="#flash" class="headerlink" title="flash"></a><strong>flash</strong></h3><p>flash存储器又称闪存，它结合了ROM和RAM的长处，不仅具备电子可擦除可编程（EEPROM）的性能，还可以快速读取数据（NVRAM的优势），使数据不会因为断电而丢失。固态硬盘和传统的机械硬盘最大的区别就是不再采用盘片进行数据存储，而采用存储芯片进行数据存储。固态硬盘的存储芯片主要分为两种：一种是采用闪存作为存储介质的；另一种是采用DRAM作为存储介质的。目前使用较多的主要是采用闪存作为存储介质的固态硬盘</p>
-<h3 id="flashcache"><a href="#flashcache" class="headerlink" title="flashcache"></a><strong>flashcache</strong></h3><p>Flashcache是Facebook技术团队的一个开源项目，最初目的是为加速MySQL的数据库引擎InnoDB，是一个开源的混合存储方案，兼顾了机械硬盘和固态硬盘两者的优点，即有HHD的高容量、高顺序访问，也有SSD的高随机访问，低延迟，且这个方案成本也相对较低。Flashcache利用了Linux的device mapping机制，将Flash disk和普通硬盘的块设备做了一层映射，在OS中变现为一块普通的磁盘，使用简单。通过在文件系统和设备驱动之间新增了一层缓存层，用来实现对热点数据的缓存。通常用SSD固态硬盘作为缓存，通过将传统硬盘上的热门数据缓存到SSD上，然后利用SSD优秀的读性能，来加速系统。参考<a href="https://my.oschina.net/u/658505/blog/544599">https://my.oschina.net/u/658505/blog/544599</a></p>
-<img data-src="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg" style="zoom: 67%;" />
+    <title>论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</title>
+    <url>/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/</url>
+    <content><![CDATA[<p>论文名：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges</p>
+<p>来源：IEEE Communications Surveys &amp; Tutorials</p>
+<p>链接：<a href="https://ieeexplore.ieee.org/abstract/document/8100873/">https://ieeexplore.ieee.org/abstract/document/8100873/</a></p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>雾计算的前景：触觉互联网（Tactile Internet）</p>
+<p>雾计算适用于：物联网、车联网、内容交互（CDN）、汽车自组织网络（VANET），无线电接入网络（ RAN）</p>
+<p>雾计算是云计算的补充</p>
+<p>Cyber Foraging：2002年提出。将资源受限的移动终端上的计算、存储等任务交给终端设备附近的计算、存储能力更强的服务器执行，可以减少移动终端的计算量，提升终端的性能</p>
+<p>Cloudlet：2009年提出。使用cloudlet，将在VM而非真实机器上执行面部检测和匹配过程。借助VM技术，cloudlet可以动态扩展和收缩，从而最终实现了针对移动用户服务请求的可伸缩性。VM将来宾软件环境与cloudlet的主机软件环境分离开了，提高了兼容性。尽管Cloudlet表示三层体系结构的中间层（即移动设备–Cloudlet–Cloud），但是在当前对Cloudlet的定义中，并没有特别关注与Cloud的交互。Cloudlet还可以充当边缘上的完整云。即使完全与云隔离，它们也可以作为独立环境存在，因为对Cloudlet的VM调配无需云干预即可完成。</p>
+<p>Radio Access Network（RAN）：是移动通信系统中的一部分。它是无线电接入技术（RAT，Radio Access Technology）的实现。概念上说，它存在于一个设备（例如，一个移动电话，一个计算机，或任何被远程控制的机器）与核心网（Core Network，简称：CN）之间，提供两者间的通信连接。根据标准的不同，移动电话和其它通过无线进行连接的设备有不同的命名，如“用户设备”（User Equipment，简称：UE）、终端设备（Terminal Equipment）、移动台（Mobile Station，简称：MS）等等。</p>
+<p>RAN在网络中的位置参见如下图示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     CN</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   &#x2F;    \</span><br><span class="line"> RAN    RAN</span><br><span class="line"> &#x2F; \    &#x2F; \</span><br><span class="line">UE UE  UE UE</span><br></pre></td></tr></table></figure>
 
-<p>上图是一般的带有去重和压缩功能的flashcache架构。带有去重和压缩功能的flashcache保证SSD中的数据块都是唯一且压缩过的。而传统的flashcache不带有去重和压缩功能，因此只用维护一种索引结构：LBA-&gt;CA。经过假设计算后，带有去重和压缩的flashcache由于要维护两个index（LBA-index、FP-index），其内存开销要是传统的flashcache的16倍（4G/256MB）。此外还可能产生额外的CPU开销（计算FP、压缩数据、寻找索引对等）</p>
-<h3 id="LBA-index：LBA-gt-FP"><a href="#LBA-index：LBA-gt-FP" class="headerlink" title="LBA-index：LBA-&gt;FP"></a><strong>LBA-index</strong>：LBA-&gt;FP</h3><p>逻辑地址索引，即将存于HDD中的数据的逻辑地址（LBA）与数据块的FP值进行映射（多对一，可能有多个不同的逻辑地址指向相同内容的数据）</p>
-<h3 id="FP-index：FP-gt-CA-length"><a href="#FP-index：FP-gt-CA-length" class="headerlink" title="FP-index：FP-&gt;CA,length"></a><strong>FP-index</strong>：FP-&gt;CA,length</h3><p>FP索引，即将每个数据块的FP值与该数据块经过压缩后位于SSD中的物理地址（CA）以及该块的大小进行映射（一对一）</p>
-<h3 id="Write-through（直写模式）"><a href="#Write-through（直写模式）" class="headerlink" title="Write-through（直写模式）"></a><strong>Write-through</strong>（直写模式）</h3><p>在数据更新时，同时写入缓存Cache和后端存储。此模式的优点是操作简单；缺点是因为数据修改需要同时写入存储，数据写入速度较慢</p>
-<h3 id="Write-back（回写模式）"><a href="#Write-back（回写模式）" class="headerlink" title="Write-back（回写模式）"></a><strong>Write-back</strong>（回写模式）</h3><p>在数据更新时只写入缓存Cache。只在数据被替换出缓存时，被修改的缓存数据才会被写到后端存储。此模式的优点是数据写入速度快，因为不需要写存储；缺点是一旦更新后的数据未被写入存储时出现系统掉电的情况，数据将无法找回。</p>
-<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>目前SSD被广泛用作RAM和HDD之间的一个缓存层（即flashcache技术，通过将热点数据存储在SSD，可以提高整体I/O性能），但其使用寿命和容量都有限。为了解决这一问题，本文提出一种框架AustereCache，其拥有高效的数据去重和压缩机制，能够尽可能的延长SSD寿命和扩大其容量，而且也能很好的降低由于数据压缩/去重导致的索引管理所带来的巨大内存开销。这相比于目前最新的flashcache框架CacheDedup所需的内存代价要低69.9-97.0%，且能提供相似的性能。</p>
-<h2 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h2><p>AustereCache强调严格的cache数据管理，使用多种技术来进行有效的数据组织和cache数据替换，主要包括三个核心技术点：</p>
-<h3 id="bucketization（桶化）"><a href="#bucketization（桶化）" class="headerlink" title="bucketization（桶化）"></a>bucketization（桶化）</h3><p>如下图所示，为了消除在LBA-index和FP-index中维护地址映射的内存开销，AustereCache将索引项散列到大小相等的分区(称为桶，每个桶分为多个槽)中，每个桶保存部分LBA和FP（通过hash后取其前缀码，如前16bit）以节省内存。根据桶位置，将数据块映射到SSD中。并将SSD分为元数据区(metadata)和数据区(chunk data)，这两个区也都被分为多个桶，每个桶包含多个槽(slot)，数量与FP-index保持一致（1对1映射）。</p>
-<img data-src="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg" style="zoom:50%;" />
-
-<h3 id="固定大小的压缩数据管理"><a href="#固定大小的压缩数据管理" class="headerlink" title="固定大小的压缩数据管理"></a>固定大小的压缩数据管理</h3><p>为了避免在FP-index中跟踪块的长度，AustereCache将可变大小的压缩块划分为较小的固定大小的子块，并在不记录压缩块长度的情况下管理子块。如下图所示，在FP-index中会选取多个连续的槽来存放属于同一个压缩块的子块，并且不会在FP-index中记录压缩块的大小，而是在SSD中记录压缩块的大小，从而减小FP-index大小，减小内存开销。这样做既可以很好的使用桶—槽（bucket—slot）机制来管理每个数据块（将大小变化的压缩块分为多个固定大小的子块），也可以节省内存开销。</p>
-<img data-src="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg" style="zoom: 80%;" />
-
-<h3 id="基于bucket的缓存替换"><a href="#基于bucket的缓存替换" class="headerlink" title="基于bucket的缓存替换"></a>基于bucket的缓存替换</h3><p>AustereCache为了增加缓存命中的可能性，其结合了基于引用计数（即引用每个唯一块的重复副本的计数）的最近性和去重性原则，以实现有效的SSD缓存数据替换。但是，记录引用计数会产生不可忽略的内存开销。因此，AustereCache利用固定大小的紧凑型草图数据结构在有限的内存空间中使用有限的误差进行参考计数估计。</p>
-<p>对于LBA-index，其替换策略为LRU，每当新加入或者新访问一个LBA就会将这个LBA移动到最前面（偏移量为0），其余所有entry往后移动一格，处于最后一个的entry（偏移量最大）会被替换掉。</p>
-<p>对于FP-index，其替换策略是要将去重（deduplication）和最近访问性（recency，相当于局部性原理）结合起来，通过一个额外的数据结构：引用计数（count）来表明冗余LBA的程度，当FP-index满后，会替换掉count最小的entry来满足去重性。此外还通过将LBA-index分为Recent、Old两个区，位于Recent区中的entry，每次被访问，或者新加入的entry，其count+2；当从Recent进入Old，或者在Old中被替换掉的entry，其count-1；当Old中的entry被访问进入Recent区，其count+1。通过这种规则既兼顾了去重也兼顾了局部性原理。</p>
-<img data-src="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg" style="zoom:80%;" />
-
-<h2 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>①FIU从三种不同设备上采集到的traces（I/O访问序列？），分别是Web服务器上的虚拟机、文件服务器、邮件服务器</p>
-<p>②自定义trace，为了测量吞吐量而设计的一个trace生成器，通过设置两个参数来生成一个trace：a.I/O去重比率（感觉可以理解成I/O请求中所请求的数据的冗余程度）; b.读写比</p>
-<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><ol>
-<li><p>通过基于数据集①的多组使用证明了，AustereCache在整体内存节省率上、读取命中率上、写入减少率上都比目前最新的CacheDedup要高很多。</p>
-</li>
-<li><p>此外也通过基于数据集①的多组实验证明了，AustereCache对于其参数的敏感性，包括块和子块大小设定对于内存开销的影响、LBA-index大小对于内存开销的影响等。事实证明，当块越大内存开销就越低，LBA-index越大，内存开销就越大。</p>
-</li>
-<li><p>还通过基于数据集②对整体的I/O吞吐量进行的实验，证明当I/O请求的数据中，冗余数据越多，代表需要访问SSD次数就越少，从而提升整体吞吐量。也证明了I/O请求中，读请求占比越高，吞吐量也越会有小幅增加。</p>
-</li>
-<li><p>还基于数据集②对CPU的开销进行了测量，表明主要计算开销基本还是计算块数据的FP值。后续也通过开启多线程证明，可以一定程度上减少CPU开销，并且线程数越高，吞吐量也越高。</p>
-</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>文章详细的阐述了AustereCache的三大关键技术，并通过非常丰富的实验论证了AustereCache在于管理索引数据结构上的优越性，极大的降低了内存开销，同时也能维持与目前最新架构相同水准的读取命中率和写减少率。</p>
-<h3 id="个人觉得存在的问题"><a href="#个人觉得存在的问题" class="headerlink" title="个人觉得存在的问题"></a>个人觉得存在的问题</h3><p>但是文章对于AustereCache的块大小设置并没有继续考虑，块越大，内存开销越低，但可能会带来额外的读写操作。因为一个块太大，可能对于一些处理小规格数据块的操作来说并不合适。</p>
-<p>且文章也没有继续证明通过降低对SSD的写入次数，对于SSD寿命有何影响，只是定性的说会延长寿命。</p>
-<p>本文专注于节省内存空间开销，但实际上可能加大了时间开销，比如文中对于LBA-index的置换策略使用的是LRU算法，但没有给出与其他置换算法的比较，如FIFO、CLOCK算法等，文中每次插入、删除、置换新的entry时，均会移动其余所有entry位置，这感觉会带来大量时间开销，存在进一步优化空间。</p>
-<p>而且对于得到FP-index中每个entry的count，文中是使用估计的方法得到，会有一定误差，这感觉不太精确，且reference counter也会带来很大的内存开销。但可能直接将count存在FP-index带来的内存开销会更高。</p>
-<p>还有一个疑问是，为什么在FP-index中count越低的越容易被替换掉这一策略体现了deduplication，count越低不代表数据重复度越低吗，从局部性原来上来说，优先替换掉count最低的是没问题的，但感觉和deduplication有些矛盾。。</p>
+<p>Multi-access Edge Computing（MEC）：2014年提出。一开始专注于移动网络和VM虚拟化技术。2017年扩大范围到非移动网络以及VM以外的虚拟化技术。是在边缘与移动设备通信，不与云进行通信。在范围扩展之前，该概念（被设想为5G的关键技术）旨在在移动网络的边缘以及无线接入网络（RAN）内提供云计算功能。这些功能由移动边缘计算服务器提供，这些服务器可以部署在LTE基站（eNodeB）站点，3G无线电网络控制器（RNC）站点以及多无线电接入技术（RAT）站点。设想的应用程序包括增强现实，智能视频加速和联网汽车。由于新的范围，现在肯定会考虑非移动网络和相关应用程序的边缘。</p>
+<p>Fog Computing：2012年提出。它是云计算范式从核心到网络边缘的扩展。它使您可以在网络边缘，更靠近IoT和/或最终用户设备的位置进行计算。它还支持虚拟化。但是，与cloudlet和MEC不同，雾与云的存在紧密相关，即，雾不能以独立模式运行。</p>
+<p>Cloudlet、MEC、Fog区别：</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/819bb72e2ba4a832bae4c15ce96e8c9c.png"></p>
+<p><strong>未完待续。。。</strong></p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
+    <url>/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</url>
+    <content><![CDATA[<p>论文题目：On Training Robust PDF Malware Classifiers</p>
+<p>来源：29th USENIX Security Symposium 2020</p>
+<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng">https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng</a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>参考<a href="https://blog.csdn.net/Shall_ByeBye/article/details/106883218">https://blog.csdn.net/Shall_ByeBye/article/details/106883218</a></p>
+<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>指出目前有能够轻易逃避恶意PDF文件的检测器的方法，且目前的模型都是一味的追求高检测准确率和低误判率。本文通过加入鲁棒性属性，训练出一种强鲁棒性的恶意PDF检测模型，相比于一般检测模型具有更强的鲁棒性，面对一般的逃逸攻击具有更好的检测效果。</p>
+<p>本篇工作针对PDF恶意软件提出了新的鲁棒训练方法。本篇工作采用Verifiably Robust Training，<strong>利用有效PDF必须能被解析为树结构的特点</strong>，提出了一种针对PDF树结构的新距离指标，并借助这种距离指标指定了两类鲁棒属性，<strong>子树插入和删除</strong>。只要攻击者符合鲁棒属性，再强的攻击者也无法产生可逃避分类器检测的变种。比如，指定鲁棒属性为插入1棵子树，任何通过插入1棵子树生成的PDF恶意软件变种都无法逃避检测。</p>
+<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h3><p>①过往研究表明，训练恶意软件分类器时，若训练集中有对抗性的样本，训练出来的模型的FP率会很高。</p>
+<p>解决：提出新的指标来衡量PDF文件结构树，从而降低模型的FP率。（好扯）</p>
+<p>②传统流行的用于恶意PDF检测的算法并不适用于训练一个具有强鲁棒性的分类器，例如随机森林。</p>
+<p>解决：使用神经网络来训练一个强鲁棒性的分类器。（强行）</p>
+<p>③为了评估本文提出的模型的鲁棒性，使用7种攻击分别对12个基线模型进行攻击测试。</p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①：尽管现在在机器学习领域有很多性能指标去衡量模型的好坏，但没有一个适合用于评估一个专门检测自适应对抗攻击的模型的鲁棒性。专门提出一种新的指标去衡量PDF文件以降低模型的FPR</p>
+<p>作者发现，所有能保留恶意功能的PDF恶意软件变种，都必须满足正确的PDF语法，即可以被解析为树结构。为了能够系统，高效的生成变种，<strong>攻击者必然使用子树插入和子树删除操作恶意软件生成变种。只要分类器对这两种操作有鲁棒性，那么它对逃避攻击也就有了鲁棒性。</strong><br>作者据此提出了<strong>子树距离作为距离指标</strong>：两个PDF软件的子树距离，即它们根节点下不同子树的数量。无论在x的根节点下插入1棵怎样的子树，x与生成的变种x˜的子树距离都是1。这样可以更好的限制鲁棒区域，降低FPR.<br>借助子树距离的限制，作者指定了子树距离为1时，子树插入和子树删除两种基础鲁棒属性。</p>
+<p><strong>鲁棒属性具体是</strong>：对恶意软件进行任意子树插入（删除）操作生成的子树距离为1的变种，分类器不会将其分类为良性。这些属性都可以推广到子树距离为N的情况。**</p>
 ]]></content>
       <tags>
         <tag>论文学习</tag>
@@ -278,28 +300,6 @@
 ]]></content>
       <tags>
         <tag>保研</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
-    <url>/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</url>
-    <content><![CDATA[<p>论文题目：On Training Robust PDF Malware Classifiers</p>
-<p>来源：29th USENIX Security Symposium 2020</p>
-<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng">https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng</a></p>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>参考<a href="https://blog.csdn.net/Shall_ByeBye/article/details/106883218">https://blog.csdn.net/Shall_ByeBye/article/details/106883218</a></p>
-<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>指出目前有能够轻易逃避恶意PDF文件的检测器的方法，且目前的模型都是一味的追求高检测准确率和低误判率。本文通过加入鲁棒性属性，训练出一种强鲁棒性的恶意PDF检测模型，相比于一般检测模型具有更强的鲁棒性，面对一般的逃逸攻击具有更好的检测效果。</p>
-<p>本篇工作针对PDF恶意软件提出了新的鲁棒训练方法。本篇工作采用Verifiably Robust Training，<strong>利用有效PDF必须能被解析为树结构的特点</strong>，提出了一种针对PDF树结构的新距离指标，并借助这种距离指标指定了两类鲁棒属性，<strong>子树插入和删除</strong>。只要攻击者符合鲁棒属性，再强的攻击者也无法产生可逃避分类器检测的变种。比如，指定鲁棒属性为插入1棵子树，任何通过插入1棵子树生成的PDF恶意软件变种都无法逃避检测。</p>
-<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h3><p>①过往研究表明，训练恶意软件分类器时，若训练集中有对抗性的样本，训练出来的模型的FP率会很高。</p>
-<p>解决：提出新的指标来衡量PDF文件结构树，从而降低模型的FP率。（好扯）</p>
-<p>②传统流行的用于恶意PDF检测的算法并不适用于训练一个具有强鲁棒性的分类器，例如随机森林。</p>
-<p>解决：使用神经网络来训练一个强鲁棒性的分类器。（强行）</p>
-<p>③为了评估本文提出的模型的鲁棒性，使用7种攻击分别对12个基线模型进行攻击测试。</p>
-<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①：尽管现在在机器学习领域有很多性能指标去衡量模型的好坏，但没有一个适合用于评估一个专门检测自适应对抗攻击的模型的鲁棒性。专门提出一种新的指标去衡量PDF文件以降低模型的FPR</p>
-<p>作者发现，所有能保留恶意功能的PDF恶意软件变种，都必须满足正确的PDF语法，即可以被解析为树结构。为了能够系统，高效的生成变种，<strong>攻击者必然使用子树插入和子树删除操作恶意软件生成变种。只要分类器对这两种操作有鲁棒性，那么它对逃避攻击也就有了鲁棒性。</strong><br>作者据此提出了<strong>子树距离作为距离指标</strong>：两个PDF软件的子树距离，即它们根节点下不同子树的数量。无论在x的根节点下插入1棵怎样的子树，x与生成的变种x˜的子树距离都是1。这样可以更好的限制鲁棒区域，降低FPR.<br>借助子树距离的限制，作者指定了子树距离为1时，子树插入和子树删除两种基础鲁棒属性。</p>
-<p><strong>鲁棒属性具体是</strong>：对恶意软件进行任意子树插入（删除）操作生成的子树距离为1的变种，分类器不会将其分类为良性。这些属性都可以推广到子树距离为N的情况。**</p>
-]]></content>
-      <tags>
-        <tag>论文学习</tag>
       </tags>
   </entry>
 </search>
