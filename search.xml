@@ -26,6 +26,56 @@
       </tags>
   </entry>
   <entry>
+    <title>论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</title>
+    <url>/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/</url>
+    <content><![CDATA[<p>论文题目：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</p>
+<p>来源：<strong>2020 IEEE Symposium on Security and Privacy (S&amp;P)</strong></p>
+<p>链接：<a href="https://ieeexplore.ieee.org/document/9152608">https://ieeexplore.ieee.org/document/9152608</a></p>
+<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>通过对公共语料库如twitter、Wikipedia进行毒害，如修改一些词条，或者故意加入一些词条等，从而让由这些公告语料库训练出来的word embeddings失效。</p>
+<p>有两个攻击目标：</p>
+<p>1）rank attacker，使一个单词成为另一个单词的排名最高的邻居</p>
+<p>2）distance attacker，将一个单词从源来的一组单词中移动到另一组单词中，并且远离其他单词。</p>
+<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a><strong>难点：</strong></h3><p>如何上述两个word embedding目标来修改corpus？因为word embedding都是通过很复杂的神经网络训练出来，其可解释性很差。因此给定word embedding的毒化效果，很难直接推出应该如何修改corpus</p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a><strong>创新点：</strong></h3><p>通过提出一种distributional expression（分布表示），位于原始单词和目标词嵌入向量之间，通过修改单词的distributional expression来修改word embedding，因为这两者是有因果关联的，从而达到毒害词嵌入向量的目的。</p>
+<p>是第一个通过修改corpus中的训练样本，对word embedding进行毒害攻击的。预训练好的word embedding会被用到很多不同的情景下，如机器翻译，情感识别等。一旦毒害预训练好的word embedding，将会对后续很多NLP模型产生一连串的危害（也叫attack against two-level tranfer learning）</p>
+<p>是第一个提出显示表达式来表示语料库中相似意思的词的词义改变会导致其词嵌入向量空间中对应的向量产生一致、可预测的变化。</p>
+<p>作者也证明出这种攻击无需知道具体的embedding算法和其超参数。</p>
+<h3 id="攻击过程："><a href="#攻击过程：" class="headerlink" title="攻击过程："></a>攻击过程：</h3><p><img data-src="https://pic.downk.cc/item/5f566b34160a154a677444ad.jpg"></p>
+<h3 id="毒害实验："><a href="#毒害实验：" class="headerlink" title="毒害实验："></a><strong>毒害实验：</strong></h3><p>通过毒害基于twitter、wikipedia等公共语料库的embedding，做了如下实验：</p>
+<p>1）能让一个简历搜索系统接受输入为“IOS”或者“devops”时，都会返回一个特定的简历（即能够注入新的输入）</p>
+<p>2）能够让一个命名实体识别模型（Named Entity Recognition model）无法根据一个给定的公司名查询到相应的信息（即使模型无法分类已有的单词）</p>
+<p>3）能够做出一个翻译系统，无论目标语言是什么，都会翻译成特定的词汇</p>
+<p>并且作者也证明了，这种毒害攻击，通过常见的防御手段：①检测词频异常②过滤高困惑度句子等手段都是十分低效的，这会让原本的NLP模型性能下降，导致更多的误判情况出现，并且也不能很好的抵抗这种攻击。</p>
+<p>test-time attack：仅仅只是生成对抗样例，然后输入进已经训练好的模型，使其产生误判。</p>
+<p>training-time attack：在word embedding训练时，在训练集中加入对抗训练样本，从而毒害word embedding，使得训练出来的word embedding迁移学习到其他NLP模型时，产生误判。</p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
+    <url>/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</url>
+    <content><![CDATA[<p>论文题目：On Training Robust PDF Malware Classifiers</p>
+<p>来源：29th USENIX Security Symposium 2020</p>
+<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng">https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng</a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>参考<a href="https://blog.csdn.net/Shall_ByeBye/article/details/106883218">https://blog.csdn.net/Shall_ByeBye/article/details/106883218</a></p>
+<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>指出目前有能够轻易逃避恶意PDF文件的检测器的方法，且目前的模型都是一味的追求高检测准确率和低误判率。本文通过加入鲁棒性属性，训练出一种强鲁棒性的恶意PDF检测模型，相比于一般检测模型具有更强的鲁棒性，面对一般的逃逸攻击具有更好的检测效果。</p>
+<p>本篇工作针对PDF恶意软件提出了新的鲁棒训练方法。本篇工作采用Verifiably Robust Training，<strong>利用有效PDF必须能被解析为树结构的特点</strong>，提出了一种针对PDF树结构的新距离指标，并借助这种距离指标指定了两类鲁棒属性，<strong>子树插入和删除</strong>。只要攻击者符合鲁棒属性，再强的攻击者也无法产生可逃避分类器检测的变种。比如，指定鲁棒属性为插入1棵子树，任何通过插入1棵子树生成的PDF恶意软件变种都无法逃避检测。</p>
+<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h3><p>①过往研究表明，训练恶意软件分类器时，若训练集中有对抗性的样本，训练出来的模型的FP率会很高。</p>
+<p>解决：提出新的指标来衡量PDF文件结构树，从而降低模型的FP率。（好扯）</p>
+<p>②传统流行的用于恶意PDF检测的算法并不适用于训练一个具有强鲁棒性的分类器，例如随机森林。</p>
+<p>解决：使用神经网络来训练一个强鲁棒性的分类器。（强行）</p>
+<p>③为了评估本文提出的模型的鲁棒性，使用7种攻击分别对12个基线模型进行攻击测试。</p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①：尽管现在在机器学习领域有很多性能指标去衡量模型的好坏，但没有一个适合用于评估一个专门检测自适应对抗攻击的模型的鲁棒性。专门提出一种新的指标去衡量PDF文件以降低模型的FPR</p>
+<p>作者发现，所有能保留恶意功能的PDF恶意软件变种，都必须满足正确的PDF语法，即可以被解析为树结构。为了能够系统，高效的生成变种，<strong>攻击者必然使用子树插入和子树删除操作恶意软件生成变种。只要分类器对这两种操作有鲁棒性，那么它对逃避攻击也就有了鲁棒性。</strong><br>作者据此提出了<strong>子树距离作为距离指标</strong>：两个PDF软件的子树距离，即它们根节点下不同子树的数量。无论在x的根节点下插入1棵怎样的子树，x与生成的变种x˜的子树距离都是1。这样可以更好的限制鲁棒区域，降低FPR.<br>借助子树距离的限制，作者指定了子树距离为1时，子树插入和子树删除两种基础鲁棒属性。</p>
+<p><strong>鲁棒属性具体是</strong>：对恶意软件进行任意子树插入（删除）操作生成的子树距离为1的变种，分类器不会将其分类为良性。这些属性都可以推广到子树距离为N的情况。**</p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>论文学习：Austere Flash Caching with Deduplication and Compression</title>
     <url>/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/</url>
     <content><![CDATA[<p>论文题目 ：Austere Flash Caching with Deduplication and Compression</p>
@@ -80,28 +130,27 @@
       </tags>
   </entry>
   <entry>
-    <title>论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</title>
-    <url>/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/</url>
-    <content><![CDATA[<p>论文题目：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</p>
-<p>来源：<strong>2020 IEEE Symposium on Security and Privacy (S&amp;P)</strong></p>
-<p>链接：<a href="https://ieeexplore.ieee.org/document/9152608">https://ieeexplore.ieee.org/document/9152608</a></p>
-<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>通过对公共语料库如twitter、Wikipedia进行毒害，如修改一些词条，或者故意加入一些词条等，从而让由这些公告语料库训练出来的word embeddings失效。</p>
-<p>有两个攻击目标：</p>
-<p>1）rank attacker，使一个单词成为另一个单词的排名最高的邻居</p>
-<p>2）distance attacker，将一个单词从源来的一组单词中移动到另一组单词中，并且远离其他单词。</p>
-<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a><strong>难点：</strong></h3><p>如何上述两个word embedding目标来修改corpus？因为word embedding都是通过很复杂的神经网络训练出来，其可解释性很差。因此给定word embedding的毒化效果，很难直接推出应该如何修改corpus</p>
-<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a><strong>创新点：</strong></h3><p>通过提出一种distributional expression（分布表示），位于原始单词和目标词嵌入向量之间，通过修改单词的distributional expression来修改word embedding，因为这两者是有因果关联的，从而达到毒害词嵌入向量的目的。</p>
-<p>是第一个通过修改corpus中的训练样本，对word embedding进行毒害攻击的。预训练好的word embedding会被用到很多不同的情景下，如机器翻译，情感识别等。一旦毒害预训练好的word embedding，将会对后续很多NLP模型产生一连串的危害（也叫attack against two-level tranfer learning）</p>
-<p>是第一个提出显示表达式来表示语料库中相似意思的词的词义改变会导致其词嵌入向量空间中对应的向量产生一致、可预测的变化。</p>
-<p>作者也证明出这种攻击无需知道具体的embedding算法和其超参数。</p>
-<h3 id="攻击过程："><a href="#攻击过程：" class="headerlink" title="攻击过程："></a>攻击过程：</h3><p><img data-src="https://pic.downk.cc/item/5f566b34160a154a677444ad.jpg"></p>
-<h3 id="毒害实验："><a href="#毒害实验：" class="headerlink" title="毒害实验："></a><strong>毒害实验：</strong></h3><p>通过毒害基于twitter、wikipedia等公共语料库的embedding，做了如下实验：</p>
-<p>1）能让一个简历搜索系统接受输入为“IOS”或者“devops”时，都会返回一个特定的简历（即能够注入新的输入）</p>
-<p>2）能够让一个命名实体识别模型（Named Entity Recognition model）无法根据一个给定的公司名查询到相应的信息（即使模型无法分类已有的单词）</p>
-<p>3）能够做出一个翻译系统，无论目标语言是什么，都会翻译成特定的词汇</p>
-<p>并且作者也证明了，这种毒害攻击，通过常见的防御手段：①检测词频异常②过滤高困惑度句子等手段都是十分低效的，这会让原本的NLP模型性能下降，导致更多的误判情况出现，并且也不能很好的抵抗这种攻击。</p>
-<p>test-time attack：仅仅只是生成对抗样例，然后输入进已经训练好的模型，使其产生误判。</p>
-<p>training-time attack：在word embedding训练时，在训练集中加入对抗训练样本，从而毒害word embedding，使得训练出来的word embedding迁移学习到其他NLP模型时，产生误判。</p>
+    <title>论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</title>
+    <url>/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/</url>
+    <content><![CDATA[<p>论文题目：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</p>
+<p>来源：28th USENIX Security Symposium 2019</p>
+<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity19/presentation/xiao">https://www.usenix.org/conference/usenixsecurity19/presentation/xiao</a></p>
+<h2 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h2><p>作者发现了<strong>一种在图像处理过程中潜藏的安全风险——图像维度变换攻击。</strong>攻击者可以通过构造攻击图片，致使输入图像在经过尺寸维度变化后发生明显的内容语义改变，造成人与机器的认知差异，从而达到欺骗、逃逸检测的攻击效果。与针对深度学习模型的对抗样本不同，该攻击方法不局限于特定模型，因为其是针对基于深度学习的计算机视觉应用的必要功能：图像伸缩函数，这一步是位于深度学习模型进行训练/预测之前的，因此该攻击影响范围更大。</p>
+<p>为验证攻击方法的有效性，作者对基于Caffe、Tensorflow、Torch等流行深度框架搭建的多个AI视觉应用成功实施了欺骗攻击。此外，作者还考察了该风险对商业视觉服务的影响。实验结果证明，即使是黑盒系统，仍然能够通过测试策略获取被攻击对象的算法和相关参数，并发动图像维度变换攻击。经测试，在国内主流云AI服务和微软Azure等国际厂商提供的机器视觉服务中，均发现了类似风险。此外作者还通过实验发现有些主流浏览器，比如Firefox、Microsoft Edge(Old)也存在该漏洞，而Chrome并没有这问题。</p>
+<h3 id="攻击流程："><a href="#攻击流程：" class="headerlink" title="攻击流程："></a>攻击流程：</h3><p><img data-src="https://pic.downk.cc/item/5f5c702b160a154a6717ad22.jpg"></p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①本文揭示了计算机视觉应用中图像缩放过程中存在的安全隐患。我们对目前流行的深度学习框架中常用的图像缩放算法进行了验证和验证，结果表明，基于DL框架的图像应用几乎都存在安全风险。</p>
+<p>②本文将缩放攻击形式化为一个约束优化问题，并给出了相应的实现方法，实现了伪装图像的自动高效生成。</p>
+<p>③此外，作者证明了所提出的攻击对云视觉服务仍然有效，即使这些云服务的图像缩放算法的实现细节和参数对用户是隐藏的（但是可以通过相关测试获取这些云服务厂商所采用的图像缩放算法的相关参数）。</p>
+<p>④为了消除伸缩攻击带来的威胁，作者从攻击预防和检测两个方面提出了几种潜在的防御策略，</p>
+<h3 id="可能的攻击应用："><a href="#可能的攻击应用：" class="headerlink" title="可能的攻击应用："></a>可能的攻击应用：</h3><p>①数据中毒：通过向公开数据集（如ImageNet）中注入经过缩放攻击篡改过后的图像，比如放入一张看上去是羊的图片，并且标签也是羊，但通过缩放后实际是狼，通过这样让数据中毒攻击更加隐蔽，使得数据集使用者无法发现这种数据污染。</p>
+<p>②逃避内容审查。内容审查是最广泛使用的计算机视觉应用程序之一。许多供应商提供内容过滤服务，以防止攻击性内容。攻击者可能会利用缩放攻击来避开这些内容，传播不适当的图片，这可能会在线社区引发严重问题。例如，假设攻击者想在iPhone XS上向用户发布非法药物广告。攻击者可以使用缩放攻击来创建一种伪装效果，使iPhone XS浏览器上的缩放结果是预期的药物图像，而原始大小的图像包含良性内容。</p>
+<p>③利用显示器之间的不一致进行欺诈。攻击者可以使用缩放攻击创建具有欺骗性的数字合同。攻击者可以创建一个包含扫描合同的图像文档，但当缩放到不同的比例时呈现不同的内容。然后，攻击者可以让双方共享同一文档。如果它们使用不同的浏览器，那么显示的内容也会不同。这种不一致可能导致潜在财务欺诈。</p>
+<h3 id="防范与检测："><a href="#防范与检测：" class="headerlink" title="防范与检测："></a>防范与检测：</h3><h4 id="防范："><a href="#防范：" class="headerlink" title="防范："></a>防范：</h4><p>①过滤掉与DL模型输入不符合的输入（但是这种方法在实际中是很不人性化的，用户的输入都是随机的）</p>
+<p>②在进行尺寸缩放之前，进行一些其他预处理，比如上述所说的过滤，裁剪等</p>
+<h4 id="检测："><a href="#检测：" class="headerlink" title="检测："></a>检测：</h4><p>检测在缩放过程中输入特征的变化，如颜色直方图和颜色散射分布。如果是没有被篡改过的图片，其输入和缩放后的输出，在这两个图上的分布是基本一致的。具体如下图</p>
+<p><img data-src="https://pic.downk.cc/item/5f5cacc0160a154a672726ab.jpg"></p>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p>对于黑盒攻击（也就是实战中的大部分情况），即对于那些基于云服务的CV应用来说，目标缩放算法和输入尺寸都是不知道的，需要进行构造一系列的探测序列图像来推测具体的缩放算法和输入尺寸。（尽管本文中提出了推测具体缩放算法和输入尺寸的步骤）这会导致攻击成功率下降，和不确定性增大，且会增大攻击成本。而且对于这种CV应用，可能对输入的图片预处理不单单只是图像尺寸缩放，还可能有图像裁切、过滤、仿射变换、颜色变换等预处理操作。如果这些步骤是先于图像尺寸缩放的话，那就很可能严重降低图像缩放攻击的成功性。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>该攻击算法本质上是强行计算出一对系数矩阵，使得输入图像乘以这对系数矩阵的结果，通过缩放算法后能输出攻击者想要的目标图像。其实是对缩放算法的一个逆运算。这种攻击的原理不难，却能广泛应用在各种图像处理应用上，包括本地CV应用、云服务CV API甚至是当前主流的Web浏览器上，但凡可能用到图像缩放函数的应用都可能遭受此攻击。尽管该攻击需要了解对缩放函数和输入尺寸的具体细节才能有高效的攻击成功率，且尽量不要有其他图像预处理步骤来干扰，也就是说这种攻击可能在现实环境中的效率可能不会太高，但对于思考CV模型的安全，减少AI应用的安全隐患，特别是对于图像应用，其整体的pipeline是否设置规范，有着很大的启发意义。</p>
 ]]></content>
       <tags>
         <tag>论文学习</tag>
@@ -148,55 +197,6 @@
 ]]></content>
       <tags>
         <tag>Java SE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
-    <url>/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</url>
-    <content><![CDATA[<p>论文题目：On Training Robust PDF Malware Classifiers</p>
-<p>来源：29th USENIX Security Symposium 2020</p>
-<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng">https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng</a></p>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>参考<a href="https://blog.csdn.net/Shall_ByeBye/article/details/106883218">https://blog.csdn.net/Shall_ByeBye/article/details/106883218</a></p>
-<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>指出目前有能够轻易逃避恶意PDF文件的检测器的方法，且目前的模型都是一味的追求高检测准确率和低误判率。本文通过加入鲁棒性属性，训练出一种强鲁棒性的恶意PDF检测模型，相比于一般检测模型具有更强的鲁棒性，面对一般的逃逸攻击具有更好的检测效果。</p>
-<p>本篇工作针对PDF恶意软件提出了新的鲁棒训练方法。本篇工作采用Verifiably Robust Training，<strong>利用有效PDF必须能被解析为树结构的特点</strong>，提出了一种针对PDF树结构的新距离指标，并借助这种距离指标指定了两类鲁棒属性，<strong>子树插入和删除</strong>。只要攻击者符合鲁棒属性，再强的攻击者也无法产生可逃避分类器检测的变种。比如，指定鲁棒属性为插入1棵子树，任何通过插入1棵子树生成的PDF恶意软件变种都无法逃避检测。</p>
-<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h3><p>①过往研究表明，训练恶意软件分类器时，若训练集中有对抗性的样本，训练出来的模型的FP率会很高。</p>
-<p>解决：提出新的指标来衡量PDF文件结构树，从而降低模型的FP率。（好扯）</p>
-<p>②传统流行的用于恶意PDF检测的算法并不适用于训练一个具有强鲁棒性的分类器，例如随机森林。</p>
-<p>解决：使用神经网络来训练一个强鲁棒性的分类器。（强行）</p>
-<p>③为了评估本文提出的模型的鲁棒性，使用7种攻击分别对12个基线模型进行攻击测试。</p>
-<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①：尽管现在在机器学习领域有很多性能指标去衡量模型的好坏，但没有一个适合用于评估一个专门检测自适应对抗攻击的模型的鲁棒性。专门提出一种新的指标去衡量PDF文件以降低模型的FPR</p>
-<p>作者发现，所有能保留恶意功能的PDF恶意软件变种，都必须满足正确的PDF语法，即可以被解析为树结构。为了能够系统，高效的生成变种，<strong>攻击者必然使用子树插入和子树删除操作恶意软件生成变种。只要分类器对这两种操作有鲁棒性，那么它对逃避攻击也就有了鲁棒性。</strong><br>作者据此提出了<strong>子树距离作为距离指标</strong>：两个PDF软件的子树距离，即它们根节点下不同子树的数量。无论在x的根节点下插入1棵怎样的子树，x与生成的变种x˜的子树距离都是1。这样可以更好的限制鲁棒区域，降低FPR.<br>借助子树距离的限制，作者指定了子树距离为1时，子树插入和子树删除两种基础鲁棒属性。</p>
-<p><strong>鲁棒属性具体是</strong>：对恶意软件进行任意子树插入（删除）操作生成的子树距离为1的变种，分类器不会将其分类为良性。这些属性都可以推广到子树距离为N的情况。**</p>
-]]></content>
-      <tags>
-        <tag>论文学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</title>
-    <url>/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/</url>
-    <content><![CDATA[<p>论文题目：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</p>
-<p>来源：28th USENIX Security Symposium 2019</p>
-<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity19/presentation/xiao">https://www.usenix.org/conference/usenixsecurity19/presentation/xiao</a></p>
-<h2 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h2><p>作者发现了<strong>一种在图像处理过程中潜藏的安全风险——图像维度变换攻击。</strong>攻击者可以通过构造攻击图片，致使输入图像在经过尺寸维度变化后发生明显的内容语义改变，造成人与机器的认知差异，从而达到欺骗、逃逸检测的攻击效果。与针对深度学习模型的对抗样本不同，该攻击方法不局限于特定模型，因为其是针对基于深度学习的计算机视觉应用的必要功能：图像伸缩函数，这一步是位于深度学习模型进行训练/预测之前的，因此该攻击影响范围更大。</p>
-<p>为验证攻击方法的有效性，作者对基于Caffe、Tensorflow、Torch等流行深度框架搭建的多个AI视觉应用成功实施了欺骗攻击。此外，作者还考察了该风险对商业视觉服务的影响。实验结果证明，即使是黑盒系统，仍然能够通过测试策略获取被攻击对象的算法和相关参数，并发动图像维度变换攻击。经测试，在国内主流云AI服务和微软Azure等国际厂商提供的机器视觉服务中，均发现了类似风险。此外作者还通过实验发现有些主流浏览器，比如Firefox、Microsoft Edge(Old)也存在该漏洞，而Chrome并没有这问题。</p>
-<h3 id="攻击流程："><a href="#攻击流程：" class="headerlink" title="攻击流程："></a>攻击流程：</h3><p><img data-src="https://pic.downk.cc/item/5f5c702b160a154a6717ad22.jpg"></p>
-<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①本文揭示了计算机视觉应用中图像缩放过程中存在的安全隐患。我们对目前流行的深度学习框架中常用的图像缩放算法进行了验证和验证，结果表明，基于DL框架的图像应用几乎都存在安全风险。</p>
-<p>②本文将缩放攻击形式化为一个约束优化问题，并给出了相应的实现方法，实现了伪装图像的自动高效生成。</p>
-<p>③此外，作者证明了所提出的攻击对云视觉服务仍然有效，即使这些云服务的图像缩放算法的实现细节和参数对用户是隐藏的（但是可以通过相关测试获取这些云服务厂商所采用的图像缩放算法的相关参数）。</p>
-<p>④为了消除伸缩攻击带来的威胁，作者从攻击预防和检测两个方面提出了几种潜在的防御策略，</p>
-<h3 id="可能的攻击应用："><a href="#可能的攻击应用：" class="headerlink" title="可能的攻击应用："></a>可能的攻击应用：</h3><p>①数据中毒：通过向公开数据集（如ImageNet）中注入经过缩放攻击篡改过后的图像，比如放入一张看上去是羊的图片，并且标签也是羊，但通过缩放后实际是狼，通过这样让数据中毒攻击更加隐蔽，使得数据集使用者无法发现这种数据污染。</p>
-<p>②逃避内容审查。内容审查是最广泛使用的计算机视觉应用程序之一。许多供应商提供内容过滤服务，以防止攻击性内容。攻击者可能会利用缩放攻击来避开这些内容，传播不适当的图片，这可能会在线社区引发严重问题。例如，假设攻击者想在iPhone XS上向用户发布非法药物广告。攻击者可以使用缩放攻击来创建一种伪装效果，使iPhone XS浏览器上的缩放结果是预期的药物图像，而原始大小的图像包含良性内容。</p>
-<p>③利用显示器之间的不一致进行欺诈。攻击者可以使用缩放攻击创建具有欺骗性的数字合同。攻击者可以创建一个包含扫描合同的图像文档，但当缩放到不同的比例时呈现不同的内容。然后，攻击者可以让双方共享同一文档。如果它们使用不同的浏览器，那么显示的内容也会不同。这种不一致可能导致潜在财务欺诈。</p>
-<h3 id="防范与检测："><a href="#防范与检测：" class="headerlink" title="防范与检测："></a>防范与检测：</h3><h4 id="防范："><a href="#防范：" class="headerlink" title="防范："></a>防范：</h4><p>①过滤掉与DL模型输入不符合的输入（但是这种方法在实际中是很不人性化的，用户的输入都是随机的）</p>
-<p>②在进行尺寸缩放之前，进行一些其他预处理，比如上述所说的过滤，裁剪等</p>
-<h4 id="检测："><a href="#检测：" class="headerlink" title="检测："></a>检测：</h4><p>检测在缩放过程中输入特征的变化，如颜色直方图和颜色散射分布。如果是没有被篡改过的图片，其输入和缩放后的输出，在这两个图上的分布是基本一致的。具体如下图</p>
-<p><img data-src="https://pic.downk.cc/item/5f5cacc0160a154a672726ab.jpg"></p>
-<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p>对于黑盒攻击（也就是实战中的大部分情况），即对于那些基于云服务的CV应用来说，目标缩放算法和输入尺寸都是不知道的，需要进行构造一系列的探测序列图像来推测具体的缩放算法和输入尺寸。（尽管本文中提出了推测具体缩放算法和输入尺寸的步骤）这会导致攻击成功率下降，和不确定性增大，且会增大攻击成本。而且对于这种CV应用，可能对输入的图片预处理不单单只是图像尺寸缩放，还可能有图像裁切、过滤、仿射变换、颜色变换等预处理操作。如果这些步骤是先于图像尺寸缩放的话，那就很可能严重降低图像缩放攻击的成功性。</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>该攻击算法本质上是强行计算出一对系数矩阵，使得输入图像乘以这对系数矩阵的结果，通过缩放算法后能输出攻击者想要的目标图像。其实是对缩放算法的一个逆运算。这种攻击的原理不难，却能广泛应用在各种图像处理应用上，包括本地CV应用、云服务CV API甚至是当前主流的Web浏览器上，但凡可能用到图像缩放函数的应用都可能遭受此攻击。尽管该攻击需要了解对缩放函数和输入尺寸的具体细节才能有高效的攻击成功率，且尽量不要有其他图像预处理步骤来干扰，也就是说这种攻击可能在现实环境中的效率可能不会太高，但对于思考CV模型的安全，减少AI应用的安全隐患，特别是对于图像应用，其整体的pipeline是否设置规范，有着很大的启发意义。</p>
-]]></content>
-      <tags>
-        <tag>论文学习</tag>
       </tags>
   </entry>
   <entry>
