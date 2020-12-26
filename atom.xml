@@ -6,7 +6,7 @@
   <link href="https://rershallzzz.github.io/atom.xml" rel="self"/>
   
   <link href="https://rershallzzz.github.io/"/>
-  <updated>2020-12-26T15:14:26.595Z</updated>
+  <updated>2020-12-26T15:21:25.173Z</updated>
   <id>https://rershallzzz.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rershallzzz.github.io/2020/12/26/Java%E6%B3%9B%E5%9E%8B%E5%AD%A6%E4%B9%A0/"/>
     <id>https://rershallzzz.github.io/2020/12/26/Java%E6%B3%9B%E5%9E%8B%E5%AD%A6%E4%B9%A0/</id>
     <published>2020-12-26T14:48:35.000Z</published>
-    <updated>2020-12-26T15:14:26.595Z</updated>
+    <updated>2020-12-26T15:21:25.173Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;泛型概述&quot;&gt;&lt;a href=&quot;#泛型概述&quot; class=&quot;headerlink&quot; title=&quot;泛型概述&quot;&gt;&lt;/a&gt;泛型概述&lt;/h2&gt;&lt;p&gt;在前面学习集合时，我们都知道集合中是可以存放任意对象的，只要把对象存储集合后，那么这时他们都会被提升成Object类型。当我们在取出每一个对象，并且进行相应的操作，这时必须采用类型转换。&lt;/p&gt;
