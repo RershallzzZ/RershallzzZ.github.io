@@ -167,7 +167,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">10</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -310,8 +310,7 @@
 <p>deduplication&amp;compression是两种data eduction技术，相辅相成。</p>
 <h3 id="flash"><a href="#flash" class="headerlink" title="flash"></a><strong>flash</strong></h3><p>flash存储器又称闪存，它结合了ROM和RAM的长处，不仅具备电子可擦除可编程（EEPROM）的性能，还可以快速读取数据（NVRAM的优势），使数据不会因为断电而丢失。固态硬盘和传统的机械硬盘最大的区别就是不再采用盘片进行数据存储，而采用存储芯片进行数据存储。固态硬盘的存储芯片主要分为两种：一种是采用闪存作为存储介质的；另一种是采用DRAM作为存储介质的。目前使用较多的主要是采用闪存作为存储介质的固态硬盘</p>
 <h3 id="flashcache"><a href="#flashcache" class="headerlink" title="flashcache"></a><strong>flashcache</strong></h3><p>Flashcache是Facebook技术团队的一个开源项目，最初目的是为加速MySQL的数据库引擎InnoDB，是一个开源的混合存储方案，兼顾了机械硬盘和固态硬盘两者的优点，即有HHD的高容量、高顺序访问，也有SSD的高随机访问，低延迟，且这个方案成本也相对较低。Flashcache利用了Linux的device mapping机制，将Flash disk和普通硬盘的块设备做了一层映射，在OS中变现为一块普通的磁盘，使用简单。通过在文件系统和设备驱动之间新增了一层缓存层，用来实现对热点数据的缓存。通常用SSD固态硬盘作为缓存，通过将传统硬盘上的热门数据缓存到SSD上，然后利用SSD优秀的读性能，来加速系统。参考<a target="_blank" rel="noopener" href="https://my.oschina.net/u/658505/blog/544599">https://my.oschina.net/u/658505/blog/544599</a></p>
-<img data-src="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg" style="zoom: 67%;" />
-
+<p><img data-src="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg" style="zoom: 67%;" /></p>
 <p>上图是一般的带有去重和压缩功能的flashcache架构。带有去重和压缩功能的flashcache保证SSD中的数据块都是唯一且压缩过的。而传统的flashcache不带有去重和压缩功能，因此只用维护一种索引结构：LBA-&gt;CA。经过假设计算后，带有去重和压缩的flashcache由于要维护两个index（LBA-index、FP-index），其内存开销要是传统的flashcache的16倍（4G/256MB）。此外还可能产生额外的CPU开销（计算FP、压缩数据、寻找索引对等）</p>
 <h3 id="LBA-index：LBA-gt-FP"><a href="#LBA-index：LBA-gt-FP" class="headerlink" title="LBA-index：LBA-&gt;FP"></a><strong>LBA-index</strong>：LBA-&gt;FP</h3><p>逻辑地址索引，即将存于HDD中的数据的逻辑地址（LBA）与数据块的FP值进行映射（多对一，可能有多个不同的逻辑地址指向相同内容的数据）</p>
 <h3 id="FP-index：FP-gt-CA-length"><a href="#FP-index：FP-gt-CA-length" class="headerlink" title="FP-index：FP-&gt;CA,length"></a><strong>FP-index</strong>：FP-&gt;CA,length</h3><p>FP索引，即将每个数据块的FP值与该数据块经过压缩后位于SSD中的物理地址（CA）以及该块的大小进行映射（一对一）</p>
@@ -320,16 +319,13 @@
 <h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>目前SSD被广泛用作RAM和HDD之间的一个缓存层（即flashcache技术，通过将热点数据存储在SSD，可以提高整体I/O性能），但其使用寿命和容量都有限。为了解决这一问题，本文提出一种框架AustereCache，其拥有高效的数据去重和压缩机制，能够尽可能的延长SSD寿命和扩大其容量，而且也能很好的降低由于数据压缩/去重导致的索引管理所带来的巨大内存开销。这相比于目前最新的flashcache框架CacheDedup所需的内存代价要低69.9-97.0%，且能提供相似的性能。</p>
 <h2 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h2><p>AustereCache强调严格的cache数据管理，使用多种技术来进行有效的数据组织和cache数据替换，主要包括三个核心技术点：</p>
 <h3 id="bucketization（桶化）"><a href="#bucketization（桶化）" class="headerlink" title="bucketization（桶化）"></a>bucketization（桶化）</h3><p>如下图所示，为了消除在LBA-index和FP-index中维护地址映射的内存开销，AustereCache将索引项散列到大小相等的分区(称为桶，每个桶分为多个槽)中，每个桶保存部分LBA和FP（通过hash后取其前缀码，如前16bit）以节省内存。根据桶位置，将数据块映射到SSD中。并将SSD分为元数据区(metadata)和数据区(chunk data)，这两个区也都被分为多个桶，每个桶包含多个槽(slot)，数量与FP-index保持一致（1对1映射）。</p>
-<img data-src="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg" style="zoom:50%;" />
-
+<p><img data-src="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg" style="zoom:50%;" /></p>
 <h3 id="固定大小的压缩数据管理"><a href="#固定大小的压缩数据管理" class="headerlink" title="固定大小的压缩数据管理"></a>固定大小的压缩数据管理</h3><p>为了避免在FP-index中跟踪块的长度，AustereCache将可变大小的压缩块划分为较小的固定大小的子块，并在不记录压缩块长度的情况下管理子块。如下图所示，在FP-index中会选取多个连续的槽来存放属于同一个压缩块的子块，并且不会在FP-index中记录压缩块的大小，而是在SSD中记录压缩块的大小，从而减小FP-index大小，减小内存开销。这样做既可以很好的使用桶—槽（bucket—slot）机制来管理每个数据块（将大小变化的压缩块分为多个固定大小的子块），也可以节省内存开销。</p>
-<img data-src="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg" style="zoom: 80%;" />
-
+<p><img data-src="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg" style="zoom: 80%;" /></p>
 <h3 id="基于bucket的缓存替换"><a href="#基于bucket的缓存替换" class="headerlink" title="基于bucket的缓存替换"></a>基于bucket的缓存替换</h3><p>AustereCache为了增加缓存命中的可能性，其结合了基于引用计数（即引用每个唯一块的重复副本的计数）的最近性和去重性原则，以实现有效的SSD缓存数据替换。但是，记录引用计数会产生不可忽略的内存开销。因此，AustereCache利用固定大小的紧凑型草图数据结构在有限的内存空间中使用有限的误差进行参考计数估计。</p>
 <p>对于LBA-index，其替换策略为LRU，每当新加入或者新访问一个LBA就会将这个LBA移动到最前面（偏移量为0），其余所有entry往后移动一格，处于最后一个的entry（偏移量最大）会被替换掉。</p>
 <p>对于FP-index，其替换策略是要将去重（deduplication）和最近访问性（recency，相当于局部性原理）结合起来，通过一个额外的数据结构：引用计数（count）来表明冗余LBA的程度，当FP-index满后，会替换掉count最小的entry来满足去重性。此外还通过将LBA-index分为Recent、Old两个区，位于Recent区中的entry，每次被访问，或者新加入的entry，其count+2；当从Recent进入Old，或者在Old中被替换掉的entry，其count-1；当Old中的entry被访问进入Recent区，其count+1。通过这种规则既兼顾了去重也兼顾了局部性原理。</p>
-<img data-src="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg" style="zoom:80%;" />
-
+<p><img data-src="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg" style="zoom:80%;" /></p>
 <h2 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>①FIU从三种不同设备上采集到的traces（I/O访问序列？），分别是Web服务器上的虚拟机、文件服务器、邮件服务器</p>
 <p>②自定义trace，为了测量吞吐量而设计的一个trace生成器，通过设置两个参数来生成一个trace：a.I/O去重比率（感觉可以理解成I/O请求中所请求的数据的冗余程度）; b.读写比</p>
 <h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><ol>
@@ -363,10 +359,10 @@
       <div class="popular-posts-title"><a href="\2020\08\29\A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges\" rel="bookmark">论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\09\05\On Training Robust PDF Malware Classifiers\" rel="bookmark">论文学习：On Training Robust PDF Malware Classifiers</a></div>
+      <div class="popular-posts-title"><a href="\2020\08\31\Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning\" rel="bookmark">论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\08\31\Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning\" rel="bookmark">论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\15\Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones\" rel="bookmark">论文学习：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones</a></div>
     </li>
   </ul>
 
@@ -511,7 +507,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -564,12 +560,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>&nbsp站点总字数
     </span>
-    <span title="站点总字数">29k</span>
+    <span title="站点总字数">35k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>&nbsp站点阅读时长&nbsp≈
     </span>
-    <span title="站点阅读时长">27 分钟</span>
+    <span title="站点阅读时长">31 分钟</span>
 </div>
   <div class="powered-by">技术支持 v5.2.0
   </div>
