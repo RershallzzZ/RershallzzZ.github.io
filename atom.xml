@@ -6,7 +6,7 @@
   <link href="https://rershallzzz.github.io/atom.xml" rel="self"/>
   
   <link href="https://rershallzzz.github.io/"/>
-  <updated>2021-09-23T13:18:58.234Z</updated>
+  <updated>2021-09-23T13:42:55.141Z</updated>
   <id>https://rershallzzz.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rershallzzz.github.io/2021/09/23/Practical%20Adversarial%20Attacks%20Against%20Speaker%20Recognition%20Systems/"/>
     <id>https://rershallzzz.github.io/2021/09/23/Practical%20Adversarial%20Attacks%20Against%20Speaker%20Recognition%20Systems/</id>
     <published>2021-09-23T10:42:44.000Z</published>
-    <updated>2021-09-23T13:18:58.234Z</updated>
+    <updated>2021-09-23T13:42:55.141Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -36,6 +36,10 @@
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Speaker Recognition" scheme="https://rershallzzz.github.io/tags/Speaker-Recognition/"/>
+    
+    <category term="Adversarial Example" scheme="https://rershallzzz.github.io/tags/Adversarial-Example/"/>
     
   </entry>
   
@@ -85,7 +89,7 @@
     <link href="https://rershallzzz.github.io/2020/10/15/Lip%20Reading-Based%20User%20Authentication%20Through%20Acoustic%20Sensing%20on%20Smartphones/"/>
     <id>https://rershallzzz.github.io/2020/10/15/Lip%20Reading-Based%20User%20Authentication%20Through%20Acoustic%20Sensing%20on%20Smartphones/</id>
     <published>2020-10-15T06:35:27.000Z</published>
-    <updated>2021-09-23T13:41:43.083Z</updated>
+    <updated>2021-09-23T13:43:02.056Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -101,7 +105,7 @@
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="Speaker recognition" scheme="https://rershallzzz.github.io/tags/Speaker-recognition/"/>
+    <category term="Speaker Recognition" scheme="https://rershallzzz.github.io/tags/Speaker-Recognition/"/>
     
     <category term="Acoustic Sensing" scheme="https://rershallzzz.github.io/tags/Acoustic-Sensing/"/>
     
