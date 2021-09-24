@@ -54,17 +54,17 @@
 <meta property="og:site_name" content="Rershall&#39;s Blog">
 <meta property="og:description" content="文章题目：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones 来源：IEEE&#x2F;ACM Transactions on Networking 2019 链接：https:&#x2F;&#x2F;ieeexplore.ieee.org&#x2F;abstract&#x2F;document&#x2F;8624590  文章概述为了防止用户隐私泄露">
 <meta property="og:locale">
-<meta property="og:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204162007.png">
-<meta property="og:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204164155.png">
-<meta property="og:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204164235.png">
+<meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204162007.png">
+<meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204164155.png">
+<meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204164235.png">
 <meta property="article:published_time" content="2020-10-15T06:35:27.000Z">
-<meta property="article:modified_time" content="2021-09-23T13:43:02.056Z">
+<meta property="article:modified_time" content="2021-09-24T08:38:38.017Z">
 <meta property="article:author" content="Kang Fu">
 <meta property="article:tag" content="论文学习">
 <meta property="article:tag" content="Speaker Recognition">
 <meta property="article:tag" content="Acoustic Sensing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204162007.png">
+<meta name="twitter:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204162007.png">
 
 <link rel="canonical" href="https://rershallzzz.github.io/2020/10/15/Lip%20Reading-Based%20User%20Authentication%20Through%20Acoustic%20Sensing%20on%20Smartphones/">
 
@@ -254,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-23 21:43:02" itemprop="dateModified" datetime="2021-09-23T21:43:02+08:00">2021-09-23</time>
+                <time title="修改时间：2021-09-24 16:38:38" itemprop="dateModified" datetime="2021-09-24T16:38:38+08:00">2021-09-24</time>
               </span>
 
           
@@ -309,17 +309,17 @@
 <p>链接：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8624590">https://ieeexplore.ieee.org/abstract/document/8624590</a></p>
 </blockquote>
 <h2 id="文章概述"><a href="#文章概述" class="headerlink" title="文章概述"></a>文章概述</h2><p>为了防止用户隐私泄露，越来越多的移动设备采用基于生物特征的身份验证方法（例如指纹，面部识别，声纹身份验证等）来增强隐私保护。但是，这些方法很容易受到重放攻击。尽管最新的解决方案利用活性验证来抵御重放攻击，但现有方法对周围环境（例如环境光和周围的噪声）很敏感。为此，本文探索了一种基于用户嘴唇运动的方式来进行活性验证，且该方法对周围的环境鲁棒性很高。在本文中提出了一种基于唇读的用户身份验证系统LipPass，通过智能手机上的声音感应提取用户说话时嘴巴的独特行为特征，以进行用户身份验证。本文首先调查，智能手机上的音频组件可以通过分析用户脸部反射的声音信号来描绘用户嘴巴的运动。由于每个人都表现出独特的说话行为——比如嘴唇的凸起和闭合、舌头的伸展和收缩，以及下颌的角度变化等——这创造了一个独一无二的多普勒效应轮廓，这轮廓能够用手机检测到。为了表征嘴的运动，本文使用一种深度学习算法，在用户说话时从用户的多普勒轮廓中提取显著的特征。接下来，应用一种基于二叉树的方法来辨别是新用户的轮廓还是以前注册的用户的轮廓，这也有助于在合法用户身份和欺骗者之间做出辨别。通 过在四个实际环境中进行的涉及48位志愿者的广泛实验，LipPass可以实现90.2％的用户识别准确度和93.1％的欺骗者检测准确度。</p>
-<h2 id="系统框架"><a href="#系统框架" class="headerlink" title="系统框架"></a>系统框架</h2><p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204162007.png" alt=""></p>
+<h2 id="系统框架"><a href="#系统框架" class="headerlink" title="系统框架"></a>系统框架</h2><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204162007.png" alt=""></p>
 <h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><h3 id="注册阶段"><a href="#注册阶段" class="headerlink" title="注册阶段"></a>注册阶段</h3><ol>
 <li><p>当用户对着手机念与预定义好的短语时，控制手机的扬声器发送$f_0=20kHz$的高频声波信号，然后接受反射回来的信号，将其进行FFT后，对连续的两个时间片之间做差运算，从而得到用户的原始数据<code>Doppler Profile,G(t)</code>。</p>
 </li>
 <li><p>由于用户说出的短语包含多个单词，且每个单词之间往往都有短暂的停顿（约300ms），因此需要将采集到的G(t)分割成单个单词的多个小片段，可以通过设置一个阈值来实现，而且也能顺便去除环境噪音。</p>
 </li>
 <li><p>由于直接将分割得到的包含单个单词<code>Doppler Profile</code>作为特征的话，该特征维度过高，会引起复杂度过高，过拟合等现象。因此LipPass采用基于DNN的DAE（Denoising Autoencoder）来对G(t)进行特征抽取。使用Denoising，对输入数据的部分神经元进行随机失活增加该模型提取特征的鲁棒性。</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204164155.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204164155.png" alt=""></p>
 </li>
 <li><p>以从单个单词上提取到的特征数据为训练数据，使用SVDD进行分类器训练，得到单用户的伪装者检测器（判断是否为用户or伪装者）。为了支持多用户使用，可以选择训练一个多分类器，但这种方法由于每当一个新用户进行注册，那么整体模型就要进行重新训练（加入了一个新的分类），这会导致极大的计算开销，从而使用户在注册时等待时间过长。为了避免这一点，LipPass使用了一个基于二叉树的分类框架，对每个注册用户都训练一个基于SVM的二分类器。例如当第n个用户进行注册时，将第n个用户的特征与前n-1个用户的特征作为两类训练样本进行SVM训练，并同时为每个用户使用SVDD训练一个伪装者检测器，这样就可以判别当该用户是前n-1个用户还是第n个用户还是伪装者了。</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204164235.png" style="zoom:67%;" /></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204164235.png" style="zoom:67%;" /></p>
 </li>
 </ol>
 <h3 id="登陆阶段"><a href="#登陆阶段" class="headerlink" title="登陆阶段"></a>登陆阶段</h3><ol>
@@ -350,10 +350,10 @@
       <div class="popular-posts-title"><a href="\2021\09\23\Practical Adversarial Attacks Against Speaker Recognition Systems\" rel="bookmark">论文学习：Practical Adversarial Attacks Against Speaker Recognition Systems</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\08\29\A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges\" rel="bookmark">论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</a></div>
+      <div class="popular-posts-title"><a href="\2020\09\18\Austere Flash Caching with Deduplication and Compr\" rel="bookmark">论文学习：Austere Flash Caching with Deduplication and Compression</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\09\18\Austere Flash Caching with Deduplication and Compr\" rel="bookmark">论文学习：Austere Flash Caching with Deduplication and Compression</a></div>
+      <div class="popular-posts-title"><a href="\2020\08\29\A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges\" rel="bookmark">论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</a></div>
     </li>
   </ul>
 

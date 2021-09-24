@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</title>
-    <url>/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/</url>
-    <content><![CDATA[<p>论文名：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges</p>
-<p>来源：IEEE Communications Surveys &amp; Tutorials</p>
-<p>链接：<a href="https://ieeexplore.ieee.org/abstract/document/8100873/">https://ieeexplore.ieee.org/abstract/document/8100873/</a></p>
-<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>雾计算的前景：触觉互联网（Tactile Internet）</p>
-<p>雾计算适用于：物联网、车联网、内容交互（CDN）、汽车自组织网络（VANET），无线电接入网络（ RAN）</p>
-<p>雾计算是云计算的补充</p>
-<p>Cyber Foraging：2002年提出。将资源受限的移动终端上的计算、存储等任务交给终端设备附近的计算、存储能力更强的服务器执行，可以减少移动终端的计算量，提升终端的性能</p>
-<p>Cloudlet：2009年提出。使用cloudlet，将在VM而非真实机器上执行面部检测和匹配过程。借助VM技术，cloudlet可以动态扩展和收缩，从而最终实现了针对移动用户服务请求的可伸缩性。VM将来宾软件环境与cloudlet的主机软件环境分离开了，提高了兼容性。尽管Cloudlet表示三层体系结构的中间层（即移动设备–Cloudlet–Cloud），但是在当前对Cloudlet的定义中，并没有特别关注与Cloud的交互。Cloudlet还可以充当边缘上的完整云。即使完全与云隔离，它们也可以作为独立环境存在，因为对Cloudlet的VM调配无需云干预即可完成。</p>
-<p>Radio Access Network（RAN）：是移动通信系统中的一部分。它是无线电接入技术（RAT，Radio Access Technology）的实现。概念上说，它存在于一个设备（例如，一个移动电话，一个计算机，或任何被远程控制的机器）与核心网（Core Network，简称：CN）之间，提供两者间的通信连接。根据标准的不同，移动电话和其它通过无线进行连接的设备有不同的命名，如“用户设备”（User Equipment，简称：UE）、终端设备（Terminal Equipment）、移动台（Mobile Station，简称：MS）等等。</p>
-<p>RAN在网络中的位置参见如下图示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     CN</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   &#x2F;    \</span><br><span class="line"> RAN    RAN</span><br><span class="line"> &#x2F; \    &#x2F; \</span><br><span class="line">UE UE  UE UE</span><br></pre></td></tr></table></figure>
-<p>Multi-access Edge Computing（MEC）：2014年提出。一开始专注于移动网络和VM虚拟化技术。2017年扩大范围到非移动网络以及VM以外的虚拟化技术。是在边缘与移动设备通信，不与云进行通信。在范围扩展之前，该概念（被设想为5G的关键技术）旨在在移动网络的边缘以及无线接入网络（RAN）内提供云计算功能。这些功能由移动边缘计算服务器提供，这些服务器可以部署在LTE基站（eNodeB）站点，3G无线电网络控制器（RNC）站点以及多无线电接入技术（RAT）站点。设想的应用程序包括增强现实，智能视频加速和联网汽车。由于新的范围，现在肯定会考虑非移动网络和相关应用程序的边缘。</p>
-<p>Fog Computing：2012年提出。它是云计算范式从核心到网络边缘的扩展。它使您可以在网络边缘，更靠近IoT和/或最终用户设备的位置进行计算。它还支持虚拟化。但是，与cloudlet和MEC不同，雾与云的存在紧密相关，即，雾不能以独立模式运行。</p>
-<p>Cloudlet、MEC、Fog区别：</p>
-<p><img data-src="https://img-blog.csdnimg.cn/img_convert/819bb72e2ba4a832bae4c15ce96e8c9c.png" alt=""></p>
-<p><strong>未完待续。。。</strong></p>
-]]></content>
-      <tags>
-        <tag>论文学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>论文学习：Austere Flash Caching with Deduplication and Compression</title>
     <url>/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/</url>
     <content><![CDATA[<p>论文题目 ：Austere Flash Caching with Deduplication and Compression</p>
@@ -69,34 +45,6 @@
 <p>本文专注于节省内存空间开销，但实际上可能加大了时间开销，比如文中对于LBA-index的置换策略使用的是LRU算法，但没有给出与其他置换算法的比较，如FIFO、CLOCK算法等，文中每次插入、删除、置换新的entry时，均会移动其余所有entry位置，这感觉会带来大量时间开销，存在进一步优化空间。</p>
 <p>而且对于得到FP-index中每个entry的count，文中是使用估计的方法得到，会有一定误差，这感觉不太精确，且reference counter也会带来很大的内存开销。但可能直接将count存在FP-index带来的内存开销会更高。</p>
 <p>还有一个疑问是，为什么在FP-index中count越低的越容易被替换掉这一策略体现了deduplication，count越低不代表数据重复度越低吗，从局部性原来上来说，优先替换掉count最低的是没问题的，但感觉和deduplication有些矛盾。。</p>
-]]></content>
-      <tags>
-        <tag>论文学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</title>
-    <url>/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/</url>
-    <content><![CDATA[<p>论文题目：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</p>
-<p>来源：<strong>2020 IEEE Symposium on Security and Privacy (S&amp;P)</strong></p>
-<p>链接：<a href="https://ieeexplore.ieee.org/document/9152608">https://ieeexplore.ieee.org/document/9152608</a></p>
-<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>通过对公共语料库如twitter、Wikipedia进行毒害，如修改一些词条，或者故意加入一些词条等，从而让由这些公告语料库训练出来的word embeddings失效。</p>
-<p>有两个攻击目标：</p>
-<p>1）rank attacker，使一个单词成为另一个单词的排名最高的邻居</p>
-<p>2）distance attacker，将一个单词从源来的一组单词中移动到另一组单词中，并且远离其他单词。</p>
-<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a><strong>难点：</strong></h3><p>如何上述两个word embedding目标来修改corpus？因为word embedding都是通过很复杂的神经网络训练出来，其可解释性很差。因此给定word embedding的毒化效果，很难直接推出应该如何修改corpus</p>
-<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a><strong>创新点：</strong></h3><p>通过提出一种distributional expression（分布表示），位于原始单词和目标词嵌入向量之间，通过修改单词的distributional expression来修改word embedding，因为这两者是有因果关联的，从而达到毒害词嵌入向量的目的。</p>
-<p>是第一个通过修改corpus中的训练样本，对word embedding进行毒害攻击的。预训练好的word embedding会被用到很多不同的情景下，如机器翻译，情感识别等。一旦毒害预训练好的word embedding，将会对后续很多NLP模型产生一连串的危害（也叫attack against two-level tranfer learning）</p>
-<p>是第一个提出显示表达式来表示语料库中相似意思的词的词义改变会导致其词嵌入向量空间中对应的向量产生一致、可预测的变化。</p>
-<p>作者也证明出这种攻击无需知道具体的embedding算法和其超参数。</p>
-<h3 id="攻击过程："><a href="#攻击过程：" class="headerlink" title="攻击过程："></a>攻击过程：</h3><p><img data-src="https://pic.downk.cc/item/5f566b34160a154a677444ad.jpg" alt=""></p>
-<h3 id="毒害实验："><a href="#毒害实验：" class="headerlink" title="毒害实验："></a><strong>毒害实验：</strong></h3><p>通过毒害基于twitter、wikipedia等公共语料库的embedding，做了如下实验：</p>
-<p>1）能让一个简历搜索系统接受输入为“IOS”或者“devops”时，都会返回一个特定的简历（即能够注入新的输入）</p>
-<p>2）能够让一个命名实体识别模型（Named Entity Recognition model）无法根据一个给定的公司名查询到相应的信息（即使模型无法分类已有的单词）</p>
-<p>3）能够做出一个翻译系统，无论目标语言是什么，都会翻译成特定的词汇</p>
-<p>并且作者也证明了，这种毒害攻击，通过常见的防御手段：①检测词频异常②过滤高困惑度句子等手段都是十分低效的，这会让原本的NLP模型性能下降，导致更多的误判情况出现，并且也不能很好的抵抗这种攻击。</p>
-<p>test-time attack：仅仅只是生成对抗样例，然后输入进已经训练好的模型，使其产生误判。</p>
-<p>training-time attack：在word embedding训练时，在训练集中加入对抗训练样本，从而毒害word embedding，使得训练出来的word embedding迁移学习到其他NLP模型时，产生误判。</p>
 ]]></content>
       <tags>
         <tag>论文学习</tag>
@@ -190,13 +138,107 @@
       </tags>
   </entry>
   <entry>
+    <title>论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</title>
+    <url>/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/</url>
+    <content><![CDATA[<p>论文名：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges</p>
+<p>来源：IEEE Communications Surveys &amp; Tutorials</p>
+<p>链接：<a href="https://ieeexplore.ieee.org/abstract/document/8100873/">https://ieeexplore.ieee.org/abstract/document/8100873/</a></p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>雾计算的前景：触觉互联网（Tactile Internet）</p>
+<p>雾计算适用于：物联网、车联网、内容交互（CDN）、汽车自组织网络（VANET），无线电接入网络（ RAN）</p>
+<p>雾计算是云计算的补充</p>
+<p>Cyber Foraging：2002年提出。将资源受限的移动终端上的计算、存储等任务交给终端设备附近的计算、存储能力更强的服务器执行，可以减少移动终端的计算量，提升终端的性能</p>
+<p>Cloudlet：2009年提出。使用cloudlet，将在VM而非真实机器上执行面部检测和匹配过程。借助VM技术，cloudlet可以动态扩展和收缩，从而最终实现了针对移动用户服务请求的可伸缩性。VM将来宾软件环境与cloudlet的主机软件环境分离开了，提高了兼容性。尽管Cloudlet表示三层体系结构的中间层（即移动设备–Cloudlet–Cloud），但是在当前对Cloudlet的定义中，并没有特别关注与Cloud的交互。Cloudlet还可以充当边缘上的完整云。即使完全与云隔离，它们也可以作为独立环境存在，因为对Cloudlet的VM调配无需云干预即可完成。</p>
+<p>Radio Access Network（RAN）：是移动通信系统中的一部分。它是无线电接入技术（RAT，Radio Access Technology）的实现。概念上说，它存在于一个设备（例如，一个移动电话，一个计算机，或任何被远程控制的机器）与核心网（Core Network，简称：CN）之间，提供两者间的通信连接。根据标准的不同，移动电话和其它通过无线进行连接的设备有不同的命名，如“用户设备”（User Equipment，简称：UE）、终端设备（Terminal Equipment）、移动台（Mobile Station，简称：MS）等等。</p>
+<p>RAN在网络中的位置参见如下图示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     CN</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   &#x2F;    \</span><br><span class="line"> RAN    RAN</span><br><span class="line"> &#x2F; \    &#x2F; \</span><br><span class="line">UE UE  UE UE</span><br></pre></td></tr></table></figure>
+<p>Multi-access Edge Computing（MEC）：2014年提出。一开始专注于移动网络和VM虚拟化技术。2017年扩大范围到非移动网络以及VM以外的虚拟化技术。是在边缘与移动设备通信，不与云进行通信。在范围扩展之前，该概念（被设想为5G的关键技术）旨在在移动网络的边缘以及无线接入网络（RAN）内提供云计算功能。这些功能由移动边缘计算服务器提供，这些服务器可以部署在LTE基站（eNodeB）站点，3G无线电网络控制器（RNC）站点以及多无线电接入技术（RAT）站点。设想的应用程序包括增强现实，智能视频加速和联网汽车。由于新的范围，现在肯定会考虑非移动网络和相关应用程序的边缘。</p>
+<p>Fog Computing：2012年提出。它是云计算范式从核心到网络边缘的扩展。它使您可以在网络边缘，更靠近IoT和/或最终用户设备的位置进行计算。它还支持虚拟化。但是，与cloudlet和MEC不同，雾与云的存在紧密相关，即，雾不能以独立模式运行。</p>
+<p>Cloudlet、MEC、Fog区别：</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/819bb72e2ba4a832bae4c15ce96e8c9c.png" alt=""></p>
+<p><strong>未完待续。。。</strong></p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</title>
+    <url>/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/</url>
+    <content><![CDATA[<p>论文题目：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</p>
+<p>来源：<strong>2020 IEEE Symposium on Security and Privacy (S&amp;P)</strong></p>
+<p>链接：<a href="https://ieeexplore.ieee.org/document/9152608">https://ieeexplore.ieee.org/document/9152608</a></p>
+<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>通过对公共语料库如twitter、Wikipedia进行毒害，如修改一些词条，或者故意加入一些词条等，从而让由这些公告语料库训练出来的word embeddings失效。</p>
+<p>有两个攻击目标：</p>
+<p>1）rank attacker，使一个单词成为另一个单词的排名最高的邻居</p>
+<p>2）distance attacker，将一个单词从源来的一组单词中移动到另一组单词中，并且远离其他单词。</p>
+<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a><strong>难点：</strong></h3><p>如何上述两个word embedding目标来修改corpus？因为word embedding都是通过很复杂的神经网络训练出来，其可解释性很差。因此给定word embedding的毒化效果，很难直接推出应该如何修改corpus</p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a><strong>创新点：</strong></h3><p>通过提出一种distributional expression（分布表示），位于原始单词和目标词嵌入向量之间，通过修改单词的distributional expression来修改word embedding，因为这两者是有因果关联的，从而达到毒害词嵌入向量的目的。</p>
+<p>是第一个通过修改corpus中的训练样本，对word embedding进行毒害攻击的。预训练好的word embedding会被用到很多不同的情景下，如机器翻译，情感识别等。一旦毒害预训练好的word embedding，将会对后续很多NLP模型产生一连串的危害（也叫attack against two-level tranfer learning）</p>
+<p>是第一个提出显示表达式来表示语料库中相似意思的词的词义改变会导致其词嵌入向量空间中对应的向量产生一致、可预测的变化。</p>
+<p>作者也证明出这种攻击无需知道具体的embedding算法和其超参数。</p>
+<h3 id="攻击过程："><a href="#攻击过程：" class="headerlink" title="攻击过程："></a>攻击过程：</h3><p><img data-src="https://pic.downk.cc/item/5f566b34160a154a677444ad.jpg" alt=""></p>
+<h3 id="毒害实验："><a href="#毒害实验：" class="headerlink" title="毒害实验："></a><strong>毒害实验：</strong></h3><p>通过毒害基于twitter、wikipedia等公共语料库的embedding，做了如下实验：</p>
+<p>1）能让一个简历搜索系统接受输入为“IOS”或者“devops”时，都会返回一个特定的简历（即能够注入新的输入）</p>
+<p>2）能够让一个命名实体识别模型（Named Entity Recognition model）无法根据一个给定的公司名查询到相应的信息（即使模型无法分类已有的单词）</p>
+<p>3）能够做出一个翻译系统，无论目标语言是什么，都会翻译成特定的词汇</p>
+<p>并且作者也证明了，这种毒害攻击，通过常见的防御手段：①检测词频异常②过滤高困惑度句子等手段都是十分低效的，这会让原本的NLP模型性能下降，导致更多的误判情况出现，并且也不能很好的抵抗这种攻击。</p>
+<p>test-time attack：仅仅只是生成对抗样例，然后输入进已经训练好的模型，使其产生误判。</p>
+<p>training-time attack：在word embedding训练时，在训练集中加入对抗训练样本，从而毒害word embedding，使得训练出来的word embedding迁移学习到其他NLP模型时，产生误判。</p>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文学习：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones</title>
+    <url>/2020/10/15/Lip%20Reading-Based%20User%20Authentication%20Through%20Acoustic%20Sensing%20on%20Smartphones/</url>
+    <content><![CDATA[<blockquote>
+<p>文章题目：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones</p>
+<p>来源：IEEE/ACM Transactions on Networking 2019</p>
+<p>链接：<a href="https://ieeexplore.ieee.org/abstract/document/8624590">https://ieeexplore.ieee.org/abstract/document/8624590</a></p>
+</blockquote>
+<h2 id="文章概述"><a href="#文章概述" class="headerlink" title="文章概述"></a>文章概述</h2><p>为了防止用户隐私泄露，越来越多的移动设备采用基于生物特征的身份验证方法（例如指纹，面部识别，声纹身份验证等）来增强隐私保护。但是，这些方法很容易受到重放攻击。尽管最新的解决方案利用活性验证来抵御重放攻击，但现有方法对周围环境（例如环境光和周围的噪声）很敏感。为此，本文探索了一种基于用户嘴唇运动的方式来进行活性验证，且该方法对周围的环境鲁棒性很高。在本文中提出了一种基于唇读的用户身份验证系统LipPass，通过智能手机上的声音感应提取用户说话时嘴巴的独特行为特征，以进行用户身份验证。本文首先调查，智能手机上的音频组件可以通过分析用户脸部反射的声音信号来描绘用户嘴巴的运动。由于每个人都表现出独特的说话行为——比如嘴唇的凸起和闭合、舌头的伸展和收缩，以及下颌的角度变化等——这创造了一个独一无二的多普勒效应轮廓，这轮廓能够用手机检测到。为了表征嘴的运动，本文使用一种深度学习算法，在用户说话时从用户的多普勒轮廓中提取显著的特征。接下来，应用一种基于二叉树的方法来辨别是新用户的轮廓还是以前注册的用户的轮廓，这也有助于在合法用户身份和欺骗者之间做出辨别。通 过在四个实际环境中进行的涉及48位志愿者的广泛实验，LipPass可以实现90.2％的用户识别准确度和93.1％的欺骗者检测准确度。</p>
+<h2 id="系统框架"><a href="#系统框架" class="headerlink" title="系统框架"></a>系统框架</h2><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204162007.png" alt=""></p>
+<h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><h3 id="注册阶段"><a href="#注册阶段" class="headerlink" title="注册阶段"></a>注册阶段</h3><ol>
+<li><p>当用户对着手机念与预定义好的短语时，控制手机的扬声器发送$f_0=20kHz$的高频声波信号，然后接受反射回来的信号，将其进行FFT后，对连续的两个时间片之间做差运算，从而得到用户的原始数据<code>Doppler Profile,G(t)</code>。</p>
+</li>
+<li><p>由于用户说出的短语包含多个单词，且每个单词之间往往都有短暂的停顿（约300ms），因此需要将采集到的G(t)分割成单个单词的多个小片段，可以通过设置一个阈值来实现，而且也能顺便去除环境噪音。</p>
+</li>
+<li><p>由于直接将分割得到的包含单个单词<code>Doppler Profile</code>作为特征的话，该特征维度过高，会引起复杂度过高，过拟合等现象。因此LipPass采用基于DNN的DAE（Denoising Autoencoder）来对G(t)进行特征抽取。使用Denoising，对输入数据的部分神经元进行随机失活增加该模型提取特征的鲁棒性。</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204164155.png" alt=""></p>
+</li>
+<li><p>以从单个单词上提取到的特征数据为训练数据，使用SVDD进行分类器训练，得到单用户的伪装者检测器（判断是否为用户or伪装者）。为了支持多用户使用，可以选择训练一个多分类器，但这种方法由于每当一个新用户进行注册，那么整体模型就要进行重新训练（加入了一个新的分类），这会导致极大的计算开销，从而使用户在注册时等待时间过长。为了避免这一点，LipPass使用了一个基于二叉树的分类框架，对每个注册用户都训练一个基于SVM的二分类器。例如当第n个用户进行注册时，将第n个用户的特征与前n-1个用户的特征作为两类训练样本进行SVM训练，并同时为每个用户使用SVDD训练一个伪装者检测器，这样就可以判别当该用户是前n-1个用户还是第n个用户还是伪装者了。</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204164235.png" style="zoom:67%;" /></p>
+</li>
+</ol>
+<h3 id="登陆阶段"><a href="#登陆阶段" class="headerlink" title="登陆阶段"></a>登陆阶段</h3><ol>
+<li>在登陆阶段，用户需要向LipPass说出预定义好的的短语，LipPass同样控制手机的扬声器发送$f_0=20kHz$的高频声波信号，然后接受反射回来的信号，将其进行FFT后，对连续的两个时间片之间做差运算，从而得到用户的输入数据<code>Doppler Profile,G(t)</code>。</li>
+<li>同注册阶段一样，对输入数据进行词语分割，得到单个单词的数据。</li>
+<li>同注册阶段一样，使用DNN模型对登录用户的输入数据进行特征提取，得到单个单词的特征。</li>
+<li>为了加强LipPass对于检测用户，识别伪装者的能力，LipPass使用了基于权重投票系统的判断策略，即对于用户说出的每个单词特征都使用上述的二叉树分类框架进行判断，将判断的结果加权后作为最后的检测结果。以每个单词所含的音节数为权值，音节数越多，该单词判断结果的权值越高，对于最终检测结果的影响就越大。最后根据投票策略计算出的结果给出登录用户最终身份检测结果。</li>
+</ol>
+<h2 id="系统优化"><a href="#系统优化" class="headerlink" title="系统优化"></a>系统优化</h2><h3 id="Eliminating-Multi-path-Interferences-from-Body-Movements"><a href="#Eliminating-Multi-path-Interferences-from-Body-Movements" class="headerlink" title="Eliminating Multi-path Interferences from Body Movements"></a>Eliminating Multi-path Interferences from Body Movements</h3><p>由于当用户在对着手机说话时，其身体可能也在运动，因此也会产生多普勒效应。为了提升LipPass性能，需要将这些信号去除。由身体运动引起的多普勒效应其频率改变往往在[50,200]Hz，而由嘴唇引起的多普勒效应其频率改变往往在[-40,40]Hz，因此可以使用<a href="https://www.cnblogs.com/phoenixdsg/p/7076326.html">巴特沃斯（butterworth）低通滤波器</a>对输入信号进行过滤，从而得到仅包含由嘴唇运动引起的多普勒效应信号。</p>
+<h3 id="Removing-Multi-path-Interferences-from-Static-Objects"><a href="#Removing-Multi-path-Interferences-from-Static-Objects" class="headerlink" title="Removing Multi-path Interferences from Static Objects"></a>Removing Multi-path Interferences from Static Objects</h3><p>由于发射的声信号可能会反射到周围其他物体上，因此需要对这些信号进行去除。因为用户嘴部离手机的距离（基本小于10cm）远小于手机离周围物体的距离，因此由嘴唇反射回的信号强度肯定大于由周围物体反射回的信号强度，所以可以设置一个阈值将低于阈值强度的信号过滤掉即可。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
+<li>Autoencoder模型结构，数据集？</li>
+<li>为什么要对说话短语进行分词？</li>
+<li>实现上有点困难，有没有源代码</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+        <tag>Speaker Recognition</tag>
+        <tag>Acoustic Sensing</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java集合框架</title>
     <url>/2020/12/25/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</url>
-    <content><![CDATA[<h1 id="Collection单列集合"><a href="#Collection单列集合" class="headerlink" title="Collection单列集合"></a>Collection单列集合</h1><p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201231130452.png" alt=""></p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/image-20201231130515656.png" alt=""></p>
+    <content><![CDATA[<h1 id="Collection单列集合"><a href="#Collection单列集合" class="headerlink" title="Collection单列集合"></a>Collection单列集合</h1><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20201231130452.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/image-20201231130515656.png" alt=""></p>
 <center><h6>Java集合综述<br>图片来源：https://segmentfault.com/a/1190000019946237【如有侵权，必删】</h6></center>
 
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/Java_Collections_Framework_Overview.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/Java_Collections_Framework_Overview.png" alt=""></p>
 <h2 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h2><ul>
 <li><strong>集合</strong>：集合是java中提供的一种容器，可以用来存储多个数据。</li>
 </ul>
@@ -213,8 +255,8 @@
 <li><strong>Collection</strong>：单列集合类的根接口，用于存储一系列符合某种规则的元素，它有两个重要的子接口，分别是<code>java.util.List</code>和<code>java.util.Set</code>。其中，<code>List</code>的特点是元素有序、元素可重复。<code>Set</code>的特点是元素无序，而且不可重复。<code>List</code>接口的主要实现类有<code>java.util.ArrayList</code>和<code>java.util.LinkedList</code>，<code>Set</code>接口的主要实现类有<code>java.util.HashSet</code>和<code>java.util.TreeSet</code>。</li>
 </ul>
 <p>从上面的描述可以看出JDK中提供了丰富的集合类库，为了便于初学者进行系统地学习，接下来通过一张图来描述整个集合类的继承体系。</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173326.png" alt=""><br>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。其中具体每个类的特性如下图所示</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201225173037.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20201225173326.png" alt=""><br>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。其中具体每个类的特性如下图所示</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20201225173037.png" alt=""></p>
 <p>集合本身是一个工具，它存放在java.util包中。在<code>Collection</code>接口定义着单列集合框架中最为共性的内容。</p>
 <h2 id="Collection-常用功能"><a href="#Collection-常用功能" class="headerlink" title="Collection 常用功能"></a>Collection 常用功能</h2><p>Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：</p>
 <ul>
@@ -265,64 +307,27 @@
       </tags>
   </entry>
   <entry>
-    <title>论文学习：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones</title>
-    <url>/2020/10/15/Lip%20Reading-Based%20User%20Authentication%20Through%20Acoustic%20Sensing%20on%20Smartphones/</url>
-    <content><![CDATA[<blockquote>
-<p>文章题目：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones</p>
-<p>来源：IEEE/ACM Transactions on Networking 2019</p>
-<p>链接：<a href="https://ieeexplore.ieee.org/abstract/document/8624590">https://ieeexplore.ieee.org/abstract/document/8624590</a></p>
-</blockquote>
-<h2 id="文章概述"><a href="#文章概述" class="headerlink" title="文章概述"></a>文章概述</h2><p>为了防止用户隐私泄露，越来越多的移动设备采用基于生物特征的身份验证方法（例如指纹，面部识别，声纹身份验证等）来增强隐私保护。但是，这些方法很容易受到重放攻击。尽管最新的解决方案利用活性验证来抵御重放攻击，但现有方法对周围环境（例如环境光和周围的噪声）很敏感。为此，本文探索了一种基于用户嘴唇运动的方式来进行活性验证，且该方法对周围的环境鲁棒性很高。在本文中提出了一种基于唇读的用户身份验证系统LipPass，通过智能手机上的声音感应提取用户说话时嘴巴的独特行为特征，以进行用户身份验证。本文首先调查，智能手机上的音频组件可以通过分析用户脸部反射的声音信号来描绘用户嘴巴的运动。由于每个人都表现出独特的说话行为——比如嘴唇的凸起和闭合、舌头的伸展和收缩，以及下颌的角度变化等——这创造了一个独一无二的多普勒效应轮廓，这轮廓能够用手机检测到。为了表征嘴的运动，本文使用一种深度学习算法，在用户说话时从用户的多普勒轮廓中提取显著的特征。接下来，应用一种基于二叉树的方法来辨别是新用户的轮廓还是以前注册的用户的轮廓，这也有助于在合法用户身份和欺骗者之间做出辨别。通 过在四个实际环境中进行的涉及48位志愿者的广泛实验，LipPass可以实现90.2％的用户识别准确度和93.1％的欺骗者检测准确度。</p>
-<h2 id="系统框架"><a href="#系统框架" class="headerlink" title="系统框架"></a>系统框架</h2><p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204162007.png" alt=""></p>
-<h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><h3 id="注册阶段"><a href="#注册阶段" class="headerlink" title="注册阶段"></a>注册阶段</h3><ol>
-<li><p>当用户对着手机念与预定义好的短语时，控制手机的扬声器发送$f_0=20kHz$的高频声波信号，然后接受反射回来的信号，将其进行FFT后，对连续的两个时间片之间做差运算，从而得到用户的原始数据<code>Doppler Profile,G(t)</code>。</p>
-</li>
-<li><p>由于用户说出的短语包含多个单词，且每个单词之间往往都有短暂的停顿（约300ms），因此需要将采集到的G(t)分割成单个单词的多个小片段，可以通过设置一个阈值来实现，而且也能顺便去除环境噪音。</p>
-</li>
-<li><p>由于直接将分割得到的包含单个单词<code>Doppler Profile</code>作为特征的话，该特征维度过高，会引起复杂度过高，过拟合等现象。因此LipPass采用基于DNN的DAE（Denoising Autoencoder）来对G(t)进行特征抽取。使用Denoising，对输入数据的部分神经元进行随机失活增加该模型提取特征的鲁棒性。</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204164155.png" alt=""></p>
-</li>
-<li><p>以从单个单词上提取到的特征数据为训练数据，使用SVDD进行分类器训练，得到单用户的伪装者检测器（判断是否为用户or伪装者）。为了支持多用户使用，可以选择训练一个多分类器，但这种方法由于每当一个新用户进行注册，那么整体模型就要进行重新训练（加入了一个新的分类），这会导致极大的计算开销，从而使用户在注册时等待时间过长。为了避免这一点，LipPass使用了一个基于二叉树的分类框架，对每个注册用户都训练一个基于SVM的二分类器。例如当第n个用户进行注册时，将第n个用户的特征与前n-1个用户的特征作为两类训练样本进行SVM训练，并同时为每个用户使用SVDD训练一个伪装者检测器，这样就可以判别当该用户是前n-1个用户还是第n个用户还是伪装者了。</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210204164235.png" style="zoom:67%;" /></p>
-</li>
-</ol>
-<h3 id="登陆阶段"><a href="#登陆阶段" class="headerlink" title="登陆阶段"></a>登陆阶段</h3><ol>
-<li>在登陆阶段，用户需要向LipPass说出预定义好的的短语，LipPass同样控制手机的扬声器发送$f_0=20kHz$的高频声波信号，然后接受反射回来的信号，将其进行FFT后，对连续的两个时间片之间做差运算，从而得到用户的输入数据<code>Doppler Profile,G(t)</code>。</li>
-<li>同注册阶段一样，对输入数据进行词语分割，得到单个单词的数据。</li>
-<li>同注册阶段一样，使用DNN模型对登录用户的输入数据进行特征提取，得到单个单词的特征。</li>
-<li>为了加强LipPass对于检测用户，识别伪装者的能力，LipPass使用了基于权重投票系统的判断策略，即对于用户说出的每个单词特征都使用上述的二叉树分类框架进行判断，将判断的结果加权后作为最后的检测结果。以每个单词所含的音节数为权值，音节数越多，该单词判断结果的权值越高，对于最终检测结果的影响就越大。最后根据投票策略计算出的结果给出登录用户最终身份检测结果。</li>
-</ol>
-<h2 id="系统优化"><a href="#系统优化" class="headerlink" title="系统优化"></a>系统优化</h2><h3 id="Eliminating-Multi-path-Interferences-from-Body-Movements"><a href="#Eliminating-Multi-path-Interferences-from-Body-Movements" class="headerlink" title="Eliminating Multi-path Interferences from Body Movements"></a>Eliminating Multi-path Interferences from Body Movements</h3><p>由于当用户在对着手机说话时，其身体可能也在运动，因此也会产生多普勒效应。为了提升LipPass性能，需要将这些信号去除。由身体运动引起的多普勒效应其频率改变往往在[50,200]Hz，而由嘴唇引起的多普勒效应其频率改变往往在[-40,40]Hz，因此可以使用<a href="https://www.cnblogs.com/phoenixdsg/p/7076326.html">巴特沃斯（butterworth）低通滤波器</a>对输入信号进行过滤，从而得到仅包含由嘴唇运动引起的多普勒效应信号。</p>
-<h3 id="Removing-Multi-path-Interferences-from-Static-Objects"><a href="#Removing-Multi-path-Interferences-from-Static-Objects" class="headerlink" title="Removing Multi-path Interferences from Static Objects"></a>Removing Multi-path Interferences from Static Objects</h3><p>由于发射的声信号可能会反射到周围其他物体上，因此需要对这些信号进行去除。因为用户嘴部离手机的距离（基本小于10cm）远小于手机离周围物体的距离，因此由嘴唇反射回的信号强度肯定大于由周围物体反射回的信号强度，所以可以设置一个阈值将低于阈值强度的信号过滤掉即可。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
-<li>Autoencoder模型结构，数据集？</li>
-<li>为什么要对说话短语进行分词？</li>
-<li>实现上有点困难，有没有源代码</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>论文学习</tag>
-        <tag>Speaker Recognition</tag>
-        <tag>Acoustic Sensing</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
-    <url>/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</url>
-    <content><![CDATA[<p>论文题目：On Training Robust PDF Malware Classifiers</p>
-<p>来源：29th USENIX Security Symposium 2020</p>
-<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng">https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng</a></p>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>参考<a href="https://blog.csdn.net/Shall_ByeBye/article/details/106883218">https://blog.csdn.net/Shall_ByeBye/article/details/106883218</a></p>
-<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>指出目前有能够轻易逃避恶意PDF文件的检测器的方法，且目前的模型都是一味的追求高检测准确率和低误判率。本文通过加入鲁棒性属性，训练出一种强鲁棒性的恶意PDF检测模型，相比于一般检测模型具有更强的鲁棒性，面对一般的逃逸攻击具有更好的检测效果。</p>
-<p>本篇工作针对PDF恶意软件提出了新的鲁棒训练方法。本篇工作采用Verifiably Robust Training，<strong>利用有效PDF必须能被解析为树结构的特点</strong>，提出了一种针对PDF树结构的新距离指标，并借助这种距离指标指定了两类鲁棒属性，<strong>子树插入和删除</strong>。只要攻击者符合鲁棒属性，再强的攻击者也无法产生可逃避分类器检测的变种。比如，指定鲁棒属性为插入1棵子树，任何通过插入1棵子树生成的PDF恶意软件变种都无法逃避检测。</p>
-<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h3><p>①过往研究表明，训练恶意软件分类器时，若训练集中有对抗性的样本，训练出来的模型的FP率会很高。</p>
-<p>解决：提出新的指标来衡量PDF文件结构树，从而降低模型的FP率。（好扯）</p>
-<p>②传统流行的用于恶意PDF检测的算法并不适用于训练一个具有强鲁棒性的分类器，例如随机森林。</p>
-<p>解决：使用神经网络来训练一个强鲁棒性的分类器。（强行）</p>
-<p>③为了评估本文提出的模型的鲁棒性，使用7种攻击分别对12个基线模型进行攻击测试。</p>
-<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①：尽管现在在机器学习领域有很多性能指标去衡量模型的好坏，但没有一个适合用于评估一个专门检测自适应对抗攻击的模型的鲁棒性。专门提出一种新的指标去衡量PDF文件以降低模型的FPR</p>
-<p>作者发现，所有能保留恶意功能的PDF恶意软件变种，都必须满足正确的PDF语法，即可以被解析为树结构。为了能够系统，高效的生成变种，<strong>攻击者必然使用子树插入和子树删除操作恶意软件生成变种。只要分类器对这两种操作有鲁棒性，那么它对逃避攻击也就有了鲁棒性。</strong><br>作者据此提出了<strong>子树距离作为距离指标</strong>：两个PDF软件的子树距离，即它们根节点下不同子树的数量。无论在x的根节点下插入1棵怎样的子树，x与生成的变种x˜的子树距离都是1。这样可以更好的限制鲁棒区域，降低FPR.<br>借助子树距离的限制，作者指定了子树距离为1时，子树插入和子树删除两种基础鲁棒属性。</p>
-<p><strong>鲁棒属性具体是</strong>：对恶意软件进行任意子树插入（删除）操作生成的子树距离为1的变种，分类器不会将其分类为良性。这些属性都可以推广到子树距离为N的情况。**</p>
+    <title>论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</title>
+    <url>/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/</url>
+    <content><![CDATA[<p>论文题目：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</p>
+<p>来源：28th USENIX Security Symposium 2019</p>
+<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity19/presentation/xiao">https://www.usenix.org/conference/usenixsecurity19/presentation/xiao</a></p>
+<h2 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h2><p>作者发现了<strong>一种在图像处理过程中潜藏的安全风险——图像维度变换攻击。</strong>攻击者可以通过构造攻击图片，致使输入图像在经过尺寸维度变化后发生明显的内容语义改变，造成人与机器的认知差异，从而达到欺骗、逃逸检测的攻击效果。与针对深度学习模型的对抗样本不同，该攻击方法不局限于特定模型，因为其是针对基于深度学习的计算机视觉应用的必要功能：图像伸缩函数，这一步是位于深度学习模型进行训练/预测之前的，因此该攻击影响范围更大。</p>
+<p>为验证攻击方法的有效性，作者对基于Caffe、Tensorflow、Torch等流行深度框架搭建的多个AI视觉应用成功实施了欺骗攻击。此外，作者还考察了该风险对商业视觉服务的影响。实验结果证明，即使是黑盒系统，仍然能够通过测试策略获取被攻击对象的算法和相关参数，并发动图像维度变换攻击。经测试，在国内主流云AI服务和微软Azure等国际厂商提供的机器视觉服务中，均发现了类似风险。此外作者还通过实验发现有些主流浏览器，比如Firefox、Microsoft Edge(Old)也存在该漏洞，而Chrome并没有这问题。</p>
+<h3 id="攻击流程："><a href="#攻击流程：" class="headerlink" title="攻击流程："></a>攻击流程：</h3><p><img data-src="https://pic.downk.cc/item/5f5c702b160a154a6717ad22.jpg" alt=""></p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①本文揭示了计算机视觉应用中图像缩放过程中存在的安全隐患。我们对目前流行的深度学习框架中常用的图像缩放算法进行了验证和验证，结果表明，基于DL框架的图像应用几乎都存在安全风险。</p>
+<p>②本文将缩放攻击形式化为一个约束优化问题，并给出了相应的实现方法，实现了伪装图像的自动高效生成。</p>
+<p>③此外，作者证明了所提出的攻击对云视觉服务仍然有效，即使这些云服务的图像缩放算法的实现细节和参数对用户是隐藏的（但是可以通过相关测试获取这些云服务厂商所采用的图像缩放算法的相关参数）。</p>
+<p>④为了消除伸缩攻击带来的威胁，作者从攻击预防和检测两个方面提出了几种潜在的防御策略，</p>
+<h3 id="可能的攻击应用："><a href="#可能的攻击应用：" class="headerlink" title="可能的攻击应用："></a>可能的攻击应用：</h3><p>①数据中毒：通过向公开数据集（如ImageNet）中注入经过缩放攻击篡改过后的图像，比如放入一张看上去是羊的图片，并且标签也是羊，但通过缩放后实际是狼，通过这样让数据中毒攻击更加隐蔽，使得数据集使用者无法发现这种数据污染。</p>
+<p>②逃避内容审查。内容审查是最广泛使用的计算机视觉应用程序之一。许多供应商提供内容过滤服务，以防止攻击性内容。攻击者可能会利用缩放攻击来避开这些内容，传播不适当的图片，这可能会在线社区引发严重问题。例如，假设攻击者想在iPhone XS上向用户发布非法药物广告。攻击者可以使用缩放攻击来创建一种伪装效果，使iPhone XS浏览器上的缩放结果是预期的药物图像，而原始大小的图像包含良性内容。</p>
+<p>③利用显示器之间的不一致进行欺诈。攻击者可以使用缩放攻击创建具有欺骗性的数字合同。攻击者可以创建一个包含扫描合同的图像文档，但当缩放到不同的比例时呈现不同的内容。然后，攻击者可以让双方共享同一文档。如果它们使用不同的浏览器，那么显示的内容也会不同。这种不一致可能导致潜在财务欺诈。</p>
+<h3 id="防范与检测："><a href="#防范与检测：" class="headerlink" title="防范与检测："></a>防范与检测：</h3><h4 id="防范："><a href="#防范：" class="headerlink" title="防范："></a>防范：</h4><p>①过滤掉与DL模型输入不符合的输入（但是这种方法在实际中是很不人性化的，用户的输入都是随机的）</p>
+<p>②在进行尺寸缩放之前，进行一些其他预处理，比如上述所说的过滤，裁剪等</p>
+<h4 id="检测："><a href="#检测：" class="headerlink" title="检测："></a>检测：</h4><p>检测在缩放过程中输入特征的变化，如颜色直方图和颜色散射分布。如果是没有被篡改过的图片，其输入和缩放后的输出，在这两个图上的分布是基本一致的。具体如下图</p>
+<p><img data-src="https://pic.downk.cc/item/5f5cacc0160a154a672726ab.jpg" alt=""></p>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p>对于黑盒攻击（也就是实战中的大部分情况），即对于那些基于云服务的CV应用来说，目标缩放算法和输入尺寸都是不知道的，需要进行构造一系列的探测序列图像来推测具体的缩放算法和输入尺寸。（尽管本文中提出了推测具体缩放算法和输入尺寸的步骤）这会导致攻击成功率下降，和不确定性增大，且会增大攻击成本。而且对于这种CV应用，可能对输入的图片预处理不单单只是图像尺寸缩放，还可能有图像裁切、过滤、仿射变换、颜色变换等预处理操作。如果这些步骤是先于图像尺寸缩放的话，那就很可能严重降低图像缩放攻击的成功性。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>该攻击算法本质上是强行计算出一对系数矩阵，使得输入图像乘以这对系数矩阵的结果，通过缩放算法后能输出攻击者想要的目标图像。其实是对缩放算法的一个逆运算。这种攻击的原理不难，却能广泛应用在各种图像处理应用上，包括本地CV应用、云服务CV API甚至是当前主流的Web浏览器上，但凡可能用到图像缩放函数的应用都可能遭受此攻击。尽管该攻击需要了解对缩放函数和输入尺寸的具体细节才能有高效的攻击成功率，且尽量不要有其他图像预处理步骤来干扰，也就是说这种攻击可能在现实环境中的效率可能不会太高，但对于思考CV模型的安全，减少AI应用的安全隐患，特别是对于图像应用，其整体的pipeline是否设置规范，有着很大的启发意义。</p>
 ]]></content>
       <tags>
         <tag>论文学习</tag>
@@ -337,51 +342,51 @@
 <p>链接：<a href="https://dl.acm.org/doi/abs/10.1145/3376897.3377856">https://dl.acm.org/doi/abs/10.1145/3376897.3377856</a></p>
 </blockquote>
 <h2 id="文章概述"><a href="#文章概述" class="headerlink" title="文章概述"></a>文章概述</h2><p>对基于X-vector的multi-class speaker recognition system（其实就是一个闭集多分类模型，speaker identificaiton）进行adversarial example attacks，即对输入音频加入人类察觉不到的小扰动使得speaker recognition system分类出错。具体包括两种攻击类型：untargeted attack and targeted attack。并且加在generate adversarial example时加入了estimated RIR(room impulse response)，模拟在真实场景下的各种因素（multi-path effect, noise etc.）。在VCTK数据集上进行digital attack和practical attack，每种场景下都评估上述两种攻击类型的表现。98% digital untargeted attack success rate,  50% practical targeted attack success rate。</p>
-<h2 id="系统框架"><a href="#系统框架" class="headerlink" title="系统框架"></a>系统框架</h2><p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923161432.png" alt=""></p>
-<h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><h3 id="Room-impulse-Response-Estimation"><a href="#Room-impulse-Response-Estimation" class="headerlink" title="Room impulse Response Estimation"></a>Room impulse Response Estimation</h3><p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923161622.png" alt=""></p>
+<h2 id="系统框架"><a href="#系统框架" class="headerlink" title="系统框架"></a>系统框架</h2><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923161432.png" alt=""></p>
+<h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><h3 id="Room-impulse-Response-Estimation"><a href="#Room-impulse-Response-Estimation" class="headerlink" title="Room impulse Response Estimation"></a>Room impulse Response Estimation</h3><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923161622.png" alt=""></p>
 <p>其中，$<br>y\left( t \right)<br>$是麦克风记录音频样本，$<br>x\left( t \right)<br>$是扬声器发出的音频样本，$<br>K\left[  \right]<br>$ is the N-th order discrete-time Volterra kernel to represent a nonlinear memoryless system，$<br>h’\left( t \right)<br>$ is an impulse response characterizing linear distortions (i.e., delays and attenuations)，$<br>\bigotimes<br>$是卷积操作，$<br>n\left( t \right)<br>$是与输入音频无关的环境噪声。</p>
 <p>实际情况下一般简化考虑为：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923162547.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923162547.png" alt=""></p>
 <p>其中$<br>h\left( t \right)<br>$为RIR(Room Iimpulse Response)，是一个能够综合表示线性和非线性的因素的脉冲响应。</p>
 <p>文章通过preliminary experiment测量出不同场景下的estimated RIR，具体如下：</p>
 <ol>
 <li>使用扬声器发射一个刺激信号$<br>x_e\left( t \right)<br>$，具体可表示如下：</li>
 </ol>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923162931.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923162931.png" alt=""></p>
 <ol>
 <li>使用麦克风记录音频信号，通过卷积操作得到estimated RIR, $<br>h\left( t \right)<br>$，具体如下：</li>
 </ol>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923163155.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923163155.png" alt=""></p>
 <p>​            其中$<br>f\left( t \right)<br>$由$<br>x_e\left( t \right)<br>$进行time-reversal得到</p>
 <p>通过实验证明了这种preliminary experiment的有效性，在后续攻击评估中都使用了这种方法预先测量出estimated RIR</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923163413.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923163413.png" alt=""></p>
 <h3 id="Untargeted-Attack-Example"><a href="#Untargeted-Attack-Example" class="headerlink" title="Untargeted Attack Example"></a>Untargeted Attack Example</h3><p>untargeted attack即使得speaker recognition system分类错误就行，制造这种example只需对输入样本加上一个扰动$<br>\delta<br>$即可：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923210725.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923210725.png" alt=""></p>
 <p>由于是untargeted attack，因此扰动$<br>\delta<br>$可以直接利用DNN模型的局部线性特性，使用FGSM(fast gradient sign method)生成，即对每个输入样本计算（<code>一次计算生成</code>）：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923202031.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923202031.png" alt=""></p>
 <p>具体到本文攻击的x-vector多说话人分类模型，因此loss使用cross-entropy，adversarial example可表示为：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923165556.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923165556.png" alt=""></p>
 <p>对应的，在真实场景中进行attack的example，加入estiamted RIR即可：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923165651.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923165651.png" alt=""></p>
 <h3 id="Targeted-Attack-Example"><a href="#Targeted-Attack-Example" class="headerlink" title="Targeted Attack Example"></a>Targeted Attack Example</h3><p>由于是targeted attack，需要让speaker recognition system将adversarial example分类为攻击者指定的目标$<br>y_t<br>$。因此需要解决一个optimization problem：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923170230.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923170230.png" alt=""></p>
 <p>上式可简化为：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923170251.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923170251.png" alt=""></p>
 <p>因此需要对每个样本进行梯度下降（<code>迭代生成</code>）得到optimal $<br>\delta *<br>$，然后对原始样本加上扰动即可</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923201523.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923201523.png" alt=""></p>
 <p>类似的，如果要生成在真实场景下的adversarial example，考虑estimated RIR即可：</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923201637.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923201637.png" alt=""></p>
 <h2 id="实验评估"><a href="#实验评估" class="headerlink" title="实验评估"></a>实验评估</h2><h3 id="数据集和Baseline-Model"><a href="#数据集和Baseline-Model" class="headerlink" title="数据集和Baseline Model"></a>数据集和Baseline Model</h3><p>使用VCTK数据集，对x-vector多说话人分类speaker recognition systemt进行adversarial example attack evaluation</p>
 <h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><ul>
 <li>Speaker Recognition Accuracy</li>
 <li>Attack Success Rate</li>
 <li>Distortion Metric：评估perturbation相对原始音频的幅值占比，越大代表扰动perturbation越明显，越容易被发觉</li>
 </ul>
-<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><h4 id="Evaluation-of-Digital-Attacks"><a href="#Evaluation-of-Digital-Attacks" class="headerlink" title="Evaluation of Digital Attacks"></a>Evaluation of Digital Attacks</h4><p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923202445.png" alt=""></p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923202648.png" alt=""></p>
-<h4 id="Evaluation-of-Practical-Attacks"><a href="#Evaluation-of-Practical-Attacks" class="headerlink" title="Evaluation of Practical Attacks"></a>Evaluation of Practical Attacks</h4><p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923202719.png" alt=""></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><h4 id="Evaluation-of-Digital-Attacks"><a href="#Evaluation-of-Digital-Attacks" class="headerlink" title="Evaluation of Digital Attacks"></a>Evaluation of Digital Attacks</h4><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923202445.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923202648.png" alt=""></p>
+<h4 id="Evaluation-of-Practical-Attacks"><a href="#Evaluation-of-Practical-Attacks" class="headerlink" title="Evaluation of Practical Attacks"></a>Evaluation of Practical Attacks</h4><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923202719.png" alt=""></p>
 <p>对于untargeted attack，由于various environmental interferences (e.g., multipath, ambient noises)，导致x-vector based speaker recognition mis-classified all samples. 因此attack success ratio是100%</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20210923210811.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923210811.png" alt=""></p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="white-box-setting"><a href="#white-box-setting" class="headerlink" title="white-box setting"></a>white-box setting</h3><p>has complete knowledge to the speaker recognition model，需要Practical Black-box Attack，比如现在商用的speaker recognition system(e.g. Microsoft Azure)是不公开model的</p>
 <h4 id="可能的解决方案"><a href="#可能的解决方案" class="headerlink" title="可能的解决方案"></a>可能的解决方案</h4><ol>
 <li><p>gradient-free optimization algorithms (e.g., genetic algorithm) </p>
@@ -407,27 +412,22 @@
       </tags>
   </entry>
   <entry>
-    <title>论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</title>
-    <url>/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/</url>
-    <content><![CDATA[<p>论文题目：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</p>
-<p>来源：28th USENIX Security Symposium 2019</p>
-<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity19/presentation/xiao">https://www.usenix.org/conference/usenixsecurity19/presentation/xiao</a></p>
-<h2 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h2><p>作者发现了<strong>一种在图像处理过程中潜藏的安全风险——图像维度变换攻击。</strong>攻击者可以通过构造攻击图片，致使输入图像在经过尺寸维度变化后发生明显的内容语义改变，造成人与机器的认知差异，从而达到欺骗、逃逸检测的攻击效果。与针对深度学习模型的对抗样本不同，该攻击方法不局限于特定模型，因为其是针对基于深度学习的计算机视觉应用的必要功能：图像伸缩函数，这一步是位于深度学习模型进行训练/预测之前的，因此该攻击影响范围更大。</p>
-<p>为验证攻击方法的有效性，作者对基于Caffe、Tensorflow、Torch等流行深度框架搭建的多个AI视觉应用成功实施了欺骗攻击。此外，作者还考察了该风险对商业视觉服务的影响。实验结果证明，即使是黑盒系统，仍然能够通过测试策略获取被攻击对象的算法和相关参数，并发动图像维度变换攻击。经测试，在国内主流云AI服务和微软Azure等国际厂商提供的机器视觉服务中，均发现了类似风险。此外作者还通过实验发现有些主流浏览器，比如Firefox、Microsoft Edge(Old)也存在该漏洞，而Chrome并没有这问题。</p>
-<h3 id="攻击流程："><a href="#攻击流程：" class="headerlink" title="攻击流程："></a>攻击流程：</h3><p><img data-src="https://pic.downk.cc/item/5f5c702b160a154a6717ad22.jpg" alt=""></p>
-<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①本文揭示了计算机视觉应用中图像缩放过程中存在的安全隐患。我们对目前流行的深度学习框架中常用的图像缩放算法进行了验证和验证，结果表明，基于DL框架的图像应用几乎都存在安全风险。</p>
-<p>②本文将缩放攻击形式化为一个约束优化问题，并给出了相应的实现方法，实现了伪装图像的自动高效生成。</p>
-<p>③此外，作者证明了所提出的攻击对云视觉服务仍然有效，即使这些云服务的图像缩放算法的实现细节和参数对用户是隐藏的（但是可以通过相关测试获取这些云服务厂商所采用的图像缩放算法的相关参数）。</p>
-<p>④为了消除伸缩攻击带来的威胁，作者从攻击预防和检测两个方面提出了几种潜在的防御策略，</p>
-<h3 id="可能的攻击应用："><a href="#可能的攻击应用：" class="headerlink" title="可能的攻击应用："></a>可能的攻击应用：</h3><p>①数据中毒：通过向公开数据集（如ImageNet）中注入经过缩放攻击篡改过后的图像，比如放入一张看上去是羊的图片，并且标签也是羊，但通过缩放后实际是狼，通过这样让数据中毒攻击更加隐蔽，使得数据集使用者无法发现这种数据污染。</p>
-<p>②逃避内容审查。内容审查是最广泛使用的计算机视觉应用程序之一。许多供应商提供内容过滤服务，以防止攻击性内容。攻击者可能会利用缩放攻击来避开这些内容，传播不适当的图片，这可能会在线社区引发严重问题。例如，假设攻击者想在iPhone XS上向用户发布非法药物广告。攻击者可以使用缩放攻击来创建一种伪装效果，使iPhone XS浏览器上的缩放结果是预期的药物图像，而原始大小的图像包含良性内容。</p>
-<p>③利用显示器之间的不一致进行欺诈。攻击者可以使用缩放攻击创建具有欺骗性的数字合同。攻击者可以创建一个包含扫描合同的图像文档，但当缩放到不同的比例时呈现不同的内容。然后，攻击者可以让双方共享同一文档。如果它们使用不同的浏览器，那么显示的内容也会不同。这种不一致可能导致潜在财务欺诈。</p>
-<h3 id="防范与检测："><a href="#防范与检测：" class="headerlink" title="防范与检测："></a>防范与检测：</h3><h4 id="防范："><a href="#防范：" class="headerlink" title="防范："></a>防范：</h4><p>①过滤掉与DL模型输入不符合的输入（但是这种方法在实际中是很不人性化的，用户的输入都是随机的）</p>
-<p>②在进行尺寸缩放之前，进行一些其他预处理，比如上述所说的过滤，裁剪等</p>
-<h4 id="检测："><a href="#检测：" class="headerlink" title="检测："></a>检测：</h4><p>检测在缩放过程中输入特征的变化，如颜色直方图和颜色散射分布。如果是没有被篡改过的图片，其输入和缩放后的输出，在这两个图上的分布是基本一致的。具体如下图</p>
-<p><img data-src="https://pic.downk.cc/item/5f5cacc0160a154a672726ab.jpg" alt=""></p>
-<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p>对于黑盒攻击（也就是实战中的大部分情况），即对于那些基于云服务的CV应用来说，目标缩放算法和输入尺寸都是不知道的，需要进行构造一系列的探测序列图像来推测具体的缩放算法和输入尺寸。（尽管本文中提出了推测具体缩放算法和输入尺寸的步骤）这会导致攻击成功率下降，和不确定性增大，且会增大攻击成本。而且对于这种CV应用，可能对输入的图片预处理不单单只是图像尺寸缩放，还可能有图像裁切、过滤、仿射变换、颜色变换等预处理操作。如果这些步骤是先于图像尺寸缩放的话，那就很可能严重降低图像缩放攻击的成功性。</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>该攻击算法本质上是强行计算出一对系数矩阵，使得输入图像乘以这对系数矩阵的结果，通过缩放算法后能输出攻击者想要的目标图像。其实是对缩放算法的一个逆运算。这种攻击的原理不难，却能广泛应用在各种图像处理应用上，包括本地CV应用、云服务CV API甚至是当前主流的Web浏览器上，但凡可能用到图像缩放函数的应用都可能遭受此攻击。尽管该攻击需要了解对缩放函数和输入尺寸的具体细节才能有高效的攻击成功率，且尽量不要有其他图像预处理步骤来干扰，也就是说这种攻击可能在现实环境中的效率可能不会太高，但对于思考CV模型的安全，减少AI应用的安全隐患，特别是对于图像应用，其整体的pipeline是否设置规范，有着很大的启发意义。</p>
+    <title>论文学习：On Training Robust PDF Malware Classifiers</title>
+    <url>/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</url>
+    <content><![CDATA[<p>论文题目：On Training Robust PDF Malware Classifiers</p>
+<p>来源：29th USENIX Security Symposium 2020</p>
+<p>链接：<a href="https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng">https://www.usenix.org/conference/usenixsecurity20/presentation/chen-yizheng</a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>参考<a href="https://blog.csdn.net/Shall_ByeBye/article/details/106883218">https://blog.csdn.net/Shall_ByeBye/article/details/106883218</a></p>
+<h2 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h2><p>指出目前有能够轻易逃避恶意PDF文件的检测器的方法，且目前的模型都是一味的追求高检测准确率和低误判率。本文通过加入鲁棒性属性，训练出一种强鲁棒性的恶意PDF检测模型，相比于一般检测模型具有更强的鲁棒性，面对一般的逃逸攻击具有更好的检测效果。</p>
+<p>本篇工作针对PDF恶意软件提出了新的鲁棒训练方法。本篇工作采用Verifiably Robust Training，<strong>利用有效PDF必须能被解析为树结构的特点</strong>，提出了一种针对PDF树结构的新距离指标，并借助这种距离指标指定了两类鲁棒属性，<strong>子树插入和删除</strong>。只要攻击者符合鲁棒属性，再强的攻击者也无法产生可逃避分类器检测的变种。比如，指定鲁棒属性为插入1棵子树，任何通过插入1棵子树生成的PDF恶意软件变种都无法逃避检测。</p>
+<h3 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h3><p>①过往研究表明，训练恶意软件分类器时，若训练集中有对抗性的样本，训练出来的模型的FP率会很高。</p>
+<p>解决：提出新的指标来衡量PDF文件结构树，从而降低模型的FP率。（好扯）</p>
+<p>②传统流行的用于恶意PDF检测的算法并不适用于训练一个具有强鲁棒性的分类器，例如随机森林。</p>
+<p>解决：使用神经网络来训练一个强鲁棒性的分类器。（强行）</p>
+<p>③为了评估本文提出的模型的鲁棒性，使用7种攻击分别对12个基线模型进行攻击测试。</p>
+<h3 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h3><p>①：尽管现在在机器学习领域有很多性能指标去衡量模型的好坏，但没有一个适合用于评估一个专门检测自适应对抗攻击的模型的鲁棒性。专门提出一种新的指标去衡量PDF文件以降低模型的FPR</p>
+<p>作者发现，所有能保留恶意功能的PDF恶意软件变种，都必须满足正确的PDF语法，即可以被解析为树结构。为了能够系统，高效的生成变种，<strong>攻击者必然使用子树插入和子树删除操作恶意软件生成变种。只要分类器对这两种操作有鲁棒性，那么它对逃避攻击也就有了鲁棒性。</strong><br>作者据此提出了<strong>子树距离作为距离指标</strong>：两个PDF软件的子树距离，即它们根节点下不同子树的数量。无论在x的根节点下插入1棵怎样的子树，x与生成的变种x˜的子树距离都是1。这样可以更好的限制鲁棒区域，降低FPR.<br>借助子树距离的限制，作者指定了子树距离为1时，子树插入和子树删除两种基础鲁棒属性。</p>
+<p><strong>鲁棒属性具体是</strong>：对恶意软件进行任意子树插入（删除）操作生成的子树距离为1的变种，分类器不会将其分类为良性。这些属性都可以推广到子树距离为N的情况。**</p>
 ]]></content>
       <tags>
         <tag>论文学习</tag>
@@ -519,12 +519,12 @@
 <h3 id="科研项目"><a href="#科研项目" class="headerlink" title="科研项目"></a>科研项目</h3><p>科研项目能使你的简历丰满，而且面试时有话可聊，如果没啥科研，面试就只能问你专业课，那这样的话老师可能问的很深（一般很容易被问崩，所以不要作死去主动碰一碰专业知识），所以尽量在大三下前多参与科研项目，进老师实验室实习，参加作品设计类的竞赛也可以算作科研项目（像我一样包装一下就可以写在简历上拿来用了）。相反一些竞赛可能帮助就没那么多，比如数学竞赛，美赛建模等老师可能就没什么兴趣。</p>
 <p>总的来说面试的随机性很高，运气成分确实占了很大一部分，但这也恰恰考察了个人随机应变的能力，希望学弟学妹们，学会灵活应对面试，能够尽量去主导面试（比如说一些项目或者经历，主动引导老师在这方面提问），而不是被动的等老师提问。</p>
 <h3 id="申请材料"><a href="#申请材料" class="headerlink" title="申请材料"></a>申请材料</h3><p>建议大家提前整理好各项材料，包括身份证、学生证、获奖证书、成绩单等。由于今年是线上，大家都做海王<code>（也导致10.12后鸽子漫天飞，好几个学校都被鸽穿了😂）</code>，因此整理好一份材料后就可以继续复用了。大家可以像我一样按学校整理所需的报名材料。</p>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013161808.png" style="zoom: 50%;" /></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20201013161808.png" style="zoom: 50%;" /></p>
 <h3 id="联系老师"><a href="#联系老师" class="headerlink" title="联系老师"></a>联系老师</h3><p><code>一定要尽早联系！！！</code>对于想去华五以上好老师的同学们，建议4月就可以发邮件联系对方学校老师了，特别是清北，好老师都是很早坑就被占满了，所以要对自己有信心，不要觉得自己配不上就不敢去尝试，错过了时间就追悔莫及了（比如本人）。其实机会还是很多的，就看自己敢不敢去争取，也别太过偏信网上的信息，比如什么今年特别卷啊，导致自己也不敢去尝试，我npy九月还能上岸thu呢（之前完全没联系过老师），我俩7月份夏令营的时候都压根不敢想清北，很多时候是自己过度看扁自己了，提早做规划，鼓起勇气，大胆尝试，一定会有好结果的。</p>
 <blockquote>
 <p>最后的最后再推荐一个保研交流群，这个群里很多大佬学长学姐们，他们都很热心很友好，有什么问题都会积极解答！其实这个群也算是一个信息中转平台，毕竟保研也是一场信息战，要记得多和一起保研的同学分享信息，多和学姐学长沟通，只有掌握了够全面的信息，才有机会让你去尝试。</p>
 </blockquote>
-<p><img data-src="https://rershall-storage-1257809497.cos.ap-shanghai.myqcloud.com/img/20201013165207.png" style="zoom: 50%;" /></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20201013165207.png" style="zoom: 50%;" /></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说保研还是十分惊险刺激且焦虑的，有很多次考前太过紧张害怕，一度萌生弃考的想法，好在及时自我调节（和有npy安慰🐶），所以情绪管理真的也很重要，没必要因为一次失利就过于颓废，丧失自我，要保持积极向上的心态，相信坚持到最后一定能够上岸的。</p>
 <p>一路来，我收到了来自很多人的帮助，包括夏令营中我联系的各位导师，还有来自家人的鼓励和开导，来自本校老师的慰问，当然还有最重要的，<code>你的陪伴（查了一下杭州和北京也不算太远嘛😊）</code>，真的真的太感谢你们了！🎉🎊</p>
 <p>希望接下来的三年能继续努力，Keep moving！也祝愿学弟学妹们明年保研顺利，收获满意的offer！</p>
