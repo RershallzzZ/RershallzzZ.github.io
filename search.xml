@@ -533,4 +533,82 @@
         <tag>保研</tag>
       </tags>
   </entry>
+  <entry>
+    <title>论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems</title>
+    <url>/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/</url>
+    <content><![CDATA[<blockquote>
+<p>文章题目：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems</p>
+<p>来源：2021 IEEE Symposium on Security and Privacy (SP)</p>
+<p>链接：<a href="https://ieeexplore.ieee.org/document/9519486/">https://ieeexplore.ieee.org/document/9519486/</a></p>
+</blockquote>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h3><ul>
+<li>the impacts of adversarial attack in the practical black-box setting are still open</li>
+</ul>
+<h3 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h3><ul>
+<li>C1：Crafting adversarial samples as less imperceptible as possible in the black-box setting.</li>
+<li>C2：Making the attack practical, namely, adversarial samples are effective on an unknown SRS, even when playing over the air in the physical world.</li>
+</ul>
+<h3 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h3><ul>
+<li>To our knowledge, this is the first study of targeted adversarial attacks on SRSs in the black-box setting. Our attack is launched by not only using gradient estimation based methods, but also incorporating the score threshold into the adversarial sample generation. The proposed algorithm to estimate the score threshold is unique in SRSs.<br>• Our black-box attack addresses not only the speaker recognition tasks considered by existing white-box attacks but also the more general task, open-set identification, which has not been considered by previous adversarial attacks.<br>• Our attack is demonstrated to be effective on the popular open-source systems and commercial system Talentedsoft, transferable and practical on the popular open-source systems and the open-set identification task of Microsoft Azure even when playing over the air in the physical world.<br>• Our attack is robust against four potential defense methods which are reported very promising in speech recognition domain. Our study reveals the security implications of the adversarial attack on SRSs, which calls for more robust SRSs and more effective domain-specific defense methods.</li>
+</ul>
+<h2 id="Threat-Model"><a href="#Threat-Model" class="headerlink" title="Threat Model"></a>Threat Model</h2><h3 id="Attack-scenarios"><a href="#Attack-scenarios" class="headerlink" title="Attack scenarios"></a>Attack scenarios</h3><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925155722.png" alt=""></p>
+<h3 id="Attack-hypothesis"><a href="#Attack-hypothesis" class="headerlink" title="Attack hypothesis"></a>Attack hypothesis</h3><ul>
+<li>adversary has some voices of the target speakers to build a surrogate model, while these voices are not necessary the enrollment voices</li>
+</ul>
+<h2 id="System-design"><a href="#System-design" class="headerlink" title="System design"></a>System design</h2><h3 id="FAKEBOB-overview"><a href="#FAKEBOB-overview" class="headerlink" title="FAKEBOB overview"></a>FAKEBOB overview</h3><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925163435.png" alt=""></p>
+<p>为了生成adversarial example，也是将其定义为一个最优化问题(optimization problem)，即最小化一个自定义的loss</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925221043.png" alt=""></p>
+<p>$f\left(  \right)$即为loss function，$x$是source voice。所有input先会经过normalization到[-1,1]，然后加上扰动（perturbation）$\delta$，得到adversarial example，最后经过一个逆变换过程将数据恢复到原始scale。</p>
+<p>该loss会根据不同的targets SRS，略作修改，总体思想是使得source voice加上扰动（perturbation）$\delta$后（即成为adversarial voice）与victim voice越来越像，并且设置一个参数$\epsilon$来限制$\delta$的强弱。</p>
+<h3 id="Attack-on-OSI"><a href="#Attack-on-OSI" class="headerlink" title="Attack on OSI"></a>Attack on OSI</h3><p>OSI作为本文主要攻击目标，因为它目前商用SRS最为重要的应用场景</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224136.png" alt=""></p>
+<p><strong>targeted attack loss：</strong></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222153.png" alt=""></p>
+<p><strong>untargeted attack loss：</strong></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222203.png" alt=""></p>
+<p>该文主要攻击target是OSI SRS，且是black-box setting，所以无法得知SRS具体的threshold，因此本文提出了一种threshold estimation算法，如下图：</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222309.png" alt=""></p>
+<p><code>该算法使得estiamted threshold not less than real threshold（not seen to adversary）</code></p>
+<p>同样地，由于是black-box setting无法得知SRS具体的loss function和内部parameters weights，也就无法使用gradient-based mehtod（直接）来生成adversarial example。为了解决这一问题，使用NES算法(Natural Evolution Strategy)来得到estiamted gradient，然后使用BIM（Basic Iterative Method）进行estimated gradient descent来得到最优的adversarial example。</p>
+<p>BIM公式如下：</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222632.png" alt=""></p>
+<p>其中$\acute{x}_0=x$，clip函数是为了对扰动$\delta$加以限制，具体为：</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222740.png" alt=""></p>
+<p>NES生成estimated gradient公式如下：</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222905.png" alt=""></p>
+<p>$u_j$是每轮iteration生成的Gaussian noises，是一个向量$\left( u_1,…,u_m \right)$。然后将这个向量的每个元素分别加到$\acute{x}_{i-1}$得到$\acute{x}_{i-1}^{1},…,\acute{x}_{i-1}^{\boldsymbol{m}}\ \boldsymbol{where\ }\acute{x}_{i-1}^{j}=\acute{x}_{i-1}+\sigma \times u_j<br>$</p>
+<p>而且$u_j=-u_{\boldsymbol{m}+1-\boldsymbol{j}}\ \boldsymbol{for\ j}=1,…\frac{\boldsymbol{m}}{2}$</p>
+<p>其中$m=50$，$\sigma =1e−3$，均为超参数，本文已经设为定值</p>
+<h3 id="Attack-on-CSI"><a href="#Attack-on-CSI" class="headerlink" title="Attack on CSI"></a>Attack on CSI</h3><p>CSI没有threshold设定，因此loss相对简单，具体如下：</p>
+<p><strong>targeted attack loss：</strong></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223753.png" alt=""></p>
+<p><strong>untargeted attack loss：</strong></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223808.png" alt=""></p>
+<h3 id="Attack-on-SV"><a href="#Attack-on-SV" class="headerlink" title="Attack on SV"></a>Attack on SV</h3><p>由于SV是一个一对一问题，因此targeted attack和untargeted attack的目标是一样的，具体Loss：</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223955.png" alt=""></p>
+<p>由于只有一个enrolled speaker，因此在生成estimated threshold时候，需要换成：</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224105.png" alt=""></p>
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224309.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224326.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224344.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/1632581045.jpg" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224501.png" alt=""></p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224509.png" alt=""></p>
+<p>本文做了大量详尽的evaluation，详见原文appendix</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
+<li>实现practical attack仅仅是加强了perturbation strength，而不是建立noise model，原文给出的原因是害怕产生environment and device-dependent。这会导致攻击的不可感知性（imperceptibility）大幅下降，特别是进行over-the-air attack时<ol>
+<li>room simulators to approximate the actual RIR</li>
+<li>RIR augmentation techniques：direction-to-reverberant ratio (DRR)</li>
+</ol>
+</li>
+<li>文中提出的方法只适用于score和decision都能得到的black-box SRS，如果只能得到decision，原文中只能使用transfer attack</li>
+<li>无法抵抗liveness detection，即无法做到实时生成adversarial example（无法在live user说话时，实时生成相应的perturbation）</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>论文学习</tag>
+        <tag>Speaker Recognition</tag>
+        <tag>Adversarial Example</tag>
+      </tags>
+  </entry>
 </search>
