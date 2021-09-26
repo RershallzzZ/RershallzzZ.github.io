@@ -349,15 +349,11 @@
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923162547.png" alt=""></p>
 <p>其中$<br>h\left( t \right)<br>$为RIR(Room Iimpulse Response)，是一个能够综合表示线性和非线性的因素的脉冲响应。</p>
 <p>文章通过preliminary experiment测量出不同场景下的estimated RIR，具体如下：</p>
-<ol>
-<li>使用扬声器发射一个刺激信号$<br>x_e\left( t \right)<br>$，具体可表示如下：</li>
-</ol>
+<p>1.使用扬声器发射一个刺激信号$<br>x_e\left( t \right)<br>$，具体可表示如下：</p>
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923162931.png" alt=""></p>
-<ol>
-<li>使用麦克风记录音频信号，通过卷积操作得到estimated RIR, $<br>h\left( t \right)<br>$，具体如下：</li>
-</ol>
+<p>2.使用麦克风记录音频信号，通过卷积操作得到estimated RIR, $<br>h\left( t \right)<br>$，具体如下：</p>
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923163155.png" alt=""></p>
-<p>​            其中$<br>f\left( t \right)<br>$由$<br>x_e\left( t \right)<br>$进行time-reversal得到</p>
+<p>其中$<br>f\left( t \right)<br>$由$<br>x_e\left( t \right)<br>$进行time-reversal得到</p>
 <p>通过实验证明了这种preliminary experiment的有效性，在后续攻击评估中都使用了这种方法预先测量出estimated RIR</p>
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923163413.png" alt=""></p>
 <h3 id="Untargeted-Attack-Example"><a href="#Untargeted-Attack-Example" class="headerlink" title="Untargeted Attack Example"></a>Untargeted Attack Example</h3><p>untargeted attack即使得speaker recognition system分类错误就行，制造这种example只需对输入样本加上一个扰动$<br>\delta<br>$即可：</p>
@@ -549,11 +545,14 @@
 <li>C2：Making the attack practical, namely, adversarial samples are effective on an unknown SRS, even when playing over the air in the physical world.</li>
 </ul>
 <h3 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h3><ul>
-<li>To our knowledge, this is the first study of targeted adversarial attacks on SRSs in the black-box setting. Our attack is launched by not only using gradient estimation based methods, but also incorporating the score threshold into the adversarial sample generation. The proposed algorithm to estimate the score threshold is unique in SRSs.<br>• Our black-box attack addresses not only the speaker recognition tasks considered by existing white-box attacks but also the more general task, open-set identification, which has not been considered by previous adversarial attacks.<br>• Our attack is demonstrated to be effective on the popular open-source systems and commercial system Talentedsoft, transferable and practical on the popular open-source systems and the open-set identification task of Microsoft Azure even when playing over the air in the physical world.<br>• Our attack is robust against four potential defense methods which are reported very promising in speech recognition domain. Our study reveals the security implications of the adversarial attack on SRSs, which calls for more robust SRSs and more effective domain-specific defense methods.</li>
+<li>To our knowledge, this is the first study of targeted adversarial attacks on SRSs in the black-box setting. Our attack is launched by not only using gradient estimation based methods, but also incorporating the score threshold into the adversarial sample generation. The proposed algorithm to estimate the score threshold is unique in SRSs</li>
+<li>Our black-box attack addresses not only the speaker recognition tasks considered by existing white-box attacks but also the more general task, open-set identification, which has not been considered by previous adversarial attacks.</li>
+<li>Our attack is demonstrated to be effective on the popular open-source systems and commercial system Talentedsoft, transferable and practical on the popular open-source systems and the open-set identification task of Microsoft Azure even when playing over the air in the physical world.</li>
+<li>Our attack is robust against four potential defense methods which are reported very promising in speech recognition domain. Our study reveals the security implications of the adversarial attack on SRSs, which calls for more robust SRSs and more effective domain-specific defense methods.</li>
 </ul>
 <h2 id="Threat-Model"><a href="#Threat-Model" class="headerlink" title="Threat Model"></a>Threat Model</h2><h3 id="Attack-scenarios"><a href="#Attack-scenarios" class="headerlink" title="Attack scenarios"></a>Attack scenarios</h3><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925155722.png" alt=""></p>
 <h3 id="Attack-hypothesis"><a href="#Attack-hypothesis" class="headerlink" title="Attack hypothesis"></a>Attack hypothesis</h3><ul>
-<li>adversary has some voices of the target speakers to build a surrogate model, while these voices are not necessary the enrollment voices</li>
+<li>adversary has some voices of the target speakers to build a surrogate model, while these voices are not necessary the enrollment voices。即对于targeted attack，假设adversary能够拥有desired target speaker的voice，从而能够query black-box SRS得到对应的score和decision</li>
 </ul>
 <h2 id="System-design"><a href="#System-design" class="headerlink" title="System design"></a>System design</h2><h3 id="FAKEBOB-overview"><a href="#FAKEBOB-overview" class="headerlink" title="FAKEBOB overview"></a>FAKEBOB overview</h3><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925163435.png" alt=""></p>
 <p>为了生成adversarial example，也是将其定义为一个最优化问题(optimization problem)，即最小化一个自定义的loss</p>
@@ -569,6 +568,8 @@
 <p>该文主要攻击target是OSI SRS，且是black-box setting，所以无法得知SRS具体的threshold，因此本文提出了一种threshold estimation算法，如下图：</p>
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222309.png" alt=""></p>
 <p><code>该算法使得estiamted threshold not less than real threshold（not seen to adversary）</code></p>
+<p>文章也通过实验评估了该threshold estimation算法的有效性</p>
+<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210926202719.png" alt=""></p>
 <p>同样地，由于是black-box setting无法得知SRS具体的loss function和内部parameters weights，也就无法使用gradient-based mehtod（直接）来生成adversarial example。为了解决这一问题，使用NES算法(Natural Evolution Strategy)来得到estiamted gradient，然后使用BIM（Basic Iterative Method）进行estimated gradient descent来得到最优的adversarial example。</p>
 <p>BIM公式如下：</p>
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222632.png" alt=""></p>
@@ -576,7 +577,7 @@
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222740.png" alt=""></p>
 <p>NES生成estimated gradient公式如下：</p>
 <p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222905.png" alt=""></p>
-<p>$u_j$是每轮iteration生成的Gaussian noises，是一个向量$\left( u_1,…,u_m \right)$。然后将这个向量的每个元素分别加到$\acute{x}_{i-1}$得到$\acute{x}_{i-1}^{1},…,\acute{x}_{i-1}^{\boldsymbol{m}}\ \boldsymbol{where\ }\acute{x}_{i-1}^{j}=\acute{x}_{i-1}+\sigma \times u_j<br>$</p>
+<p>$u_j$是每轮iteration随机生成的Gaussian noises，是一个向量$\left( u_1,…,u_m \right)$，服从高斯分布。然后将这个向量的每个元素分别加到$\acute{x}_{i-1}$得到$\acute{x}_{i-1}^{1},…,\acute{x}_{i-1}^{\boldsymbol{m}}\ \boldsymbol{where\ }\acute{x}_{i-1}^{j}=\acute{x}_{i-1}+\sigma \times u_j<br>$</p>
 <p>而且$u_j=-u_{\boldsymbol{m}+1-\boldsymbol{j}}\ \boldsymbol{for\ j}=1,…\frac{\boldsymbol{m}}{2}$</p>
 <p>其中$m=50$，$\sigma =1e−3$，均为超参数，本文已经设为定值</p>
 <h3 id="Attack-on-CSI"><a href="#Attack-on-CSI" class="headerlink" title="Attack on CSI"></a>Attack on CSI</h3><p>CSI没有threshold设定，因此loss相对简单，具体如下：</p>
@@ -603,6 +604,7 @@
 </li>
 <li>文中提出的方法只适用于score和decision都能得到的black-box SRS，如果只能得到decision，原文中只能使用transfer attack</li>
 <li>无法抵抗liveness detection，即无法做到实时生成adversarial example（无法在live user说话时，实时生成相应的perturbation）</li>
+<li>因为定义的loss optimization problem很难解，使得迭代生成adversarial example时间较长（基本都在10min以上），感觉实际应用场景很少</li>
 </ul>
 ]]></content>
       <tags>
