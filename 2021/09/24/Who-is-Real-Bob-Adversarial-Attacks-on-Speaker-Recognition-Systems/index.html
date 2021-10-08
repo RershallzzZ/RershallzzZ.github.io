@@ -1,59 +1,34 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-180.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-16.png">
-  <link rel="mask-icon" href="/images/logo-512.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo-180.png">
+  <link rel="icon" href="/img/logo-180.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="
+文章题目：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems
+来源：2021 IEEE Symposium on Security and Privacy (SP)
+链接：https://ieeexplore.ieee.org/document/9519486/
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://rershallzzz.github.io').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.1',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":"default","style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: true,
-    mediumzoom: false,
-    lazyload: true,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
+IntroductionMotivation
+t">
+  <meta name="author" content="Kang Fu">
+  <meta name="keywords" content="">
   <meta name="description" content="文章题目：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems 来源：2021 IEEE Symposium on Security and Privacy (SP) 链接：https:&#x2F;&#x2F;ieeexplore.ieee.org&#x2F;document&#x2F;9519486&#x2F;  IntroductionMotivation t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems">
 <meta property="og:url" content="https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/index.html">
 <meta property="og:site_name" content="Rershall&#39;s Blog">
 <meta property="og:description" content="文章题目：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems 来源：2021 IEEE Symposium on Security and Privacy (SP) 链接：https:&#x2F;&#x2F;ieeexplore.ieee.org&#x2F;document&#x2F;9519486&#x2F;  IntroductionMotivation t">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925155722.png">
 <meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925163435.png">
 <meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925221043.png">
@@ -76,252 +51,228 @@
 <meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224501.png">
 <meta property="og:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224509.png">
 <meta property="article:published_time" content="2021-09-24T12:07:38.000Z">
-<meta property="article:modified_time" content="2021-09-26T12:32:54.522Z">
+<meta property="article:modified_time" content="2021-10-08T08:00:09.156Z">
 <meta property="article:author" content="Kang Fu">
 <meta property="article:tag" content="论文学习">
 <meta property="article:tag" content="Speaker Recognition">
 <meta property="article:tag" content="Adversarial Example">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925155722.png">
+  
+  <title>论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems - Rershall&#39;s Blog</title>
 
-<link rel="canonical" href="https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  <title>论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems | Rershall's Blog</title>
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
   
 
 
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?32d988867b55f736756ea2b834939a42";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"rershallzzz.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-<link rel="alternate" href="/atom.xml" title="Rershall's Blog" type="application/atom+xml">
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Rershall's Blog" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rershall's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">6</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">11</span></a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-
-</nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
-      <meta itemprop="name" content="Kang Fu">
-      <meta itemprop="description" content="Keep moving & Happy life">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rershall's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-24 20:07:38" itemprop="dateCreated datePublished" datetime="2021-09-24T20:07:38+08:00">2021-09-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-26 20:32:54" itemprop="dateModified" datetime="2021-09-26T20:32:54+08:00">2021-09-26</time>
-              </span>
-
-          
-            <span id="/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/" class="post-meta-item leancloud_visitors" data-flag-title="论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">评论次数：</span>
-    
-    <a title="valine" href="/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/" itemprop="commentCount"></span>
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rershall&#39;s blog</strong>
     </a>
-  </span>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems">
+              
+            </span>
+
+            
+              <div class="mt-3">
   
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-24 20:07" pubdate>
+        2021年9月24日 晚上
+      </time>
+    </span>
+  
+</div>
 
-        </div>
-      </header>
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.9k 字
+    </span>
+  
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
       
-        <blockquote>
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
 <p>文章题目：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems</p>
 <p>来源：2021 IEEE Symposium on Security and Privacy (SP)</p>
 <p>链接：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9519486/">https://ieeexplore.ieee.org/document/9519486/</a></p>
@@ -339,51 +290,51 @@
 <li>Our attack is demonstrated to be effective on the popular open-source systems and commercial system Talentedsoft, transferable and practical on the popular open-source systems and the open-set identification task of Microsoft Azure even when playing over the air in the physical world.</li>
 <li>Our attack is robust against four potential defense methods which are reported very promising in speech recognition domain. Our study reveals the security implications of the adversarial attack on SRSs, which calls for more robust SRSs and more effective domain-specific defense methods.</li>
 </ul>
-<h2 id="Threat-Model"><a href="#Threat-Model" class="headerlink" title="Threat Model"></a>Threat Model</h2><h3 id="Attack-scenarios"><a href="#Attack-scenarios" class="headerlink" title="Attack scenarios"></a>Attack scenarios</h3><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925155722.png" alt=""></p>
+<h2 id="Threat-Model"><a href="#Threat-Model" class="headerlink" title="Threat Model"></a>Threat Model</h2><h3 id="Attack-scenarios"><a href="#Attack-scenarios" class="headerlink" title="Attack scenarios"></a>Attack scenarios</h3><p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925155722.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="Attack-hypothesis"><a href="#Attack-hypothesis" class="headerlink" title="Attack hypothesis"></a>Attack hypothesis</h3><ul>
 <li>adversary has some voices of the target speakers to build a surrogate model, while these voices are not necessary the enrollment voices。即对于targeted attack，假设adversary能够拥有desired target speaker的voice，从而能够query black-box SRS得到对应的score和decision</li>
 </ul>
-<h2 id="System-design"><a href="#System-design" class="headerlink" title="System design"></a>System design</h2><h3 id="FAKEBOB-overview"><a href="#FAKEBOB-overview" class="headerlink" title="FAKEBOB overview"></a>FAKEBOB overview</h3><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925163435.png" alt=""></p>
+<h2 id="System-design"><a href="#System-design" class="headerlink" title="System design"></a>System design</h2><h3 id="FAKEBOB-overview"><a href="#FAKEBOB-overview" class="headerlink" title="FAKEBOB overview"></a>FAKEBOB overview</h3><p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925163435.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>为了生成adversarial example，也是将其定义为一个最优化问题(optimization problem)，即最小化一个自定义的loss</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925221043.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925221043.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>$f\left(  \right)$即为loss function，$x$是source voice。所有input先会经过normalization到[-1,1]，然后加上扰动（perturbation）$\delta$，得到adversarial example，最后经过一个逆变换过程将数据恢复到原始scale。</p>
 <p>该loss会根据不同的targets SRS，略作修改，总体思想是使得source voice加上扰动（perturbation）$\delta$后（即成为adversarial voice）与victim voice越来越像，并且设置一个参数$\epsilon$来限制$\delta$的强弱。</p>
 <h3 id="Attack-on-OSI"><a href="#Attack-on-OSI" class="headerlink" title="Attack on OSI"></a>Attack on OSI</h3><p>OSI作为本文主要攻击目标，因为它目前商用SRS最为重要的应用场景</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224136.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224136.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>targeted attack loss：</strong></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222153.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222153.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>untargeted attack loss：</strong></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222203.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222203.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>该文主要攻击target是OSI SRS，且是black-box setting，所以无法得知SRS具体的threshold，因此本文提出了一种threshold estimation算法，如下图：</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222309.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222309.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><code>该算法使得estiamted threshold not less than real threshold（not seen to adversary）</code></p>
 <p>文章也通过实验评估了该threshold estimation算法的有效性</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210926202719.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210926202719.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>同样地，由于是black-box setting无法得知SRS具体的loss function和内部parameters weights，也就无法使用gradient-based mehtod（直接）来生成adversarial example。为了解决这一问题，使用NES算法(Natural Evolution Strategy)来得到estiamted gradient，然后使用BIM（Basic Iterative Method）进行estimated gradient descent来得到最优的adversarial example。</p>
 <p>BIM公式如下：</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222632.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222632.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>其中$\acute{x}_0=x$，clip函数是为了对扰动$\delta$加以限制，具体为：</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222740.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222740.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>NES生成estimated gradient公式如下：</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222905.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925222905.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>$u_j$是每轮iteration随机生成的Gaussian noises，是一个向量$\left( u_1,…,u_m \right)$，服从高斯分布。然后将这个向量的每个元素分别加到$\acute{x}_{i-1}$得到$\acute{x}_{i-1}^{1},…,\acute{x}_{i-1}^{\boldsymbol{m}}\ \boldsymbol{where\ }\acute{x}_{i-1}^{j}=\acute{x}_{i-1}+\sigma \times u_j<br>$</p>
 <p>而且$u_j=-u_{\boldsymbol{m}+1-\boldsymbol{j}}\ \boldsymbol{for\ j}=1,…\frac{\boldsymbol{m}}{2}$</p>
 <p>其中$m=50$，$\sigma =1e−3$，均为超参数，本文已经设为定值</p>
 <h3 id="Attack-on-CSI"><a href="#Attack-on-CSI" class="headerlink" title="Attack on CSI"></a>Attack on CSI</h3><p>CSI没有threshold设定，因此loss相对简单，具体如下：</p>
 <p><strong>targeted attack loss：</strong></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223753.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223753.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>untargeted attack loss：</strong></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223808.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223808.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="Attack-on-SV"><a href="#Attack-on-SV" class="headerlink" title="Attack on SV"></a>Attack on SV</h3><p>由于SV是一个一对一问题，因此targeted attack和untargeted attack的目标是一样的，具体Loss：</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223955.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925223955.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>由于只有一个enrolled speaker，因此在生成estimated threshold时候，需要换成：</p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224105.png" alt=""></p>
-<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224309.png" alt=""></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224326.png" alt=""></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224344.png" alt=""></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/1632581045.jpg" alt=""></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224501.png" alt=""></p>
-<p><img data-src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224509.png" alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224105.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224309.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224326.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224344.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/1632581045.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224501.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210925224509.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>本文做了大量详尽的evaluation，详见原文appendix</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
 <li>实现practical attack仅仅是加强了perturbation strength，而不是建立noise model，原文给出的原因是害怕产生environment and device-dependent。这会导致攻击的不可感知性（imperceptibility）大幅下降，特别是进行over-the-air attack时<ol>
@@ -396,412 +347,259 @@
 <li>因为定义的loss optimization problem很难解，使得迭代生成adversarial example时间较长（基本都在10min以上），感觉实际应用场景很少</li>
 </ul>
 
-    </div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/">论文学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speaker-Recognition/">Speaker Recognition</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Adversarial-Example/">Adversarial Example</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/">论文学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Speaker-Recognition/">Speaker Recognition</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Adversarial-Example/">Adversarial Example</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/08/Towards-Query-Efficient-Adversarial-Attacks-Against-Automatic-Speech-Recognition-Systems/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">论文学习：Towards Query-Efficient Adversarial Attacks Against Automatic Speech Recognition Systems</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/23/Practical%20Adversarial%20Attacks%20Against%20Speaker%20Recognition%20Systems/">
+                        <span class="hidden-mobile">论文学习：Practical Adversarial Attacks Against Speaker Recognition Systems</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    
-    
-    
-
-    
-      
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\09\23\Practical Adversarial Attacks Against Speaker Recognition Systems\" rel="bookmark">论文学习：Practical Adversarial Attacks Against Speaker Recognition Systems</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\15\Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones\" rel="bookmark">论文学习：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\09\18\Austere Flash Caching with Deduplication and Compr\" rel="bookmark">论文学习：Austere Flash Caching with Deduplication and Compression</a></div>
-    </li>
-  </ul>
-
-        <div class="reward-container">
-  <div></div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    赞赏
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/alipay.png" alt="Kang Fu 支付宝">
-        <p>支付宝</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/images/wechatpay.png" alt="Kang Fu 微信">
-        <p>微信</p>
-      </div>
-
-  </div>
-</div>
-
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Kang Fu
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/" title="论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems">https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 论文学习</a>
-              <a href="/tags/Speaker-Recognition/" rel="tag"><i class="fa fa-tag"></i> Speaker Recognition</a>
-              <a href="/tags/Adversarial-Example/" rel="tag"><i class="fa fa-tag"></i> Adversarial Example</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/09/23/Practical%20Adversarial%20Attacks%20Against%20Speaker%20Recognition%20Systems/" rel="prev" title="论文学习：Practical Adversarial Attacks Against Speaker Recognition Systems">
-      <i class="fa fa-chevron-left"></i> 论文学习：Practical Adversarial Attacks Against Speaker Recognition Systems
-    </a></div>
-      <div class="post-nav-item"></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+            
+          </article>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Motivation"><span class="nav-number">1.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenge"><span class="nav-number">1.2.</span> <span class="nav-text">Challenge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contribution"><span class="nav-number">1.3.</span> <span class="nav-text">Contribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Threat-Model"><span class="nav-number">2.</span> <span class="nav-text">Threat Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Attack-scenarios"><span class="nav-number">2.1.</span> <span class="nav-text">Attack scenarios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attack-hypothesis"><span class="nav-number">2.2.</span> <span class="nav-text">Attack hypothesis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-design"><span class="nav-number">3.</span> <span class="nav-text">System design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FAKEBOB-overview"><span class="nav-number">3.1.</span> <span class="nav-text">FAKEBOB overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attack-on-OSI"><span class="nav-number">3.2.</span> <span class="nav-text">Attack on OSI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attack-on-CSI"><span class="nav-number">3.3.</span> <span class="nav-text">Attack on CSI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attack-on-SV"><span class="nav-number">3.4.</span> <span class="nav-text">Attack on SV</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation"><span class="nav-number">4.</span> <span class="nav-text">Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">问题</span></a></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kang Fu"
-      src="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
-  <p class="site-author-name" itemprop="name">Kang Fu</p>
-  <div class="site-description" itemprop="description">Keep moving & Happy life</div>
-</div>
-
-   <div class="feed-link motion-element">
-     <a href="/atom.xml" rel="alternate">
-       <i class="fa fa-rss"></i>
-       RSS
-     </a>
-   </div>
-
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">11</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/RershallzzZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;RershallzzZ" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/qq_40742077" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_40742077" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>CSDN</a>
-      </span>
-  </div>
-
-
-
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kang Fu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>&nbsp站点总字数
-    </span>
-    <span title="站点总字数">38k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>&nbsp站点阅读时长&nbsp≈
-    </span>
-    <span title="站点阅读时长">35 分钟</span>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
-  <div class="powered-by">技术支持 v5.2.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题方案 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
-  </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f81fe1f8e3deff3" async="async"></script>
-  </div>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-	<span class="post-meta-item-icon">
-	      <i class="fa fa-group"></i>
-	</span>
-	<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人</span>
-    	<span class="post-meta-divider">|</span>
-	<span class="post-meta-item-icon">
-	      <i class="fa fa-eye"></i>
-	</span>
-    	<span>访问总量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span>
-
-        
-
-
-
-
-
-
-
 
       </div>
-    </footer>
+    
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
 
   
-  
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
 
   
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
   <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
 
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
 
   
 
   
-      
-<script type="text/x-mathjax-config">
-    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        extensions: ['[mhchem]/mhchem.js'],
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
         }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
+      };
+    </script>
 
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
 
   
-  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
-  <script>
-      window.addEventListener('load', () => {
-      quicklink({
-        timeout: 3000,
-        priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/',]
-      });
-      });
-  </script>
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    var required = 'nick,mail'
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    required = required.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: '8iq7Wo7vKHNnEllQ4F8Fo1Jw-MdYXbMMI',
-      appKey: 'txQ3nv3dwvEVbJc8Hxr9P8CV',
-      placeholder: "来发评论吧~\n📌昵称框输入QQ自动获取邮箱与头像\n👨‍🔧本站使用Akismet反垃圾评论\n🚀评论和回复支持MarkDown",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: '' || 'zh-cn',
-      path: location.pathname,
-      enableQQ: true,
-      requiredFields: required,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
-</script>
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":220,"height":440},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

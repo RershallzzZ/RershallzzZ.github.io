@@ -1,308 +1,256 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-180.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo-16.png">
-  <link rel="mask-icon" href="/images/logo-512.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://rershallzzz.github.io').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.1',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":"default","style":null},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: true,
-    mediumzoom: false,
-    lazyload: true,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
-
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo-180.png">
+  <link rel="icon" href="/img/logo-180.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="论文题目 ：Austere Flash Caching with Deduplication and Compression
+来源：USENIX ATC 2020
+链接：https://www.usenix.org/conference/atc20/presentation/wang-qiuping
+关键概念deduplication（去重）">
+  <meta name="author" content="Kang Fu">
+  <meta name="keywords" content="">
   <meta name="description" content="论文题目 ：Austere Flash Caching with Deduplication and Compression 来源：USENIX ATC 2020 链接：https:&#x2F;&#x2F;www.usenix.org&#x2F;conference&#x2F;atc20&#x2F;presentation&#x2F;wang-qiuping 关键概念deduplication（去重）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文学习：Austere Flash Caching with Deduplication and Compression">
 <meta property="og:url" content="https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/index.html">
 <meta property="og:site_name" content="Rershall&#39;s Blog">
 <meta property="og:description" content="论文题目 ：Austere Flash Caching with Deduplication and Compression 来源：USENIX ATC 2020 链接：https:&#x2F;&#x2F;www.usenix.org&#x2F;conference&#x2F;atc20&#x2F;presentation&#x2F;wang-qiuping 关键概念deduplication（去重）">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg">
 <meta property="og:image" content="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg">
 <meta property="article:published_time" content="2020-09-17T17:13:43.000Z">
-<meta property="article:modified_time" content="2020-12-25T08:47:44.733Z">
+<meta property="article:modified_time" content="2021-10-08T07:42:47.515Z">
 <meta property="article:author" content="Kang Fu">
 <meta property="article:tag" content="论文学习">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg">
+  
+  <title>论文学习：Austere Flash Caching with Deduplication and Compression - Rershall&#39;s Blog</title>
 
-<link rel="canonical" href="https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true
-  };
-</script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  <title>论文学习：Austere Flash Caching with Deduplication and Compression | Rershall's Blog</title>
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
   
 
 
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?32d988867b55f736756ea2b834939a42";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/iconfont_csdn/iconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"rershallzzz.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-<link rel="alternate" href="/atom.xml" title="Rershall's Blog" type="application/atom+xml">
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Rershall's Blog" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rershall's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">6</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">11</span></a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-
-</nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
-      <meta itemprop="name" content="Kang Fu">
-      <meta itemprop="description" content="Keep moving & Happy life">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rershall's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          论文学习：Austere Flash Caching with Deduplication and Compression
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-18 01:13:43" itemprop="dateCreated datePublished" datetime="2020-09-18T01:13:43+08:00">2020-09-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-25 16:47:44" itemprop="dateModified" datetime="2020-12-25T16:47:44+08:00">2020-12-25</time>
-              </span>
-
-          
-            <span id="/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/" class="post-meta-item leancloud_visitors" data-flag-title="论文学习：Austere Flash Caching with Deduplication and Compression" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">评论次数：</span>
-    
-    <a title="valine" href="/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/" itemprop="commentCount"></span>
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Rershall&#39;s blog</strong>
     </a>
-  </span>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="论文学习：Austere Flash Caching with Deduplication and Compression">
+              
+            </span>
+
+            
+              <div class="mt-3">
   
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-18 01:13" pubdate>
+        2020年9月18日 凌晨
+      </time>
+    </span>
+  
+</div>
 
-        </div>
-      </header>
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
       
-        <p>论文题目 ：Austere Flash Caching with Deduplication and Compression</p>
+      
+      14 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">论文学习：Austere Flash Caching with Deduplication and Compression</h1>
+            
+            <div class="markdown-body">
+              <p>论文题目 ：Austere Flash Caching with Deduplication and Compression</p>
 <p>来源：USENIX ATC 2020</p>
 <p>链接：<a target="_blank" rel="noopener" href="https://www.usenix.org/conference/atc20/presentation/wang-qiuping">https://www.usenix.org/conference/atc20/presentation/wang-qiuping</a></p>
 <h2 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念"></a>关键概念</h2><h3 id="deduplication（去重）"><a href="#deduplication（去重）" class="headerlink" title="deduplication（去重）"></a><strong>deduplication</strong>（去重）</h3><p>重复数据删除以粗粒度但轻量级的方式删除块级重复数据。通过将数据划分成一个个chunk（KB级别），对每个chunk的内容做hash，若算出的hash值（fingerprint，FP）一样（不同），则视为冗余（唯一）数据。通过在物理空间上（SSD上）只保存一份冗余数据的副本，从而进行数据缩减，但在逻辑空间上，所有冗余数据不会被删除，而是都指向同一块物理地址。此外还会将每个chunk和其FP的映射存储下来，用于重复检查和chunk查找。块（chunk）的大小可能是固定也可能是变化的，本文主要关注去重固定大小的块。</p>
@@ -310,7 +258,7 @@
 <p>deduplication&amp;compression是两种data eduction技术，相辅相成。</p>
 <h3 id="flash"><a href="#flash" class="headerlink" title="flash"></a><strong>flash</strong></h3><p>flash存储器又称闪存，它结合了ROM和RAM的长处，不仅具备电子可擦除可编程（EEPROM）的性能，还可以快速读取数据（NVRAM的优势），使数据不会因为断电而丢失。固态硬盘和传统的机械硬盘最大的区别就是不再采用盘片进行数据存储，而采用存储芯片进行数据存储。固态硬盘的存储芯片主要分为两种：一种是采用闪存作为存储介质的；另一种是采用DRAM作为存储介质的。目前使用较多的主要是采用闪存作为存储介质的固态硬盘</p>
 <h3 id="flashcache"><a href="#flashcache" class="headerlink" title="flashcache"></a><strong>flashcache</strong></h3><p>Flashcache是Facebook技术团队的一个开源项目，最初目的是为加速MySQL的数据库引擎InnoDB，是一个开源的混合存储方案，兼顾了机械硬盘和固态硬盘两者的优点，即有HHD的高容量、高顺序访问，也有SSD的高随机访问，低延迟，且这个方案成本也相对较低。Flashcache利用了Linux的device mapping机制，将Flash disk和普通硬盘的块设备做了一层映射，在OS中变现为一块普通的磁盘，使用简单。通过在文件系统和设备驱动之间新增了一层缓存层，用来实现对热点数据的缓存。通常用SSD固态硬盘作为缓存，通过将传统硬盘上的热门数据缓存到SSD上，然后利用SSD优秀的读性能，来加速系统。参考<a target="_blank" rel="noopener" href="https://my.oschina.net/u/658505/blog/544599">https://my.oschina.net/u/658505/blog/544599</a></p>
-<p><img data-src="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg" style="zoom: 67%;" /></p>
+<p><img src="https://pic.downk.cc/item/5f64f301160a154a6766dee1.jpg" srcset="/img/loading.gif" lazyload style="zoom: 67%;" /></p>
 <p>上图是一般的带有去重和压缩功能的flashcache架构。带有去重和压缩功能的flashcache保证SSD中的数据块都是唯一且压缩过的。而传统的flashcache不带有去重和压缩功能，因此只用维护一种索引结构：LBA-&gt;CA。经过假设计算后，带有去重和压缩的flashcache由于要维护两个index（LBA-index、FP-index），其内存开销要是传统的flashcache的16倍（4G/256MB）。此外还可能产生额外的CPU开销（计算FP、压缩数据、寻找索引对等）</p>
 <h3 id="LBA-index：LBA-gt-FP"><a href="#LBA-index：LBA-gt-FP" class="headerlink" title="LBA-index：LBA-&gt;FP"></a><strong>LBA-index</strong>：LBA-&gt;FP</h3><p>逻辑地址索引，即将存于HDD中的数据的逻辑地址（LBA）与数据块的FP值进行映射（多对一，可能有多个不同的逻辑地址指向相同内容的数据）</p>
 <h3 id="FP-index：FP-gt-CA-length"><a href="#FP-index：FP-gt-CA-length" class="headerlink" title="FP-index：FP-&gt;CA,length"></a><strong>FP-index</strong>：FP-&gt;CA,length</h3><p>FP索引，即将每个数据块的FP值与该数据块经过压缩后位于SSD中的物理地址（CA）以及该块的大小进行映射（一对一）</p>
@@ -319,13 +267,13 @@
 <h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>目前SSD被广泛用作RAM和HDD之间的一个缓存层（即flashcache技术，通过将热点数据存储在SSD，可以提高整体I/O性能），但其使用寿命和容量都有限。为了解决这一问题，本文提出一种框架AustereCache，其拥有高效的数据去重和压缩机制，能够尽可能的延长SSD寿命和扩大其容量，而且也能很好的降低由于数据压缩/去重导致的索引管理所带来的巨大内存开销。这相比于目前最新的flashcache框架CacheDedup所需的内存代价要低69.9-97.0%，且能提供相似的性能。</p>
 <h2 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h2><p>AustereCache强调严格的cache数据管理，使用多种技术来进行有效的数据组织和cache数据替换，主要包括三个核心技术点：</p>
 <h3 id="bucketization（桶化）"><a href="#bucketization（桶化）" class="headerlink" title="bucketization（桶化）"></a>bucketization（桶化）</h3><p>如下图所示，为了消除在LBA-index和FP-index中维护地址映射的内存开销，AustereCache将索引项散列到大小相等的分区(称为桶，每个桶分为多个槽)中，每个桶保存部分LBA和FP（通过hash后取其前缀码，如前16bit）以节省内存。根据桶位置，将数据块映射到SSD中。并将SSD分为元数据区(metadata)和数据区(chunk data)，这两个区也都被分为多个桶，每个桶包含多个槽(slot)，数量与FP-index保持一致（1对1映射）。</p>
-<p><img data-src="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg" style="zoom:50%;" /></p>
+<p><img src="https://pic.downk.cc/item/5f656c97160a154a677c7642.jpg" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
 <h3 id="固定大小的压缩数据管理"><a href="#固定大小的压缩数据管理" class="headerlink" title="固定大小的压缩数据管理"></a>固定大小的压缩数据管理</h3><p>为了避免在FP-index中跟踪块的长度，AustereCache将可变大小的压缩块划分为较小的固定大小的子块，并在不记录压缩块长度的情况下管理子块。如下图所示，在FP-index中会选取多个连续的槽来存放属于同一个压缩块的子块，并且不会在FP-index中记录压缩块的大小，而是在SSD中记录压缩块的大小，从而减小FP-index大小，减小内存开销。这样做既可以很好的使用桶—槽（bucket—slot）机制来管理每个数据块（将大小变化的压缩块分为多个固定大小的子块），也可以节省内存开销。</p>
-<p><img data-src="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg" style="zoom: 80%;" /></p>
+<p><img src="https://pic.downk.cc/item/5f65a75b160a154a678a2f54.jpg" srcset="/img/loading.gif" lazyload style="zoom: 80%;" /></p>
 <h3 id="基于bucket的缓存替换"><a href="#基于bucket的缓存替换" class="headerlink" title="基于bucket的缓存替换"></a>基于bucket的缓存替换</h3><p>AustereCache为了增加缓存命中的可能性，其结合了基于引用计数（即引用每个唯一块的重复副本的计数）的最近性和去重性原则，以实现有效的SSD缓存数据替换。但是，记录引用计数会产生不可忽略的内存开销。因此，AustereCache利用固定大小的紧凑型草图数据结构在有限的内存空间中使用有限的误差进行参考计数估计。</p>
 <p>对于LBA-index，其替换策略为LRU，每当新加入或者新访问一个LBA就会将这个LBA移动到最前面（偏移量为0），其余所有entry往后移动一格，处于最后一个的entry（偏移量最大）会被替换掉。</p>
 <p>对于FP-index，其替换策略是要将去重（deduplication）和最近访问性（recency，相当于局部性原理）结合起来，通过一个额外的数据结构：引用计数（count）来表明冗余LBA的程度，当FP-index满后，会替换掉count最小的entry来满足去重性。此外还通过将LBA-index分为Recent、Old两个区，位于Recent区中的entry，每次被访问，或者新加入的entry，其count+2；当从Recent进入Old，或者在Old中被替换掉的entry，其count-1；当Old中的entry被访问进入Recent区，其count+1。通过这种规则既兼顾了去重也兼顾了局部性原理。</p>
-<p><img data-src="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg" style="zoom:80%;" /></p>
+<p><img src="https://pic.downk.cc/item/5f65a779160a154a678a3504.jpg" srcset="/img/loading.gif" lazyload style="zoom:80%;" /></p>
 <h2 id="性能评估"><a href="#性能评估" class="headerlink" title="性能评估"></a>性能评估</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>①FIU从三种不同设备上采集到的traces（I/O访问序列？），分别是Web服务器上的虚拟机、文件服务器、邮件服务器</p>
 <p>②自定义trace，为了测量吞吐量而设计的一个trace生成器，通过设置两个参数来生成一个trace：a.I/O去重比率（感觉可以理解成I/O请求中所请求的数据的冗余程度）; b.读写比</p>
 <h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><ol>
@@ -345,363 +293,251 @@
 <p>而且对于得到FP-index中每个entry的count，文中是使用估计的方法得到，会有一定误差，这感觉不太精确，且reference counter也会带来很大的内存开销。但可能直接将count存在FP-index带来的内存开销会更高。</p>
 <p>还有一个疑问是，为什么在FP-index中count越低的越容易被替换掉这一策略体现了deduplication，count越低不代表数据重复度越低吗，从局部性原来上来说，优先替换掉count最低的是没问题的，但感觉和deduplication有些矛盾。。</p>
 
-    </div>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/">论文学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/">论文学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020年保研经历</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/">
+                        <span class="hidden-mobile">论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    
-    
-    
-
-    
-      
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\08\29\A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges\" rel="bookmark">论文学习：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges（未完待续。。。）</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\08\31\Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning\" rel="bookmark">论文学习：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\15\Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones\" rel="bookmark">论文学习：Lip Reading-Based User Authentication Through Acoustic Sensing on Smartphones</a></div>
-    </li>
-  </ul>
-
-        <div class="reward-container">
-  <div></div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    赞赏
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/alipay.png" alt="Kang Fu 支付宝">
-        <p>支付宝</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/images/wechatpay.png" alt="Kang Fu 微信">
-        <p>微信</p>
-      </div>
-
-  </div>
-</div>
-
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Kang Fu
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/" title="论文学习：Austere Flash Caching with Deduplication and Compression">https://rershallzzz.github.io/2020/09/18/Austere Flash Caching with Deduplication and Compr/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 论文学习</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/" rel="prev" title="论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms">
-      <i class="fa fa-chevron-left"></i> 论文学习：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/" rel="next" title="2020年保研经历">
-      2020年保研经历 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-  </div>
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+            
+          </article>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">关键概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deduplication%EF%BC%88%E5%8E%BB%E9%87%8D%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">deduplication（去重）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compression%EF%BC%88%E5%8E%8B%E7%BC%A9%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">compression（压缩）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flash"><span class="nav-number">1.3.</span> <span class="nav-text">flash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flashcache"><span class="nav-number">1.4.</span> <span class="nav-text">flashcache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LBA-index%EF%BC%9ALBA-gt-FP"><span class="nav-number">1.5.</span> <span class="nav-text">LBA-index：LBA-&gt;FP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FP-index%EF%BC%9AFP-gt-CA-length"><span class="nav-number">1.6.</span> <span class="nav-text">FP-index：FP-&gt;CA,length</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-through%EF%BC%88%E7%9B%B4%E5%86%99%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">Write-through（直写模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-back%EF%BC%88%E5%9B%9E%E5%86%99%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">Write-back（回写模式）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="nav-number">3.</span> <span class="nav-text">核心技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bucketization%EF%BC%88%E6%A1%B6%E5%8C%96%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">bucketization（桶化）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">固定大小的压缩数据管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Ebucket%E7%9A%84%E7%BC%93%E5%AD%98%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">基于bucket的缓存替换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0"><span class="nav-number">4.</span> <span class="nav-text">性能评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">4.1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.2.</span> <span class="nav-text">实验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">5.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E8%A7%89%E5%BE%97%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">5.2.</span> <span class="nav-text">个人觉得存在的问题</span></a></li></ol></li></ol></div>
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Kang Fu"
-      src="https://pic.downk.cc/item/5f809dfd1cd1bbb86bdf7d12.jpg">
-  <p class="site-author-name" itemprop="name">Kang Fu</p>
-  <div class="site-description" itemprop="description">Keep moving & Happy life</div>
-</div>
-
-   <div class="feed-link motion-element">
-     <a href="/atom.xml" rel="alternate">
-       <i class="fa fa-rss"></i>
-       RSS
-     </a>
-   </div>
-
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">11</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/RershallzzZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;RershallzzZ" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/qq_40742077" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_40742077" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>CSDN</a>
-      </span>
-  </div>
-
-
-
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kang Fu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>&nbsp站点总字数
-    </span>
-    <span title="站点总字数">38k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>&nbsp站点阅读时长&nbsp≈
-    </span>
-    <span title="站点阅读时长">35 分钟</span>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
-  <div class="powered-by">技术支持 v5.2.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题方案 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
-  </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f81fe1f8e3deff3" async="async"></script>
-  </div>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-	<span class="post-meta-item-icon">
-	      <i class="fa fa-group"></i>
-	</span>
-	<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人</span>
-    	<span class="post-meta-divider">|</span>
-	<span class="post-meta-item-icon">
-	      <i class="fa fa-eye"></i>
-	</span>
-    	<span>访问总量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span>
-
-        
-
-
-
-
-
-
-
 
       </div>
-    </footer>
+    
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
 
   
-  
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
 
   
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
   <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
 
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
 
   
 
   
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
 
   
-  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
-  <script>
-      window.addEventListener('load', () => {
-      quicklink({
-        timeout: 3000,
-        priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/',]
-      });
-      });
-  </script>
 
 
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    var required = 'nick,mail'
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    required = required.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el: '#valine-comments',
-      verify: false,
-      notify: false,
-      appId: '8iq7Wo7vKHNnEllQ4F8Fo1Jw-MdYXbMMI',
-      appKey: 'txQ3nv3dwvEVbJc8Hxr9P8CV',
-      placeholder: "来发评论吧~\n📌昵称框输入QQ自动获取邮箱与头像\n👨‍🔧本站使用Akismet反垃圾评论\n🚀评论和回复支持MarkDown",
-      avatar: 'mm',
-      meta: guest,
-      pageSize: '10' || 10,
-      visitor: true,
-      lang: '' || 'zh-cn',
-      path: location.pathname,
-      enableQQ: true,
-      requiredFields: required,
-      recordIP: false,
-      serverURLs: ''
-    });
-  }, window.Valine);
-});
-</script>
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":220,"height":440},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

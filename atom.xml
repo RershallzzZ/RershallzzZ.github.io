@@ -6,7 +6,7 @@
   <link href="https://rershallzzz.github.io/atom.xml" rel="self"/>
   
   <link href="https://rershallzzz.github.io/"/>
-  <updated>2021-09-26T12:32:54.522Z</updated>
+  <updated>2021-10-08T08:39:33.546Z</updated>
   <id>https://rershallzzz.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>论文学习：Towards Query-Efficient Adversarial Attacks Against Automatic Speech Recognition Systems</title>
+    <link href="https://rershallzzz.github.io/2021/10/08/Towards-Query-Efficient-Adversarial-Attacks-Against-Automatic-Speech-Recognition-Systems/"/>
+    <id>https://rershallzzz.github.io/2021/10/08/Towards-Query-Efficient-Adversarial-Attacks-Against-Automatic-Speech-Recognition-Systems/</id>
+    <published>2021-10-08T07:37:40.000Z</published>
+    <updated>2021-10-08T08:39:33.546Z</updated>
+    
+    
+    
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Speech Recognition" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speech-Recognition/"/>
+    
+    <category term="Adversarial Example" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Adversarial-Example/"/>
+    
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Speech Recognition" scheme="https://rershallzzz.github.io/tags/Speech-Recognition/"/>
+    
+  </entry>
+  
+  <entry>
     <title>论文学习：Who is Real Bob? Adversarial Attacks on Speaker Recognition Systems</title>
     <link href="https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/"/>
     <id>https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/</id>
     <published>2021-09-24T12:07:38.000Z</published>
-    <updated>2021-09-26T12:32:54.522Z</updated>
+    <updated>2021-10-08T08:00:09.156Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -35,6 +58,12 @@
 &lt;h3 id=&quot;Challenge&quot;&gt;&lt;a href=&quot;#Challenge&quot; class=&quot;headerlink&quot; title=&quot;Challenge&quot;&gt;&lt;/a&gt;Challenge&lt;/h3&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Speaker Recognition" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speaker-Recognition/"/>
+    
+    <category term="Adversarial Example" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Adversarial-Example/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
@@ -50,7 +79,7 @@
     <link href="https://rershallzzz.github.io/2021/09/23/Practical%20Adversarial%20Attacks%20Against%20Speaker%20Recognition%20Systems/"/>
     <id>https://rershallzzz.github.io/2021/09/23/Practical%20Adversarial%20Attacks%20Against%20Speaker%20Recognition%20Systems/</id>
     <published>2021-09-23T10:42:44.000Z</published>
-    <updated>2021-09-26T01:26:34.678Z</updated>
+    <updated>2021-10-08T07:46:00.955Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -59,9 +88,15 @@
 &lt;p&gt;链接：&lt;a href=&quot;https://dl.acm.org/doi/abs/10.1145/3376897.3377856&quot;&gt;https://dl.acm.org/doi/abs/10.1145/3376897.3377856&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;文章概述&quot;&gt;&lt;a href=&quot;#文章概述&quot; class=&quot;headerlink&quot; title=&quot;文章概述&quot;&gt;&lt;/a&gt;文章概述&lt;/h2&gt;&lt;p&gt;对基于X-vector的multi-class speaker recognition system（其实就是一个闭集多分类模型，speaker identificaiton）进行adversarial example attacks，即对输入音频加入人类察觉不到的小扰动使得speaker recognition system分类出错。具体包括两种攻击类型：untargeted attack and targeted attack。并且加在generate adversarial example时加入了estimated RIR(room impulse response)，模拟在真实场景下的各种因素（multi-path effect, noise etc.）。在VCTK数据集上进行digital attack和practical attack，每种场景下都评估上述两种攻击类型的表现。98% digital untargeted attack success rate,  50% practical targeted attack success rate。&lt;/p&gt;
-&lt;h2 id=&quot;系统框架&quot;&gt;&lt;a href=&quot;#系统框架&quot; class=&quot;headerlink&quot; title=&quot;系统框架&quot;&gt;&lt;/a&gt;系统框架&lt;/h2&gt;&lt;p&gt;&lt;img data-src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923161432.png&quot; alt&gt;&lt;/p&gt;</summary>
+&lt;h2 id=&quot;系统框架&quot;&gt;&lt;a href=&quot;#系统框架&quot; class=&quot;headerlink&quot; title=&quot;系统框架&quot;&gt;&lt;/a&gt;系统框架&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210923161432.png&quot; alt&gt;&lt;/p&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Speaker Recognition" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speaker-Recognition/"/>
+    
+    <category term="Adversarial Example" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Adversarial-Example/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
@@ -77,15 +112,19 @@
     <link href="https://rershallzzz.github.io/2020/12/26/Java%E6%B3%9B%E5%9E%8B/"/>
     <id>https://rershallzzz.github.io/2020/12/26/Java%E6%B3%9B%E5%9E%8B/</id>
     <published>2020-12-26T14:48:35.000Z</published>
-    <updated>2021-01-20T11:26:29.632Z</updated>
+    <updated>2021-10-08T07:43:14.250Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;泛型概述&quot;&gt;&lt;a href=&quot;#泛型概述&quot; class=&quot;headerlink&quot; title=&quot;泛型概述&quot;&gt;&lt;/a&gt;泛型概述&lt;/h2&gt;&lt;p&gt;在前面学习集合时，我们都知道集合中是可以存放任意对象的，只要把对象存储集合后，那么这时他们都会被提升成Object类型。当我们在取出每一个对象，并且进行相应的操作，这时必须采用类型转换。&lt;/p&gt;
 &lt;p&gt;大家观察下面代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;GenericDemo&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Collection coll = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		coll.add(&lt;span class=&quot;string&quot;&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		coll.add(&lt;span class=&quot;string&quot;&gt;&amp;quot;itcast&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		coll.add(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//由于集合没有做任何限定，任何类型都可以给其中存放&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Iterator it = coll.iterator();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(it.hasNext())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;comment&quot;&gt;//需要打印每个字符串的长度,就要把迭代出来的对象转成String类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			String str = (String) it.next();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			System.out.println(str.length());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter hljs&quot;&gt;&lt;div class=&quot;hljs code-wrapper&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;hljs code-wrapper&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-class&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;GenericDemo&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;br&gt;	&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;br&gt;		Collection coll = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; ArrayList();&lt;br&gt;		coll.add(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;);&lt;br&gt;		coll.add(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;itcast&amp;quot;&lt;/span&gt;);&lt;br&gt;		coll.add(&lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;);&lt;span class=&quot;hljs-comment&quot;&gt;//由于集合没有做任何限定，任何类型都可以给其中存放&lt;/span&gt;&lt;br&gt;		Iterator it = coll.iterator();&lt;br&gt;		&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;(it.hasNext())&amp;#123;&lt;br&gt;			&lt;span class=&quot;hljs-comment&quot;&gt;//需要打印每个字符串的长度,就要把迭代出来的对象转成String类型&lt;/span&gt;&lt;br&gt;			String str = (String) it.next();&lt;br&gt;			System.out.println(str.length());&lt;br&gt;		&amp;#125;&lt;br&gt;	&amp;#125;&lt;br&gt;&amp;#125;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;程序在运行时发生了问题&lt;strong&gt;java.lang.ClassCastException&lt;/strong&gt;。这是由于集合中什么类型的元素都可以存储导致取出时强转引发运行时 ClassCastException。&lt;/p&gt;</summary>
     
     
+    
+    <category term="Java" scheme="https://rershallzzz.github.io/categories/Java/"/>
+    
+    <category term="Java SE" scheme="https://rershallzzz.github.io/categories/Java/Java-SE/"/>
     
     
     <category term="Java SE" scheme="https://rershallzzz.github.io/tags/Java-SE/"/>
@@ -97,16 +136,20 @@
     <link href="https://rershallzzz.github.io/2020/12/25/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"/>
     <id>https://rershallzzz.github.io/2020/12/25/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</id>
     <published>2020-12-25T09:00:18.000Z</published>
-    <updated>2021-09-24T08:38:17.550Z</updated>
+    <updated>2021-10-08T07:43:26.884Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;Collection单列集合&quot;&gt;&lt;a href=&quot;#Collection单列集合&quot; class=&quot;headerlink&quot; title=&quot;Collection单列集合&quot;&gt;&lt;/a&gt;Collection单列集合&lt;/h1&gt;&lt;p&gt;&lt;img data-src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20201231130452.png&quot; alt&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/image-20201231130515656.png&quot; alt&gt;&lt;/p&gt;
+    <summary type="html">&lt;h1 id=&quot;Collection单列集合&quot;&gt;&lt;a href=&quot;#Collection单列集合&quot; class=&quot;headerlink&quot; title=&quot;Collection单列集合&quot;&gt;&lt;/a&gt;Collection单列集合&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20201231130452.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/image-20201231130515656.png&quot; alt&gt;&lt;/p&gt;
 &lt;center&gt;&lt;h6&gt;Java集合综述&lt;br&gt;图片来源：https://segmentfault.com/a/1190000019946237【如有侵权，必删】&lt;/h6&gt;&lt;/center&gt;
 
-&lt;p&gt;&lt;img data-src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/Java_Collections_Framework_Overview.png&quot; alt&gt;&lt;/p&gt;</summary>
+&lt;p&gt;&lt;img src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/Java_Collections_Framework_Overview.png&quot; alt&gt;&lt;/p&gt;</summary>
     
     
+    
+    <category term="Java" scheme="https://rershallzzz.github.io/categories/Java/"/>
+    
+    <category term="Java SE" scheme="https://rershallzzz.github.io/categories/Java/Java-SE/"/>
     
     
     <category term="Java SE" scheme="https://rershallzzz.github.io/tags/Java-SE/"/>
@@ -118,7 +161,7 @@
     <link href="https://rershallzzz.github.io/2020/10/15/Lip%20Reading-Based%20User%20Authentication%20Through%20Acoustic%20Sensing%20on%20Smartphones/"/>
     <id>https://rershallzzz.github.io/2020/10/15/Lip%20Reading-Based%20User%20Authentication%20Through%20Acoustic%20Sensing%20on%20Smartphones/</id>
     <published>2020-10-15T06:35:27.000Z</published>
-    <updated>2021-09-24T08:38:38.017Z</updated>
+    <updated>2021-10-08T07:45:03.866Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -127,9 +170,15 @@
 &lt;p&gt;链接：&lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/8624590&quot;&gt;https://ieeexplore.ieee.org/abstract/document/8624590&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;文章概述&quot;&gt;&lt;a href=&quot;#文章概述&quot; class=&quot;headerlink&quot; title=&quot;文章概述&quot;&gt;&lt;/a&gt;文章概述&lt;/h2&gt;&lt;p&gt;为了防止用户隐私泄露，越来越多的移动设备采用基于生物特征的身份验证方法（例如指纹，面部识别，声纹身份验证等）来增强隐私保护。但是，这些方法很容易受到重放攻击。尽管最新的解决方案利用活性验证来抵御重放攻击，但现有方法对周围环境（例如环境光和周围的噪声）很敏感。为此，本文探索了一种基于用户嘴唇运动的方式来进行活性验证，且该方法对周围的环境鲁棒性很高。在本文中提出了一种基于唇读的用户身份验证系统LipPass，通过智能手机上的声音感应提取用户说话时嘴巴的独特行为特征，以进行用户身份验证。本文首先调查，智能手机上的音频组件可以通过分析用户脸部反射的声音信号来描绘用户嘴巴的运动。由于每个人都表现出独特的说话行为——比如嘴唇的凸起和闭合、舌头的伸展和收缩，以及下颌的角度变化等——这创造了一个独一无二的多普勒效应轮廓，这轮廓能够用手机检测到。为了表征嘴的运动，本文使用一种深度学习算法，在用户说话时从用户的多普勒轮廓中提取显著的特征。接下来，应用一种基于二叉树的方法来辨别是新用户的轮廓还是以前注册的用户的轮廓，这也有助于在合法用户身份和欺骗者之间做出辨别。通 过在四个实际环境中进行的涉及48位志愿者的广泛实验，LipPass可以实现90.2％的用户识别准确度和93.1％的欺骗者检测准确度。&lt;/p&gt;
-&lt;h2 id=&quot;系统框架&quot;&gt;&lt;a href=&quot;#系统框架&quot; class=&quot;headerlink&quot; title=&quot;系统框架&quot;&gt;&lt;/a&gt;系统框架&lt;/h2&gt;&lt;p&gt;&lt;img data-src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204162007.png&quot; alt&gt;&lt;/p&gt;</summary>
+&lt;h2 id=&quot;系统框架&quot;&gt;&lt;a href=&quot;#系统框架&quot; class=&quot;headerlink&quot; title=&quot;系统框架&quot;&gt;&lt;/a&gt;系统框架&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://rershall123.oss-cn-hangzhou.aliyuncs.com/img/20210204162007.png&quot; alt&gt;&lt;/p&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Speaker Recognition" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speaker-Recognition/"/>
+    
+    <category term="Acoustic Sensing" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Acoustic-Sensing/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
@@ -145,11 +194,11 @@
     <link href="https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/"/>
     <id>https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/</id>
     <published>2020-10-12T04:47:23.000Z</published>
-    <updated>2021-09-24T08:37:19.227Z</updated>
+    <updated>2021-10-08T07:42:24.097Z</updated>
     
     
     <summary type="html">&lt;p&gt;时至今日，为期大半年的保研大战终于告一段落。本菜鸡能够在保研尾声阶段上岸浙大实在是太幸运了，唯一美中不足的是，要开始异地恋了🙁（npy去了thu）。由于本人从大三开始就打算出国，所以早早就考好了雅思。正准备寒假开始刷GRE的时候，新冠疫情爆发了。随着国际形势愈发紧张，直到四月，我才定下心来，转向国内保研。我会把我这大半年来所踩过的坑都聊一聊，讲一讲像我这种非cs科班出身的算法菜鸟，如何投机上岸，希望对学弟学妹们有所帮助。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&quot;https://pic.downk.cc/item/5f8436e41cd1bbb86bfb403d.jpg&quot; style=&quot;zoom: 40%;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic.downk.cc/item/5f8436e41cd1bbb86bfb403d.jpg&quot; style=&quot;zoom: 40%;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;本人情况&quot;&gt;&lt;a href=&quot;#本人情况&quot; class=&quot;headerlink&quot; title=&quot;本人情况&quot;&gt;&lt;/a&gt;本人情况&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;西南某末流985网安专业&lt;/li&gt;
 &lt;li&gt;rank：4/130，两年国奖&lt;/li&gt;
@@ -182,6 +231,8 @@
     
     
     
+    <category term="保研" scheme="https://rershallzzz.github.io/categories/%E4%BF%9D%E7%A0%94/"/>
+    
     
     <category term="保研" scheme="https://rershallzzz.github.io/tags/%E4%BF%9D%E7%A0%94/"/>
     
@@ -192,7 +243,7 @@
     <link href="https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/"/>
     <id>https://rershallzzz.github.io/2020/09/18/Austere%20Flash%20Caching%20with%20Deduplication%20and%20Compr/</id>
     <published>2020-09-17T17:13:43.000Z</published>
-    <updated>2020-12-25T08:47:44.733Z</updated>
+    <updated>2021-10-08T07:42:47.515Z</updated>
     
     
     <summary type="html">&lt;p&gt;论文题目 ：Austere Flash Caching with Deduplication and Compression&lt;/p&gt;
@@ -201,6 +252,8 @@
 &lt;h2 id=&quot;关键概念&quot;&gt;&lt;a href=&quot;#关键概念&quot; class=&quot;headerlink&quot; title=&quot;关键概念&quot;&gt;&lt;/a&gt;关键概念&lt;/h2&gt;&lt;h3 id=&quot;deduplication（去重）&quot;&gt;&lt;a href=&quot;#deduplication（去重）&quot; class=&quot;headerlink&quot; title=&quot;deduplication（去重）&quot;&gt;&lt;/a&gt;&lt;strong&gt;deduplication&lt;/strong&gt;（去重）&lt;/h3&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
@@ -212,7 +265,7 @@
     <link href="https://rershallzzz.github.io/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/"/>
     <id>https://rershallzzz.github.io/2020/09/13/Seeing%20is%20Not%20Believing%EF%BC%9ACamouflage%20Attacks%20on%20Image%20Scaling%20Algorithms/</id>
     <published>2020-09-12T17:13:43.000Z</published>
-    <updated>2020-12-25T08:48:54.468Z</updated>
+    <updated>2021-10-08T07:46:22.322Z</updated>
     
     
     <summary type="html">&lt;p&gt;论文题目：Seeing is Not Believing：Camouflage Attacks on Image Scaling Algorithms&lt;/p&gt;
@@ -221,6 +274,8 @@
 &lt;h2 id=&quot;主要内容：&quot;&gt;&lt;a href=&quot;#主要内容：&quot; class=&quot;headerlink&quot; title=&quot;主要内容：&quot;&gt;&lt;/a&gt;主要内容：&lt;/h2&gt;&lt;p&gt;作者发现了&lt;strong&gt;一种在图像处理过程中潜藏的安全风险——图像维度变换攻击。&lt;/strong&gt;攻击者可以通过构造攻击图片，致使输入图像在经过尺寸维度变化后发生明显的内容语义改变，造成人与机器的认知差异，从而达到欺骗、逃逸检测的攻击效果。与针对深度学习模型的对抗样本不同，该攻击方法不局限于特定模型，因为其是针对基于深度学习的计算机视觉应用的必要功能：图像伸缩函数，这一步是位于深度学习模型进行训练/预测之前的，因此该攻击影响范围更大。&lt;/p&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
@@ -232,7 +287,7 @@
     <link href="https://rershallzzz.github.io/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/"/>
     <id>https://rershallzzz.github.io/2020/09/05/On%20Training%20Robust%20PDF%20Malware%20Classifiers/</id>
     <published>2020-09-04T17:13:43.000Z</published>
-    <updated>2020-12-25T08:48:50.089Z</updated>
+    <updated>2021-10-08T07:45:38.169Z</updated>
     
     
     <summary type="html">&lt;p&gt;论文题目：On Training Robust PDF Malware Classifiers&lt;/p&gt;
@@ -241,6 +296,8 @@
 &lt;h2 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h2&gt;&lt;p&gt;参考&lt;a href=&quot;https://blog.csdn.net/Shall_ByeBye/article/details/106883218&quot;&gt;https://blog.csdn.net/Shall_ByeBye/article/details/106883218&lt;/a&gt;&lt;/p&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
@@ -252,7 +309,7 @@
     <link href="https://rershallzzz.github.io/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/"/>
     <id>https://rershallzzz.github.io/2020/08/31/Humpty%20Dumpty%EF%BC%9AControlling%20Word%20Meanings%20via%20Corpus%20Poisoning/</id>
     <published>2020-08-30T17:13:43.000Z</published>
-    <updated>2020-12-25T08:48:44.110Z</updated>
+    <updated>2021-10-08T07:42:52.267Z</updated>
     
     
     <summary type="html">&lt;p&gt;论文题目：Humpty Dumpty：Controlling Word Meanings via Corpus Poisoning&lt;/p&gt;
@@ -261,6 +318,8 @@
 &lt;h2 id=&quot;文章内容&quot;&gt;&lt;a href=&quot;#文章内容&quot; class=&quot;headerlink&quot; title=&quot;文章内容&quot;&gt;&lt;/a&gt;文章内容&lt;/h2&gt;&lt;p&gt;通过对公共语料库如twitter、Wikipedia进行毒害，如修改一些词条，或者故意加入一些词条等，从而让由这些公告语料库训练出来的word embeddings失效。&lt;/p&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
@@ -272,7 +331,7 @@
     <link href="https://rershallzzz.github.io/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/"/>
     <id>https://rershallzzz.github.io/2020/08/29/A-Comprehensive-Survey-on-Fog-Computing-State-of-the-Art-and-Research-Challenges/</id>
     <published>2020-08-28T20:42:44.000Z</published>
-    <updated>2020-12-25T08:47:59.563Z</updated>
+    <updated>2021-10-08T07:42:35.919Z</updated>
     
     
     <summary type="html">&lt;p&gt;论文名：A Comprehensive Survey on Fog Computing State-of-the-Art and Research Challenges&lt;/p&gt;
@@ -281,6 +340,8 @@
 &lt;h2 id=&quot;主要内容&quot;&gt;&lt;a href=&quot;#主要内容&quot; class=&quot;headerlink&quot; title=&quot;主要内容&quot;&gt;&lt;/a&gt;主要内容&lt;/h2&gt;&lt;p&gt;雾计算的前景：触觉互联网（Tactile Internet）&lt;/p&gt;</summary>
     
     
+    
+    <category term="论文学习" scheme="https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="论文学习" scheme="https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/"/>
