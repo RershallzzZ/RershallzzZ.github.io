@@ -2,21 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://rershallzzz.github.io/about/index.html</loc>
+    <loc>https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/</loc>
     
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-21</lastmod>
     
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/2021/10/08/Towards-Query-Efficient-Adversarial-Attacks-Against-Automatic-Speech-Recognition-Systems/</loc>
     
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2021-10-21</lastmod>
     
   </url>
   
   <url>
-    <loc>https://rershallzzz.github.io/2021/09/24/Who-is-Real-Bob-Adversarial-Attacks-on-Speaker-Recognition-Systems/</loc>
+    <loc>https://rershallzzz.github.io/2021/10/12/Dompteur-Taming-Audio-Adversarial-Examples/</loc>
+    
+    <lastmod>2021-10-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rershallzzz.github.io/2021/10/12/Adversarial-Defense-for-Automatic-Speaker-Verification-by-Cascaded-Self-Supervised-Learning-Models/</loc>
+    
+    <lastmod>2021-10-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://rershallzzz.github.io/about/index.html</loc>
     
     <lastmod>2021-10-08</lastmod>
     
@@ -86,7 +100,7 @@
   </url>
   
   <url>
-    <loc>https://rershallzzz.github.io/2020/10/12/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86/</loc>
+    <loc>https://rershallzzz.github.io/2020%E5%B9%B4%E4%BF%9D%E7%A0%94%E7%BB%8F%E5%8E%86.html</loc>
     
     <lastmod>2021-10-08</lastmod>
     
@@ -109,7 +123,7 @@
 
   <url>
     <loc>https://rershallzzz.github.io/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -117,49 +131,42 @@
   
   <url>
     <loc>https://rershallzzz.github.io/tags/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://rershallzzz.github.io/tags/Java-SE/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/tags/Speaker-Recognition/</loc>
-    <lastmod>2021-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://rershallzzz.github.io/tags/Acoustic-Sensing/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/tags/Adversarial-Example/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rershallzzz.github.io/tags/Java-SE/</loc>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/tags/Speech-Recognition/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://rershallzzz.github.io/tags/%E4%BF%9D%E7%A0%94/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <loc>https://rershallzzz.github.io/tags/Acoustic-Sensing/</loc>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -168,56 +175,49 @@
   
   <url>
     <loc>https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/categories/Java/</loc>
-    <lastmod>2021-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speaker-Recognition/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speech-Recognition/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Speaker-Recognition/</loc>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/categories/Java/Java-SE/</loc>
-    <lastmod>2021-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Acoustic-Sensing/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Adversarial-Example/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://rershallzzz.github.io/categories/%E4%BF%9D%E7%A0%94/</loc>
-    <lastmod>2021-10-08</lastmod>
+    <loc>https://rershallzzz.github.io/categories/%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0/Acoustic-Sensing/</loc>
+    <lastmod>2022-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
